@@ -4,42 +4,43 @@ import { Button, Box, Typography } from "@mui/material";
 // Button-Komponente für einheitliches Styling
 function NavButton({ label, onClick }) {
   return (
-    <Button variant="text"
-    onClick={onClick}
-    sx={{
-      textTransform: 'none', // Keine Großschreibung des Textes
-      fontSize: {
-        xs: '0.6rem',   // Sehr klein auf mobilen Geräten
-        sm: '0.75rem',  // Etwas größer auf mittleren Geräten
-        md: '0.9rem',   // Noch größer auf größeren Geräten
-      },
-      color: 'black',  // Textfarbe
-      padding: {
-        xs: '0px',  // Kein extra Padding auf kleinen Geräten
-        sm: '2px',  // Etwas Padding auf mittleren Geräten
-        md: '4px',  // Mehr Padding auf größeren Geräten
-      },
-      margin: '0 5px',  // Kleiner Abstand zwischen den Buttons
-      position: 'relative', // Positionierung für das Pseudo-Element
-      transition: 'all 0.3s ease', // Sanfte Übergänge für die Hover-Animation
-      '&:hover': {
-        backgroundColor: 'transparent',
-        transform: 'scale(1.1)', // Button vergrößert sich bei Hover
-      },
-      // Pseudo-Element für den Unterstrich
-      '&::after': {
-        content: '""', // Leeres Pseudo-Element
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        width: '100%', // Unterstrich geht über die gesamte Button-Breite
-        height: '2px', // Dicke des Unterstrichs
-        backgroundColor: 'black', // Farbe des Unterstrichs
-        transition: 'all 0.3s ease', // Sanfter Übergang beim Hover
-      },
-    }}
-  >
-    {label}
+    <Button
+      variant="text"
+      onClick={onClick}
+      sx={{
+        textTransform: "none", // Keine Großschreibung des Textes
+        fontSize: {
+          xs: "0.6rem", // Sehr klein auf mobilen Geräten
+          sm: "0.75rem", // Etwas größer auf mittleren Geräten
+          md: "0.9rem", // Noch größer auf größeren Geräten
+        },
+        color: "black", // Textfarbe
+        padding: {
+          xs: "0px", // Kein extra Padding auf kleinen Geräten
+          sm: "2px", // Etwas Padding auf mittleren Geräten
+          md: "4px", // Mehr Padding auf größeren Geräten
+        },
+        margin: "0 5px", // Kleiner Abstand zwischen den Buttons
+        position: "relative", // Positionierung für das Pseudo-Element
+        transition: "all 0.3s ease", // Sanfte Übergänge für die Hover-Animation
+        "&:hover": {
+          backgroundColor: "transparent",
+          transform: "scale(1.1)", // Button vergrößert sich bei Hover
+        },
+        // Pseudo-Element für den Unterstrich
+        "&::after": {
+          content: '""', // Leeres Pseudo-Element
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          width: "100%", // Unterstrich geht über die gesamte Button-Breite
+          height: "2px", // Dicke des Unterstrichs
+          backgroundColor: "black", // Farbe des Unterstrichs
+          transition: "all 0.3s ease", // Sanfter Übergang beim Hover
+        },
+      }}
+    >
+      {label}
     </Button>
   );
 }
@@ -51,53 +52,40 @@ function App() {
     setActiveContent(content);
   };
 
- // Deaktiviert das Scrollen auf der Seite
- useEffect(() => {
-  document.documentElement.style.overflow = "hidden"; // Deaktiviert Scrollen der Seite
-  document.body.style.overflow = "hidden"; // Deaktiviert Scrollen des Bodys
+  // Deaktiviert das Scrollen auf der Seite
+  useEffect(() => {
+    document.documentElement.style.overflow = "hidden"; // Deaktiviert Scrollen der Seite
+    document.body.style.overflow = "hidden"; // Deaktiviert Scrollen des Bodys
 
-  // Aktiviert das Scrollen wieder, wenn die Komponente verlassen wird
-  return () => {
-    document.documentElement.style.overflow = "auto"; // Reaktiviert Scrollen der Seite
-    document.body.style.overflow = "auto"; // Reaktiviert Scrollen des Bodys
-  };
-}, []);
+    // Aktiviert das Scrollen wieder, wenn die Komponente verlassen wird
+    return () => {
+      document.documentElement.style.overflow = "auto"; // Reaktiviert Scrollen der Seite
+      document.body.style.overflow = "auto"; // Reaktiviert Scrollen des Bodys
+    };
+  }, []);
 
   return (
     <Box
       sx={{
-        display: "flex",
-        justifyContent: "center", // Zentriert die innere Box horizontal
-        alignItems: "center", // Zentriert die innere Box vertikal
-        height: "100vh", // Höhe des Viewports, damit es den ganzen Bildschirm ausfüllt
-        margin: 0, // Kein äußeres Margin für den Container
+        border: "2px solid #989898", // Rahmen der Box
+        textAlign: "center", // Inhalt der Box zentrieren
+        maxWidth: "100%", // Maximale Breite auf 100% setzen
+        width: "80%", // Box soll die volle Breite einnehmen
+        height: "70vh", // Höhe auf volle Viewport-Höhe setzen
         padding: {
-          xs: 2, // Padding auf kleinen Geräten (xs) = 2
-          sm: 3, // Padding auf mittleren Geräten (sm) = 3
-          md: 4, // Padding auf größeren Geräten (md) = 4
-          lg: 5, // Padding auf sehr großen Geräten (lg) = 5
+          xs: 2, // Padding auf kleinen Geräten (xs)
+          sm: 3, // Padding auf mittleren Geräten (sm)
+          md: 4, // Padding auf größeren Geräten (md)
+          lg: 5, // Padding auf sehr großen Geräten (lg)
         },
+        marginLeft: "auto", // Automatischer Abstand links
+        marginRight: "auto", // Automatischer Abstand rechts
+        marginBottom: "10vh", // Abstandsregel für den unteren Rand
+        marginTop: "10vh", // Abstandsregel für den oberen Rand
       }}
     >
-      {/* Äußere Box mit gleichmäßigem Padding und einer maximalen Breite */}
-      <Box
-        sx={{
-          border: "2px solid #989898", // Rahmen der Box
-      textAlign: "center", // Inhalt der Box zentrieren
-      boxSizing: "border-box", // Padding wird in die Gesamtbreite einbezogen
-      maxWidth: "1000px", // Maximalbreite für größere Bildschirme
-      width: "100%", // Box nimmt die gesamte Breite ein, aber nicht mehr als maxWidth
-      margin: "auto",  // Automatischer Abstand oben, unten, links und rechts für gleichmäßige Ränder
-      padding: {
-        xs: 2,  // Padding auf kleinen Geräten (xs)
-        sm: 3,  // Padding auf mittleren Geräten (sm)
-        md: 4,  // Padding auf größeren Geräten (md)
-        lg: 5,  // Padding auf sehr großen Geräten (lg)
-      },
-      minHeight: "700px", // Min. Höhe für die Box, damit sie nicht zu klein wird
-      height: "auto", // Höhe passt sich dem Inhalt an, aber bleibt mindestens 400px hoch
-    }}
-  >
+      {/* Navigation und dynamischer Inhalt in einer einzigen Box */}
+      <Box sx={{ paddingBottom: 4 }}>
         {/* Navigation */}
         <Box
           display="flex"
