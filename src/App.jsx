@@ -67,7 +67,7 @@ function App() {
   return (
     <Box
       sx={{
-        border: "2px solid #989898", // Rahmen der Box
+        boxShadow: "1px 1px 15px 5px rgba(0, 0, 0, 0.3)", // Rahmen der Box
         textAlign: "center", // Inhalt der Box zentrieren
         maxWidth: "100%", // Maximale Breite auf 100% setzen
         width: "80%", // Box soll die volle Breite einnehmen
@@ -98,7 +98,11 @@ function App() {
         >
           <NavButton label="Über mich" onClick={() => handleClick("about")} />
           <NavButton label="Projekte" onClick={() => handleClick("projects")} />
-          <NavButton label="Zertifikate" onClick={() => handleClick("certificates")} />
+          <NavButton
+            label="Zertifikate"
+            onClick={() => handleClick("certificates")}
+          />
+          <NavButton label="Contact" onClick={() => handleClick("Contact")} />
         </Box>
 
         {/* Dynamischer Inhalt */}
@@ -115,7 +119,8 @@ function App() {
                 style={{ borderRadius: "50%", marginBottom: "20px" }}
               />
               <Typography variant="body1">
-                Hier ist ein Text über mich. Erkläre, wer du bist und was du machst.
+                Hier ist ein Text über mich. Erkläre, wer du bist und was du
+                machst.
               </Typography>
             </>
           )}
@@ -132,6 +137,14 @@ function App() {
               <Typography variant="h5">Meine Zertifikate</Typography>
               <Typography variant="body1">
                 Liste deine Zertifikate auf.
+              </Typography>
+            </>
+          )}
+          {activeContent === "Contact" && (
+            <>
+              <Typography variant="h5">Nehm Kontakt zu mir auf</Typography>
+              <Typography variant="body1">
+                Hier kommen meine kontaktdaten rein
               </Typography>
             </>
           )}
