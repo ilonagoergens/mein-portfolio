@@ -67,11 +67,12 @@ function App() {
   return (
     <Box
       sx={{
+        borderRadius: "25px",
         boxShadow: "1px 1px 15px 5px rgba(0, 0, 0, 0.3)", // Rahmen der Box
         textAlign: "center", // Inhalt der Box zentrieren
         maxWidth: "100%", // Maximale Breite auf 100% setzen
-        width: "80%", // Box soll die volle Breite einnehmen
-        height: "70vh", // Höhe auf volle Viewport-Höhe setzen
+        width: "90%", // Box soll die volle Breite einnehmen
+        height: "80vh", // Höhe auf volle Viewport-Höhe setzen
         padding: {
           xs: 2, // Padding auf kleinen Geräten (xs)
           sm: 3, // Padding auf mittleren Geräten (sm)
@@ -80,8 +81,8 @@ function App() {
         },
         marginLeft: "auto", // Automatischer Abstand links
         marginRight: "auto", // Automatischer Abstand rechts
-        marginBottom: "10vh", // Abstandsregel für den unteren Rand
-        marginTop: "10vh", // Abstandsregel für den oberen Rand
+        marginBottom: "5vh", // Abstandsregel für den unteren Rand
+        marginTop: "5vh", // Abstandsregel für den oberen Rand
       }}
     >
       {/* Navigation und dynamischer Inhalt in einer einzigen Box */}
