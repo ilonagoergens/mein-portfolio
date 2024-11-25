@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Box, Typography } from "@mui/material";
+import Image from './assets/image.png'
 
 // Button-Komponente für einheitliches Styling
 function NavButton({ label, onClick }) {
@@ -108,48 +109,81 @@ function App() {
 
         {/* Dynamischer Inhalt */}
         <Box sx={{ padding: 4 }}>
-          {activeContent === "home" && (
-            <Typography variant="h4">Willkommen! Ich bin Ilona</Typography>
-          )}
-          {activeContent === "about" && (
-            <>
-              <Typography variant="h5">Über mich</Typography>
-              <img
-                src="https://via.placeholder.com/150" // Ersetze dies mit deinem Foto
-                alt="Mein Foto"
-                style={{ borderRadius: "50%", marginBottom: "20px" }}
-              />
-              <Typography variant="body1">
-                Hier ist ein Text über mich. Erkläre, wer du bist und was du
-                machst.
-              </Typography>
-            </>
-          )}
-          {activeContent === "projects" && (
-            <>
-              <Typography variant="h5">Meine Projekte</Typography>
-              <Typography variant="body1">
-                Hier kannst du deine Projekte vorstellen.
-              </Typography>
-            </>
-          )}
-          {activeContent === "certificates" && (
-            <>
-              <Typography variant="h5">Meine Zertifikate</Typography>
-              <Typography variant="body1">
-                Liste deine Zertifikate auf.
-              </Typography>
-            </>
-          )}
-          {activeContent === "Contact" && (
-            <>
-              <Typography variant="h5">Nehm Kontakt zu mir auf</Typography>
-              <Typography variant="body1">
-                Hier kommen meine kontaktdaten rein
-              </Typography>
-            </>
-          )}
-        </Box>
+  {activeContent === "home" && (
+    <Typography variant="h4">Willkommen! Ich bin Ilona</Typography>
+  )}
+  {activeContent === "about" && (
+    <>
+      <Typography variant="h5">Über mich</Typography>
+      <Box
+        component="img"
+        src={Image} // Ersetze dies mit deinem Foto
+        alt="Mein Foto"
+        sx={{
+          borderRadius: "50%", // Runde Form
+          marginBottom: "10px", // Abstand nach unten
+          width: "100%", // Passt das Bild an die Containerbreite an
+          maxWidth: "300px", // Begrenzung der maximalen Breite
+          height: "auto", // Höhe wird proportional angepasst
+          // Responsives Verhalten je nach Bildschirmgröße
+          "@media (max-width:600px)": {
+            maxWidth: "200px", // Bildgröße auf kleineren Bildschirmen
+          },
+          "@media (max-width:400px)": {
+            maxWidth: "150px", // Noch kleinere Bildgröße bei sehr kleinen Bildschirmen
+          },
+        }}
+      />
+      <Typography variant="body1">
+        Hier ist ein Text über mich. Erkläre, wer du bist und was du machst.
+      </Typography>
+    </>
+  )}
+  {activeContent === "projects" && (
+    <>
+      <Typography variant="h5">Meine Projekte</Typography>
+      <Typography variant="body1">
+        Hier kannst du deine Projekte vorstellen.
+      </Typography>
+    </>
+  )}
+  {activeContent === "certificates" && (
+    <>
+      <Typography variant="h5">Meine Zertifikate</Typography>
+      <Box
+        component="img"
+        src={Image} // Ersetze dies mit deinem Foto
+        alt="Mein Foto"
+        sx={{
+          borderRadius: "50%", // Runde Form
+          marginBottom: "10px", // Abstand nach unten
+          width: "100%", // Passt das Bild an die Containerbreite an
+          maxWidth: "300px", // Begrenzung der maximalen Breite
+          height: "auto", // Höhe wird proportional angepasst
+          // Responsives Verhalten je nach Bildschirmgröße
+          "@media (max-width:600px)": {
+            maxWidth: "200px", // Bildgröße auf kleineren Bildschirmen
+          },
+          "@media (max-width:400px)": {
+            maxWidth: "150px", // Noch kleinere Bildgröße bei sehr kleinen Bildschirmen
+          },
+        }}
+      />
+      <Typography variant="body1">
+        Liste deine Zertifikate auf.
+      </Typography>
+    </>
+  )}
+  {activeContent === "Contact" && (
+    <>
+      <Typography variant="h5">Nehm Kontakt zu mir auf</Typography>
+      <Typography variant="body1">
+        Hier kommen meine Kontaktdaten rein.
+      </Typography>
+    </>
+  )}
+</Box>
+
       </Box>
     </Box>
   );
