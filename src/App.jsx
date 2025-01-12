@@ -1,43 +1,44 @@
 import React, { useState, useEffect } from "react";
-import { Button, Box, Typography } from "@mui/material";
+import { Button, Box, Typography, TextField, Tooltip, Snackbar, Alert } from "@mui/material";
 import Image from "./assets/image.png";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import emailjs from "emailjs-com";
 
-// Button-Komponente für einheitliches Styling
 function NavButton({ label, onClick }) {
   return (
     <Button
       variant="text"
       onClick={onClick}
       sx={{
-        textTransform: "none", // Keine Großschreibung des Textes
+        textTransform: "none",
         fontSize: {
-          xs: "0.6rem", // Sehr klein auf mobilen Geräten
-          sm: "0.75rem", // Etwas größer auf mittleren Geräten
-          md: "0.9rem", // Noch größer auf größeren Geräten
+          xs: "0.6rem",
+          sm: "0.75rem",
+          md: "0.9rem",
         },
-        color: "black", // Textfarbe
+        color: "black",
         padding: {
-          xs: "0px", // Kein extra Padding auf kleinen Geräten
-          sm: "2px", // Etwas Padding auf mittleren Geräten
-          md: "4px", // Mehr Padding auf größeren Geräten
+          xs: "0px",
+          sm: "2px",
+          md: "4px",
         },
-        margin: "0 5px", // Kleiner Abstand zwischen den Buttons
-        position: "relative", // Positionierung für das Pseudo-Element
-        transition: "all 0.3s ease", // Sanfte Übergänge für die Hover-Animation
+        margin: "0 5px",
+        position: "relative",
+        transition: "all 0.3s ease",
         "&:hover": {
           backgroundColor: "transparent",
-          transform: "scale(1.1)", // Button vergrößert sich bei Hover
+          transform: "scale(1.1)",
         },
-        // Pseudo-Element für den Unterstrich
         "&::after": {
-          content: '""', // Leeres Pseudo-Element
+          content: '""',
           position: "absolute",
           bottom: 0,
           left: 0,
-          width: "100%", // Unterstrich geht über die gesamte Button-Breite
-          height: "2px", // Dicke des Unterstrichs
-          backgroundColor: "black", // Farbe des Unterstrichs
-          transition: "all 0.3s ease", // Sanfter Übergang beim Hover
+          width: "100%",
+          height: "2px",
+          backgroundColor: "black",
+          transition: "all 0.3s ease",
         },
       }}
     >
@@ -47,45 +48,80 @@ function NavButton({ label, onClick }) {
 }
 
 function App() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [openSnackbar, setOpenSnackbar] = useState(false);
   const [activeContent, setActiveContent] = useState("home");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (name && email && message) {
+      const templateParams = {
+        user_name: name,
+        user_email: email,
+        message: message,
+      };
+
+      // E-Mail an EmailJS senden
+      emailjs
+        .send(
+          "service_id", // Deine Service-ID von EmailJS
+          "template_id", // Deine Template-ID von EmailJS
+          templateParams,
+          "user_id" // Deine User-ID von EmailJS
+        )
+        .then(
+          (response) => {
+            console.log("Nachricht erfolgreich gesendet:", response);
+            setOpenSnackbar(true); // Snackbar anzeigen
+            setName(""); // Formular zurücksetzen
+            setEmail("");
+            setMessage("");
+          },
+          (error) => {
+            console.error("Fehler beim Senden der Nachricht:", error);
+            alert("Es gab ein Problem beim Senden der Nachricht.");
+          }
+        );
+    } else {
+      alert("Bitte alle Felder ausfüllen.");
+    }
+  };
 
   const handleClick = (content) => {
     setActiveContent(content);
   };
 
-  // Deaktiviert das Scrollen auf der Seite
   useEffect(() => {
-    document.documentElement.style.overflow = "hidden"; // Deaktiviert Scrollen der Seite
-    document.body.style.overflow = "hidden"; // Deaktiviert Scrollen des Bodys
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
 
-    // Aktiviert das Scrollen wieder, wenn die Komponente verlassen wird
     return () => {
-      document.documentElement.style.overflow = "auto"; // Reaktiviert Scrollen der Seite
-      document.body.style.overflow = "auto"; // Reaktiviert Scrollen des Bodys
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
     };
   }, []);
-  
+
   return (
     <Box
       sx={{
         borderRadius: "25px",
-        boxShadow: "1px 1px 15px 5px rgba(0, 0, 0, 0.3)", // Rahmen der Box
-        textAlign: "center", // Inhalt der Box zentrieren
-        maxWidth: "100%", // Maximale Breite auf 100% setzen
-        width: "85%", // Box soll die volle Breite einnehmen
-        height: "80vh", // Höhe auf 80% der Viewport-Höhe
+        boxShadow: "1px 1px 15px 5px rgba(0, 0, 0, 0.3)",
+        textAlign: "center",
+        maxWidth: "100%",
+        width: "85%",
+        height: "80vh",
         padding: {
-          xs: 2, // Padding auf kleinen Geräten (xs)
-          sm: 3, // Padding auf mittleren Geräten (sm)
-          md: 4, // Padding auf größeren Geräten (md)
-          lg: 5, // Padding auf sehr großen Geräten (lg)
+          xs: 2,
+          sm: 3,
+          md: 4,
+          lg: 5,
         },
-        margin: "5vh auto", // Gleicher Abstand oben und unten (5vh) und automatische Zentrierung links und rechts
+        margin: "5vh auto",
       }}
     >
-      {/* Navigation und dynamischer Inhalt in einer einzigen Box */}
       <Box sx={{ paddingBottom: 4 }}>
-        {/* Navigation */}
         <Box
           id="nav-buttons"
           display="flex"
@@ -93,40 +129,35 @@ function App() {
           sx={{
             marginBottom: 2,
             flexWrap: "wrap",
-            justifyContent: "center", // Navigation buttons zentrieren
+            justifyContent: "center",
           }}
         >
           <NavButton label="Über mich" onClick={() => handleClick("about")} />
           <NavButton label="Projekte" onClick={() => handleClick("projects")} />
-          <NavButton
-            label="Zertifikate"
-            onClick={() => handleClick("certificates")}
-          />
-          <NavButton label="Contact" onClick={() => handleClick("Contact")} />
+          <NavButton label="Zertifikate" onClick={() => handleClick("certificates")} />
+          <NavButton label="Kontakt" onClick={() => handleClick("Contact")} />
         </Box>
 
-        {/* Dynamischer Inhalt */}
         <Box sx={{ padding: 4 }}>
           {activeContent === "about" && (
             <Box
               sx={{
                 display: "flex",
-                flexDirection: "row", // Bild und Text nebeneinander
+                flexDirection: "row",
                 alignItems: "flex-start",
                 justifyContent: "flex-start",
                 width: "100%",
-                marginTop: "6%", // Automatischer Abstand oben
-                marginBottom: "5%", // Automatischer Abstand unten
+                marginTop: "6%",
+                marginBottom: "5%",
               }}
             >
-              {/* Bild */}
               <Box
                 sx={{
                   borderRadius: "25px",
-                  width: "25%", // Bildgröße als Prozentsatz der Box-Breite
-                  maxWidth: "400px", // Maximale Breite des Bildes
-                  height: "auto", // Höhe wird proportional angepasst
-                  transition: "width 0.3s ease", // Sanfter Übergang bei Änderung der Breite
+                  width: "25%",
+                  maxWidth: "400px",
+                  height: "auto",
+                  transition: "width 0.3s ease",
                   "@media (max-width:600px)": {
                     width: "50%",
                   },
@@ -146,17 +177,16 @@ function App() {
                 />
               </Box>
 
-              {/* Text */}
               <Box
                 sx={{
                   marginLeft: {
-                    xs: "10px", // Kleiner Abstand auf sehr kleinen Bildschirmen
-                    sm: "30px", // Etwas größerer Abstand auf kleinen bis mittleren Bildschirmen
-                    md: "40px", // Mittelgroßer Abstand auf mittleren Bildschirmen
-                    lg: "190px", // Größter Abstand auf großen Bildschirmen
+                    xs: "10px",
+                    sm: "30px",
+                    md: "40px",
+                    lg: "190px",
                   },
                   textAlign: "left",
-                  flex: 1, // Textcontainer nimmt den restlichen Platz ein
+                  flex: 1,
                   overflow: "auto",
                 }}
               >
@@ -165,12 +195,12 @@ function App() {
                   sx={{
                     textAlign: "left",
                     fontSize: {
-                      xs: "0.5rem", // Sehr klein auf mobilen Geräten
-                      sm: "0.8rem", // Etwas größer auf mittleren Geräten
-                      md: "1.2rem", // Noch größer auf größeren Geräten
-                      lg: "1rem", // Größer auf sehr großen Geräten
+                      xs: "0.5rem",
+                      sm: "0.8rem",
+                      md: "1.2rem",
+                      lg: "1rem",
                     },
-                    animation: "fadeIn 1s ease-out", // Hinzufügen der Animation
+                    animation: "fadeIn 1s ease-out",
                     "@keyframes fadeIn": {
                       "0%": {
                         opacity: 0,
@@ -224,34 +254,119 @@ function App() {
               <Typography variant="body1">Projekte</Typography>
             </>
           )}
+
           {activeContent === "certificates" && (
             <>
               <Typography variant="h5">Meine Zertifikate</Typography>
               <Box
                 sx={{
-                  borderRadius: "50%", // Runde Form
-                  marginBottom: "10px", // Abstand nach unten
-                  width: "100%", // Passt das Bild an die Containerbreite an
-                  maxWidth: "300px", // Begrenzung der maximalen Breite
-                  minWidth: "150px", // Mindestbreite des Bildes
-                  height: "auto", // Höhe wird proportional angepasst
-                  // Responsives Verhalten je nach Bildschirmgröße
+                  borderRadius: "50%",
+                  marginBottom: "10px",
+                  width: "100%",
+                  maxWidth: "300px",
+                  minWidth: "150px",
+                  height: "auto",
                   "@media (max-width:600px)": {
-                    maxWidth: "200px", // Bildgröße auf kleineren Bildschirmen
+                    maxWidth: "200px",
                   },
                   "@media (max-width:400px)": {
-                    maxWidth: "150px", // Noch kleinere Bildgröße bei sehr kleinen Bildschirmen
+                    maxWidth: "150px",
                   },
                 }}
               />
               <Typography variant="body1">Zertifikate</Typography>
             </>
           )}
+
           {activeContent === "Contact" && (
-            <>
+            <Box sx={{ padding: 4 }}>
               <Typography variant="h5">Kontakt</Typography>
-              <Typography variant="body1">Kontaktdaten</Typography>
-            </>
+
+              <form
+                onSubmit={handleSubmit}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "15px",
+                  marginTop: "20px",
+                }}
+              >
+                <TextField
+                  label="Name"
+                  variant="outlined"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  fullWidth
+                />
+                <TextField
+                  label="E-Mail"
+                  variant="outlined"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="email"
+                  required
+                  fullWidth
+                />
+                <TextField
+                  label="Nachricht"
+                  variant="outlined"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  multiline
+                  rows={4}
+                  required
+                  fullWidth
+                />
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                >
+                  Nachricht senden
+                </Button>
+              </form>
+
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                gap={2}
+                style={{ marginTop: "20px" }}
+              >
+                <Tooltip title="Folge mir auf GitHub">
+                  <a
+                    href="https://github.com/ilonagoergens"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <GitHubIcon style={{ fontSize: "30px", color: "#000" }} />
+                  </a>
+                </Tooltip>
+                <Tooltip title="Verbinde dich mit mir auf LinkedIn">
+                  <a
+                    href="https://www.linkedin.com/in/ilona-g%C3%B6rgens-81810830a/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <LinkedInIcon
+                      style={{ fontSize: "30px", color: "#0077b5" }}
+                    />
+                  </a>
+                </Tooltip>
+              </Box>
+
+              <Snackbar
+                open={openSnackbar}
+                autoHideDuration={3000}
+                onClose={() => setOpenSnackbar(false)}
+              >
+                <Alert onClose={() => setOpenSnackbar(false)} severity="success">
+                  Nachricht erfolgreich gesendet!
+                </Alert>
+              </Snackbar>
+            </Box>
           )}
         </Box>
       </Box>
