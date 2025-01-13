@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Button, Box, Typography, TextField, Tooltip, Snackbar, Alert } from "@mui/material";
+import {
+  Button,
+  Box,
+  Typography,
+  TextField,
+  Tooltip,
+  Snackbar,
+  Alert,
+} from "@mui/material";
 import Image from "./assets/image.png";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -134,7 +142,10 @@ function App() {
         >
           <NavButton label="Über mich" onClick={() => handleClick("about")} />
           <NavButton label="Projekte" onClick={() => handleClick("projects")} />
-          <NavButton label="Zertifikate" onClick={() => handleClick("certificates")} />
+          <NavButton
+            label="Zertifikate"
+            onClick={() => handleClick("certificates")}
+          />
           <NavButton label="Kontakt" onClick={() => handleClick("Contact")} />
         </Box>
 
@@ -318,14 +329,26 @@ function App() {
                   required
                   fullWidth
                 />
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  fullWidth
+
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
                 >
-                  Nachricht senden
-                </Button>
+                  <Button
+                    style={{
+                      width: "200px",
+                    }}
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                  >
+                    Nachricht senden
+                  </Button>
+                </div>
               </form>
 
               <Box
@@ -362,7 +385,10 @@ function App() {
                 autoHideDuration={3000}
                 onClose={() => setOpenSnackbar(false)}
               >
-                <Alert onClose={() => setOpenSnackbar(false)} severity="success">
+                <Alert
+                  onClose={() => setOpenSnackbar(false)}
+                  severity="success"
+                >
                   Nachricht erfolgreich gesendet!
                 </Alert>
               </Snackbar>
