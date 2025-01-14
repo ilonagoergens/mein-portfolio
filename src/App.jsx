@@ -268,24 +268,70 @@ function App() {
 
           {activeContent === "certificates" && (
             <>
-              <Typography variant="h5">Meine Zertifikate</Typography>
+              <Typography variant="h5" sx={{ marginBottom: 2 }}>
+                Meine Zertifikate
+              </Typography>
               <Box
                 sx={{
-                  borderRadius: "50%",
-                  marginBottom: "10px",
-                  width: "100%",
-                  maxWidth: "300px",
-                  minWidth: "150px",
-                  height: "auto",
-                  "@media (max-width:600px)": {
-                    maxWidth: "200px",
-                  },
-                  "@media (max-width:400px)": {
-                    maxWidth: "150px",
-                  },
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: 2,
+                  justifyContent: "center",
                 }}
-              />
-              <Typography variant="body1">Zertifikate</Typography>
+              >
+                {[
+                  {
+                    title: "Zertifikat 1",
+                    image: "path/to/certificate1.png",
+                    description: "Beschreibung für Zertifikat 1",
+                  },
+                  {
+                    title: "Zertifikat 2",
+                    image: "path/to/certificate2.png",
+                    description: "Beschreibung für Zertifikat 2",
+                  },
+                  {
+                    title: "Zertifikat 3",
+                    image: "path/to/certificate3.png",
+                    description: "Beschreibung für Zertifikat 3",
+                  },
+                  {
+                    title: "Zertifikat 4",
+                    image: "path/to/certificate4.png",
+                    description: "Beschreibung für Zertifikat 4",
+                  },
+                ].map((cert, index) => (
+                  <Box
+                    key={index}
+                    sx={{
+                      width: "250px",
+                      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                      borderRadius: "10px",
+                      overflow: "hidden",
+                      transition: "transform 0.3s",
+                      "&:hover": {
+                        transform: "scale(1.05)",
+                      },
+                    }}
+                  >
+                    <img
+                      src={cert.image}
+                      alt={cert.title}
+                      style={{
+                        width: "100%",
+                        height: "150px",
+                        objectFit: "cover",
+                      }}
+                    />
+                    <Box sx={{ padding: 2, textAlign: "center" }}>
+                      <Typography variant="h6">{cert.title}</Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {cert.description}
+                      </Typography>
+                    </Box>
+                  </Box>
+                ))}
+              </Box>
             </>
           )}
 
