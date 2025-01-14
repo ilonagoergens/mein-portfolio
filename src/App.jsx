@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-  Button,
-  Box,
-  Typography,
-  TextField,
-  Tooltip,
-  Snackbar,
-  Alert,
-} from "@mui/material";
+import { Button, Box, Typography, Tooltip } from "@mui/material";
 import Image from "./assets/image.png";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import emailjs from "emailjs-com";
+import EmailIcon from "@mui/icons-material/Email";
 
 function NavButton({ label, onClick }) {
   return (
@@ -35,7 +27,7 @@ function NavButton({ label, onClick }) {
         position: "relative",
         transition: "all 0.3s ease",
         "&:hover": {
-          backgroundColor: "transparent",
+          backgroundColor: "rgba(165, 184, 168, 0.4)",
           transform: "scale(1.1)",
         },
         "&::after": {
@@ -45,7 +37,7 @@ function NavButton({ label, onClick }) {
           left: 0,
           width: "100%",
           height: "2px",
-          backgroundColor: "#F4E1D2",
+          backgroundColor: "#A5B8A8",
           transition: "all 0.3s ease",
         },
       }}
@@ -56,65 +48,35 @@ function NavButton({ label, onClick }) {
 }
 
 function App() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [openSnackbar, setOpenSnackbar] = useState(false);
   const [activeContent, setActiveContent] = useState("home");
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (name && email && message) {
-      const templateParams = {
-        user_name: name,
-        user_email: email,
-        message: message,
-      };
-
-      // E-Mail an EmailJS senden
-      emailjs
-        .send(
-          "service_id", // Deine Service-ID von EmailJS
-          "template_id", // Deine Template-ID von EmailJS
-          templateParams,
-          "user_id" // Deine User-ID von EmailJS
-        )
-        .then(
-          (response) => {
-            console.log("Nachricht erfolgreich gesendet:", response);
-            setOpenSnackbar(true); // Snackbar anzeigen
-            setName(""); // Formular zurücksetzen
-            setEmail("");
-            setMessage("");
-          },
-          (error) => {
-            console.error("Fehler beim Senden der Nachricht:", error);
-            alert("Es gab ein Problem beim Senden der Nachricht.");
-          }
-        );
-    } else {
-      alert("Bitte alle Felder ausfüllen.");
-    }
-  };
 
   const handleClick = (content) => {
     setActiveContent(content);
   };
 
   useEffect(() => {
-    document.documentElement.style.overflow = "hidden";
-    document.body.style.overflow = "hidden";
-
+    // Radialer Verlauf von der Mitte nach außen
+    document.body.style.background = `radial-gradient(circle, #A5B8A8 0%, transparent 100%)`;
+    document.body.style.margin = 0;
+    document.body.style.height = "100vh"; // Der Hintergrund füllt den gesamten Bildschirm
+    document.documentElement.style.height = "100%"; // Verhindert, dass der Viewport überläuft
+  
+    document.documentElement.style.overflow = "hidden"; // Verhindert das Scrollen
+    document.body.style.overflow = "hidden"; // Verhindert das Scrollen
+  
     return () => {
-      document.documentElement.style.overflow = "auto";
-      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto"; // Erlaubt das Scrollen nach Verlassen
+      document.body.style.overflow = "auto"; // Erlaubt das Scrollen nach Verlassen
     };
   }, []);
+  
+  
 
   return (
     <Box
       sx={{
         borderRadius: "25px",
+        backgroundColor: "#F5F5F5",
         boxShadow: "1px 1px 15px 5px rgba(0, 0, 0, 0.3)",
         textAlign: "center",
         maxWidth: "100%",
@@ -158,8 +120,10 @@ function App() {
                 alignItems: "flex-start",
                 justifyContent: "flex-start",
                 width: "100%",
+                marginLeft: "3%",
                 marginTop: "6%",
                 marginBottom: "5%",
+                flexWrap: { xs: "wrap", md: "nowrap" },
               }}
             >
               <Box
@@ -171,26 +135,28 @@ function App() {
                     position: "absolute",
                     top: "-15%",
                     left: "-10%",
-                    width: "120%", // Der Rahmen ist größer als das Bild
+                    width: "120%",
                     height: "130%",
-                    backgroundColor: "#F4E1D2", // Farbe des Rahmens
+                    backgroundColor: "rgba(165, 184, 168, 0.4)",
                     borderRadius: "25px",
                     zIndex: 0,
-                    transform: "rotate(10deg)", // Leicht gedreht
+                    transform: "rotate(10deg)",
+                    display: { xs: "none", md: "block" },
                   }}
                 />
                 {/* Zweiter Rahmen (keine Füllung, nur Umrandung) */}
                 <Box
                   sx={{
                     position: "absolute",
-                    top: "-15%", // Etwas mehr Abstand nach oben
-                    left: "-10%", // Etwas mehr Abstand nach links
-                    width: "120%", // Der Rahmen ist noch größer
+                    top: "-15%",
+                    left: "-10%",
+                    width: "120%",
                     height: "130%",
-                    border: "3px solid #F4E1D2", // Die Farbe und Breite des Rahmens
-                    borderRadius: "25px", // Abgerundete Ecken
+                    border: "3px solid #A5B8A8",
+                    borderRadius: "25px",
                     zIndex: 1,
-                    transform: "rotate(-10deg)", // Der äußere Rahmen ist in die andere Richtung gedreht
+                    transform: "rotate(-10deg)",
+                    display: { xs: "none", md: "block" },
                   }}
                 />
                 {/* Bild */}
@@ -202,7 +168,7 @@ function App() {
                     height: "auto",
                     borderRadius: "200px",
                     position: "relative",
-                    zIndex: 2, // Bild soll vor den Rahmen liegen
+                    zIndex: 2,
                   }}
                 />
               </Box>
@@ -277,189 +243,118 @@ function App() {
               </Box>
             </Box>
           )}
+        </Box>
 
-          {activeContent === "projects" && (
-            <>
-              <Typography variant="h5">Meine Projekte</Typography>
-              <Typography variant="body1">Projekte</Typography>
-            </>
-          )}
+        {activeContent === "projects" && (
+          <>
+            <Typography variant="h5">Meine Projekte</Typography>
+            <Typography variant="body1">Projekte</Typography>
+          </>
+        )}
 
-          {activeContent === "certificates" && (
-            <>
-              <Typography variant="h5" sx={{ marginBottom: 2 }}>
-                Meine Zertifikate
-              </Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: 2,
-                  justifyContent: "center",
-                }}
-              >
-                {[
-                  {
-                    title: "Zertifikat 1",
-                    image: "path/to/certificate1.png",
-                    description: "Beschreibung für Zertifikat 1",
-                  },
-                  {
-                    title: "Zertifikat 2",
-                    image: "path/to/certificate2.png",
-                    description: "Beschreibung für Zertifikat 2",
-                  },
-                  {
-                    title: "Zertifikat 3",
-                    image: "path/to/certificate3.png",
-                    description: "Beschreibung für Zertifikat 3",
-                  },
-                  {
-                    title: "Zertifikat 4",
-                    image: "path/to/certificate4.png",
-                    description: "Beschreibung für Zertifikat 4",
-                  },
-                ].map((cert, index) => (
-                  <Box
-                    key={index}
-                    sx={{
-                      width: "250px",
-                      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-                      borderRadius: "10px",
-                      overflow: "hidden",
-                      transition: "transform 0.3s",
-                      "&:hover": {
-                        transform: "scale(1.05)",
-                      },
-                    }}
-                  >
-                    <img
-                      src={cert.image}
-                      alt={cert.title}
-                      style={{
-                        width: "100%",
-                        height: "150px",
-                        objectFit: "cover",
-                      }}
-                    />
-                    <Box sx={{ padding: 2, textAlign: "center" }}>
-                      <Typography variant="h6">{cert.title}</Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {cert.description}
-                      </Typography>
-                    </Box>
-                  </Box>
-                ))}
-              </Box>
-            </>
-          )}
-
-          {activeContent === "Contact" && (
-            <Box sx={{ padding: 4 }}>
-              <Typography variant="h5">Kontakt</Typography>
-
-              <form
-                onSubmit={handleSubmit}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "15px",
-                  marginTop: "20px",
-                }}
-              >
-                <TextField
-                  label="Name"
-                  variant="outlined"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                  fullWidth
-                />
-                <TextField
-                  label="E-Mail"
-                  variant="outlined"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="email"
-                  required
-                  fullWidth
-                />
-                <TextField
-                  label="Nachricht"
-                  variant="outlined"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  multiline
-                  rows={4}
-                  required
-                  fullWidth
-                />
-
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
+        {activeContent === "certificates" && (
+          <>
+            <Typography variant="h5" sx={{ marginBottom: 2 }}>
+              Meine Zertifikate
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 2,
+                justifyContent: "center",
+              }}
+            >
+              {[
+                {
+                  title: "Zertifikat 1",
+                  image: "path/to/certificate1.png",
+                  description: "Beschreibung für Zertifikat 1",
+                },
+                {
+                  title: "Zertifikat 2",
+                  image: "path/to/certificate2.png",
+                  description: "Beschreibung für Zertifikat 2",
+                },
+                {
+                  title: "Zertifikat 3",
+                  image: "path/to/certificate3.png",
+                  description: "Beschreibung für Zertifikat 3",
+                },
+                {
+                  title: "Zertifikat 4",
+                  image: "path/to/certificate4.png",
+                  description: "Beschreibung für Zertifikat 4",
+                },
+              ].map((cert, index) => (
+                <Box
+                  key={index}
+                  sx={{
+                    width: "250px",
+                    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                    borderRadius: "10px",
+                    overflow: "hidden",
+                    transition: "transform 0.3s",
+                    "&:hover": {
+                      transform: "scale(1.05)",
+                    },
                   }}
                 >
-                  <Button
+                  <img
+                    src={cert.image}
+                    alt={cert.title}
                     style={{
-                      width: "200px",
+                      width: "100%",
+                      height: "150px",
+                      objectFit: "cover",
                     }}
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    fullWidth
-                  >
-                    Nachricht senden
-                  </Button>
-                </div>
-              </form>
-
-              <Box
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                gap={2}
-                style={{ marginTop: "20px" }}
-              >
-                <Tooltip title="Folge mir auf GitHub">
-                  <a
-                    href="https://github.com/ilonagoergens"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GitHubIcon style={{ fontSize: "30px", color: "#000" }} />
-                  </a>
-                </Tooltip>
-                <Tooltip title="Verbinde dich mit mir auf LinkedIn">
-                  <a
-                    href="https://www.linkedin.com/in/ilona-g%C3%B6rgens-81810830a/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkedInIcon
-                      style={{ fontSize: "30px", color: "#0077b5" }}
-                    />
-                  </a>
-                </Tooltip>
-              </Box>
-
-              <Snackbar
-                open={openSnackbar}
-                autoHideDuration={3000}
-                onClose={() => setOpenSnackbar(false)}
-              >
-                <Alert
-                  onClose={() => setOpenSnackbar(false)}
-                  severity="success"
-                >
-                  Nachricht erfolgreich gesendet!
-                </Alert>
-              </Snackbar>
+                  />
+                  <Box sx={{ padding: 2, textAlign: "center" }}>
+                    <Typography variant="h6">{cert.title}</Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {cert.description}
+                    </Typography>
+                  </Box>
+                </Box>
+              ))}
             </Box>
-          )}
-        </Box>
+          </>
+        )}
+
+        {activeContent === "Contact" && (
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            gap={2}
+            style={{ marginTop: "20px" }}
+          >
+            <Tooltip title="Folge mir auf GitHub">
+              <a
+                href="https://github.com/ilonagoergens"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GitHubIcon style={{ fontSize: "40px", color: "#000" }} />
+              </a>
+            </Tooltip>
+            <Tooltip title="Verbinde dich mit mir auf LinkedIn">
+              <a
+                href="https://www.linkedin.com/in/ilona-g%C3%B6rgens-81810830a/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkedInIcon style={{ fontSize: "40px", color: "#A5B8A8" }} />
+              </a>
+            </Tooltip>
+            {/* E-Mail-Link */}
+            <Tooltip title="Schreibe mir eine E-Mail">
+              <a href="mailto:ilonafast@icloud.com">
+                <EmailIcon style={{ fontSize: "40px", color: "#A5B8A8" }} />
+              </a>
+            </Tooltip>
+          </Box>
+        )}
       </Box>
     </Box>
   );
