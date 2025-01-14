@@ -45,7 +45,7 @@ function NavButton({ label, onClick }) {
           left: 0,
           width: "100%",
           height: "2px",
-          backgroundColor: "black",
+          backgroundColor: "#F4E1D2",
           transition: "all 0.3s ease",
         },
       }}
@@ -163,27 +163,46 @@ function App() {
               }}
             >
               <Box
-                sx={{
-                  borderRadius: "25px",
-                  width: "25%",
-                  maxWidth: "400px",
-                  height: "auto",
-                  transition: "width 0.3s ease",
-                  "@media (max-width:600px)": {
-                    width: "50%",
-                  },
-                  "@media (max-width:400px)": {
-                    width: "20%",
-                  },
-                }}
+                sx={{ position: "relative", width: "25%", maxWidth: "400px" }}
               >
+                {/* Erster Rahmen (gefüllt) */}
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: "-15%",
+                    left: "-10%",
+                    width: "120%", // Der Rahmen ist größer als das Bild
+                    height: "130%",
+                    backgroundColor: "#F4E1D2", // Farbe des Rahmens
+                    borderRadius: "25px",
+                    zIndex: 0,
+                    transform: "rotate(10deg)", // Leicht gedreht
+                  }}
+                />
+                {/* Zweiter Rahmen (keine Füllung, nur Umrandung) */}
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: "-15%", // Etwas mehr Abstand nach oben
+                    left: "-10%", // Etwas mehr Abstand nach links
+                    width: "120%", // Der Rahmen ist noch größer
+                    height: "130%",
+                    border: "3px solid #F4E1D2", // Die Farbe und Breite des Rahmens
+                    borderRadius: "25px", // Abgerundete Ecken
+                    zIndex: 1,
+                    transform: "rotate(-10deg)", // Der äußere Rahmen ist in die andere Richtung gedreht
+                  }}
+                />
+                {/* Bild */}
                 <img
                   src={Image}
                   alt="Mein Foto"
                   style={{
                     width: "100%",
                     height: "auto",
-                    borderRadius: "25px",
+                    borderRadius: "200px",
+                    position: "relative",
+                    zIndex: 2, // Bild soll vor den Rahmen liegen
                   }}
                 />
               </Box>
