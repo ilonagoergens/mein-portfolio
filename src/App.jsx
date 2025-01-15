@@ -4,6 +4,22 @@ import Image from "./assets/image.png";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
+import AwsCloudPractitionerImage from "./assets/aws-certified-cloud-practitioner.png";
+import LinuxImage from "./assets/Linux.png";
+import AwsReStart from "./assets/aws-re-start-graduate.png";
+import AzureImage from "./assets/azure.png";
+import ScrumImage from "./assets/scrum.png";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: '"Microsoft JhengHei UI", "Arial", sans-serif', // Schriftart und Fallback
+    fontWeightLight: 100, // Für dünnere Schrift, falls gewünscht
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    fontWeightBold: 700,
+  },
+});
 
 function NavButton({ label, onClick }) {
   return (
@@ -56,307 +72,361 @@ function App() {
 
   useEffect(() => {
     // Radialer Verlauf von der Mitte nach außen
-    document.body.style.background = `radial-gradient(circle, #A5B8A8 0%, transparent 100%)`;
+    document.body.style.background =
+      "radial-gradient(circle, #A5B8A8 0%, transparent 100%)";
     document.body.style.margin = 0;
     document.body.style.height = "100vh"; // Der Hintergrund füllt den gesamten Bildschirm
     document.documentElement.style.height = "100%"; // Verhindert, dass der Viewport überläuft
-  
     document.documentElement.style.overflow = "hidden"; // Verhindert das Scrollen
     document.body.style.overflow = "hidden"; // Verhindert das Scrollen
-  
+
     return () => {
       document.documentElement.style.overflow = "auto"; // Erlaubt das Scrollen nach Verlassen
       document.body.style.overflow = "auto"; // Erlaubt das Scrollen nach Verlassen
     };
   }, []);
-  
-  
 
   return (
-    <Box
-      sx={{
-        borderRadius: "25px",
-        backgroundColor: "#F5F5F5",
-        boxShadow: "1px 1px 15px 5px rgba(0, 0, 0, 0.3)",
-        textAlign: "center",
-        maxWidth: "100%",
-        width: "85%",
-        height: "80vh",
-        padding: {
-          xs: 2,
-          sm: 3,
-          md: 4,
-          lg: 5,
-        },
-        margin: "5vh auto",
-      }}
-    >
-      <Box sx={{ paddingBottom: 4 }}>
-        <Box
-          id="nav-buttons"
-          display="flex"
-          justifyContent="center"
-          sx={{
-            marginBottom: 2,
-            flexWrap: "wrap",
-            justifyContent: "center",
-          }}
-        >
-          <NavButton label="Über mich" onClick={() => handleClick("about")} />
-          <NavButton label="Projekte" onClick={() => handleClick("projects")} />
-          <NavButton
-            label="Zertifikate"
-            onClick={() => handleClick("certificates")}
-          />
-          <NavButton label="Kontakt" onClick={() => handleClick("Contact")} />
-        </Box>
+    <ThemeProvider theme={theme}>
+      <Box
+        sx={{
+          borderRadius: "25px",
+          backgroundColor: "#F5F5F5",
+          boxShadow: "1px 1px 15px 5px rgba(0, 0, 0, 0.3)",
+          textAlign: "center",
+          maxWidth: "100%",
+          width: "85%",
+          height: "80vh",
+          padding: {
+            xs: 2,
+            sm: 3,
+            md: 4,
+            lg: 5,
+          },
+          margin: "5vh auto",
+        }}
+      >
+        <Box sx={{ paddingBottom: 4 }}>
+          <Box
+            id="nav-buttons"
+            display="flex"
+            justifyContent="center"
+            sx={{
+              marginBottom: 2,
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            <NavButton label="Über mich" onClick={() => handleClick("about")} />
+            <NavButton
+              label="Projekte"
+              onClick={() => handleClick("projects")}
+            />
+            <NavButton
+              label="Zertifikate"
+              onClick={() => handleClick("certificates")}
+            />
+            <NavButton label="Kontakt" onClick={() => handleClick("Contact")} />
+          </Box>
 
-        <Box sx={{ padding: 4 }}>
-          {activeContent === "about" && (
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "flex-start",
-                justifyContent: "flex-start",
-                width: "100%",
-                marginLeft: "3%",
-                marginTop: "6%",
-                marginBottom: "5%",
-                flexWrap: { xs: "wrap", md: "nowrap" },
-              }}
-            >
-              <Box
-                sx={{ position: "relative", width: "25%", maxWidth: "400px" }}
-              >
-                {/* Erster Rahmen (gefüllt) */}
-                <Box
-                  sx={{
-                    position: "absolute",
-                    top: "-15%",
-                    left: "-10%",
-                    width: "120%",
-                    height: "130%",
-                    backgroundColor: "rgba(165, 184, 168, 0.4)",
-                    borderRadius: "25px",
-                    zIndex: 0,
-                    transform: "rotate(10deg)",
-                    display: { xs: "none", md: "block" },
-                  }}
-                />
-                {/* Zweiter Rahmen (keine Füllung, nur Umrandung) */}
-                <Box
-                  sx={{
-                    position: "absolute",
-                    top: "-15%",
-                    left: "-10%",
-                    width: "120%",
-                    height: "130%",
-                    border: "3px solid #A5B8A8",
-                    borderRadius: "25px",
-                    zIndex: 1,
-                    transform: "rotate(-10deg)",
-                    display: { xs: "none", md: "block" },
-                  }}
-                />
-                {/* Bild */}
-                <img
-                  src={Image}
-                  alt="Mein Foto"
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    borderRadius: "200px",
-                    position: "relative",
-                    zIndex: 2,
-                  }}
-                />
-              </Box>
-
+          <Box sx={{ padding: 4 }}>
+            {activeContent === "about" && (
               <Box
                 sx={{
-                  marginLeft: {
-                    xs: "10px",
-                    sm: "30px",
-                    md: "40px",
-                    lg: "190px",
-                  },
-                  textAlign: "left",
-                  flex: 1,
-                  overflow: "auto",
+                  display: "flex",
+                  flexDirection: { xs: "row", md: "row" },
+                  alignItems: "flex-start",
+                  justifyContent: "flex-start",
+                  width: "100%",
+                  marginLeft: "3%",
+                  marginBottom: "5%",
+                  flexWrap: "wrap",
                 }}
               >
-                <Typography
-                  variant="body1"
+                <Box
+                  sx={{ position: "relative", width: "25%", maxWidth: "400px" }}
+                >
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      top: "0%",
+
+                      left: "-10%",
+                      width: "120%",
+                      height: "130%",
+                      backgroundColor: "rgba(165, 184, 168, 0.4)",
+                      borderRadius: "25px",
+                      zIndex: 0,
+                      transform: "rotate(10deg)",
+                      display: { xs: "none", md: "block" },
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      top: "0%",
+
+                      left: "-10%",
+                      width: "120%",
+                      height: "130%",
+                      border: "3px solid #A5B8A8",
+                      borderRadius: "25px",
+                      zIndex: 1,
+                      transform: "rotate(-10deg)",
+                      display: { xs: "none", md: "block" },
+                    }}
+                  />
+                  <img
+                    src={Image}
+                    alt="Mein Foto"
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      borderRadius: "200px",
+                      position: "relative",
+                      zIndex: 2,
+                          top: "50px"
+                    }}
+                  />
+                </Box>
+
+                <Box
                   sx={{
+                    marginLeft: {
+                      xs: "10px",
+                      sm: "30px",
+                      md: "40px",
+                      lg: "190px",
+                    },
                     textAlign: "left",
-                    fontSize: {
-                      xs: "0.5rem",
-                      sm: "0.8rem",
-                      md: "1.2rem",
-                      lg: "1rem",
-                    },
-                    animation: "fadeIn 1s ease-out",
-                    "@keyframes fadeIn": {
-                      "0%": {
-                        opacity: 0,
-                      },
-                      "100%": {
-                        opacity: 1,
-                      },
-                    },
+                    flex: 1,
+                    overflow: "auto",
                   }}
                 >
-                  Mein Name ist Ilona und ich habe meine berufliche Reise in der
-                  IT-Welt durch eine Weiterbildung im Bereich Cloud- und
-                  Webentwicklung gestartet. In dieser spannenden Zeit konnte ich
-                  mein Wissen erweitern und neue Fähigkeiten entwickeln.
-                  <br />
-                  <br />
-                  Besonders fasziniert mich die Frontend-Entwicklung sowie der
-                  Bereich DevOps, und ich freue mich darauf, mich beruflich
-                  weiter in diesen Bereichen zu entwickeln 😊.
-                  <br />
-                  <br />
-                  Ich liebe Herausforderungen und finde es äußerst spannend, den
-                  ständigen Entwicklungen in der IT-Welt zu folgen 🚀.
-                  Künstliche Intelligenz (KI) ist für mich ein faszinierendes
-                  Thema, das ich viel für mich selbst nutze, um noch effizienter
-                  und kreativer zu arbeiten 🤖✨.
-                  <br />
-                  <br />
-                  In den letzten 12 Monaten habe ich an zwei Projekten
-                  mitgewirkt. Besonders stolz bin ich auf ein Gruppenprojekt,
-                  bei dem wir nach dem Scrum-Prinzip in einem Team von drei
-                  Personen eine Chat-Webanwendung entwickelt haben 👩‍💻💬. Diese
-                  Erfahrungen haben meine Leidenschaft für die Webentwicklung
-                  weiter gestärkt und mir wertvolle Einblicke in die
-                  Zusammenarbeit im Team und in die Umsetzung agiler Methoden
-                  gegeben.
-                  <br />
-                  <br />
-                  Ich bin sehr gespannt auf die nächsten Schritte in meiner
-                  beruflichen Entwicklung und darauf, noch viele spannende
-                  Projekte in der Welt der Webentwicklung und Cloud-Technologien
-                  umzusetzen 🌐🚀.
-                </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      textAlign: "left",
+                      fontSize: {
+                        xs: "0.5rem",
+                        sm: "0.8rem",
+                        md: "1.2rem",
+                        lg: "1rem",
+                      },
+                      animation: "fadeIn 1s ease-out",
+                      "@keyframes fadeIn": {
+                        "0%": {
+                          opacity: 0,
+                        },
+                        "100%": {
+                          opacity: 1,
+                        },
+                      },
+                    }}
+                    style={{
+                      marginRight: "20px", // Hier wird der Abstand hinzugefügt
+                    }}
+                  
+                  >
+                    <p>
+                      Mein Name ist Ilona, und ich bin ein echtes
+                      Organisationstalent, sowohl beruflich als auch privat. Als
+                      Mutter von zwei Kindern weiß ich, wie man alles unter
+                      einen Hut bekommt – und das klappt ziemlich gut! 😊
+                    </p>
+
+                    <p>
+                      Ich habe meine berufliche Reise in der IT-Welt durch eine
+                      Weiterbildung im Bereich Cloud- und Webentwicklung
+                      gestartet. In dieser spannenden Zeit konnte ich nicht nur
+                      mein technisches Wissen erweitern, sondern auch neue
+                      Fähigkeiten entwickeln, die mich in meiner Karriere
+                      weiterbringen.
+                    </p>
+
+                    <p>
+                      Besonders interessiert mich die Frontend-Entwicklung sowie
+                      der Bereich DevOps. Doch auch Projektmanagement finde ich
+                      super spannend! Ich liebe es, Prozesse zu strukturieren
+                      und Dinge effizient umzusetzen. So kann ich sowohl kreativ
+                      als auch organisiert arbeiten und mein Team bestmöglich
+                      unterstützen.
+                    </p>
+
+                    <p>
+                      Ich bin ein super fleißiger Mensch, sehr zuverlässig und
+                      kommunikationsstark – Eigenschaften, die mir in meiner
+                      Arbeit enorm helfen. Herausforderungen liebe ich und finde
+                      es spannend, die ständigen Entwicklungen in der IT-Welt zu
+                      verfolgen. Künstliche Intelligenz ist ein weiteres Thema,
+                      das mich fasziniert. Ich nutze sie oft, um noch kreativer
+                      und effizienter zu arbeiten. 🤖✨
+                    </p>
+
+                    <p>
+                      In den letzten 12 Monaten durfte ich an einem Projekt
+                      mitarbeiten, bei dem wir nach dem Scrum-Prinzip in einem
+                      Team von drei Personen innerhalb von 2 Wochen eine
+                      Chat-Webanwendung entwickelt haben. Diese Erfahrung hat
+                      meine Leidenschaft für Webentwicklung weiter gestärkt und
+                      mir wertvolle Einblicke in agile Arbeitsmethoden und
+                      Teamarbeit gegeben. 💻💬
+                    </p>
+
+                    <p>
+                      Bei TechStarter GmbH vertiefe ich aktuell meine
+                      Fähigkeiten in 👩🏽‍💻 AWS, Azure, Linux, Netzwerksicherheit,
+                      Python, JavaScript, React.js, Docker Container, Testing
+                      und Agile Softwareentwicklung. Ich bin ab April 2025
+                      bereit für neue Herausforderungen! 🚀
+                    </p>
+                  </Typography>
+                </Box>
               </Box>
+            )}
+          </Box>
+
+          {activeContent === "projects" && (
+            <>
+              <Typography variant="h5">Meine Projekte</Typography>
+              <Typography variant="body1">Projekte</Typography>
+            </>
+          )}
+
+          {activeContent === "certificates" && (
+            <>
+              <Typography
+                variant="h5"
+                sx={{ marginBottom: 2, fontWeight: "bold" }}
+              >
+                Zertifikate
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex", // Flexbox Layout für die Boxen
+                  flexWrap: "wrap", // Boxen umbrechen, wenn der Platz knapp wird
+                  gap: "8px", // Abstand zwischen den Boxen (Zertifikaten)
+                  justifyContent: "center", // Zertifikate zentrieren
+                }}
+              >
+                {[
+                  {
+                    title: "AWS Certified Cloud Practitioner",
+                    image: AwsCloudPractitionerImage,
+                    description: "Dieses Zertifikat bestätigt grundlegende Kenntnisse der AWS-Cloud, die für den Einstieg in die Cloud-Welt erforderlich sind. Es umfasst Themen wie Cloud-Architektur, Sicherheitsbestimmungen und AWS-Services.",
+                  },
+                  {
+                    title: "AWS Re/Start",
+                    image: AwsReStart,
+                    description: "Das AWS Re/Start-Zertifikat bietet fundierte Kenntnisse zu den Grundlagen der Cloud-Technologie und hilft dabei, in der IT-Branche Fuß zu fassen, mit besonderem Fokus auf Cloud-Infrastrukturen und -Dienste.",
+                  },
+                  {
+                    title: "Linux Professional Institute Certification",
+                    image: LinuxImage,
+                    description: "Dieses Zertifikat belegt fundierte Kenntnisse in der Verwaltung und Konfiguration von Linux-Systemen. Es umfasst Themen wie Systemadministration, Sicherheit und Netzwerktechnologien unter Linux.",
+                  },
+                  {
+                    title: "Microsoft Certified: Azure Fundamentals",
+                    image: AzureImage,
+                    description: "Mit diesem Zertifikat werden grundlegende Kenntnisse der Microsoft Azure-Cloud-Plattform bestätigt. Es deckt Themen wie Azure-Dienste, Cloud-Konzepte und grundlegende Azure-Architektur ab.",
+                  },
+                  {
+                    title: "Scrum Master Certification",
+                    image: ScrumImage,
+                    description: "Das Scrum Master-Zertifikat bescheinigt Kenntnisse und Fähigkeiten in der Anwendung der Scrum-Methodik zur effektiven Verwaltung von agilen Projekten. Es umfasst Rollen, Ereignisse und Artefakte innerhalb von Scrum.",
+                  },
+                ].map((cert, index) => (
+                  <Box
+                    key={index}
+                    sx={{
+                      width: "100%", // 100% Breite für volle Flexibilität
+                      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                      borderRadius: "10px",
+                      overflow: "hidden",
+                      transition: "transform 0.3s ease-in-out, box-shadow 0.3s",
+                      "&:hover": {
+                        transform: "scale(1.05)",
+                        boxShadow: "0 6px 16px rgba(0, 0, 0, 0.3)",
+                      },
+                      cursor: "pointer",
+
+                      maxWidth: {
+                        xs: "150px", // Auf kleinen Bildschirmen maximal 150px
+                        sm: "150px", // Auf mittleren Bildschirmen maximal 150px
+                        md: "250px", // Auf großen Bildschirmen maximal 250px
+                      },
+                      maxHeight: {
+                        xs: "150px", // Auf kleinen Bildschirmen maximal 150px
+                        sm: "200px", // Auf mittleren Bildschirmen maximal 200px
+                        md: "250px", // Auf großen Bildschirmen maximal 250px
+                      },
+                      margin: "auto", // Zertifikate zentrieren
+                      marginTop: "5%",
+                    }}
+                    onClick={() => alert(`Mehr über: ${cert.title}`)}
+                  >
+                    <Box sx={{ position: "relative", height: "200px" }}>
+                      <img
+                        src={cert.image}
+                        alt={cert.title}
+                        style={{
+                          width: "100%", // Bild nimmt immer 100% der Breite des Containers ein
+                          height: "100%", // Höhe auf 100% setzen, um den gesamten Container auszufüllen
+                          objectFit: "contain", // Bild bleibt in den Container-Grenzen, ohne das Seitenverhältnis zu verlieren
+                          borderRadius: "10px", // Abgerundete Ecken
+                        }}
+                      />
+                    </Box>
+                    <Box sx={{ padding: 2, textAlign: "center" }}>
+                      <Typography variant="h6">{cert.title}</Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {cert.description}
+                      </Typography>
+                    </Box>
+                  </Box>
+                ))}
+              </Box>
+            </>
+          )}
+
+          {activeContent === "Contact" && (
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              gap={2}
+              style={{ marginTop: "20px" }}
+            >
+              <Tooltip title="Folge mir auf GitHub">
+                <a
+                  href="https://github.com/ilonagoergens"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <GitHubIcon style={{ fontSize: "40px", color: "#000" }} />
+                </a>
+              </Tooltip>
+              <Tooltip title="Verbinde dich mit mir auf LinkedIn">
+                <a
+                  href="https://www.linkedin.com/in/ilona-g%C3%B6rgens-81810830a/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LinkedInIcon
+                    style={{ fontSize: "40px", color: "#A5B8A8" }}
+                  />
+                </a>
+              </Tooltip>
+              <Tooltip title="Schreibe mir eine E-Mail">
+                <a href="mailto:ilonafast@icloud.com">
+                  <EmailIcon style={{ fontSize: "40px", color: "#A5B8A8" }} />
+                </a>
+              </Tooltip>
             </Box>
           )}
         </Box>
-
-        {activeContent === "projects" && (
-          <>
-            <Typography variant="h5">Meine Projekte</Typography>
-            <Typography variant="body1">Projekte</Typography>
-          </>
-        )}
-
-        {activeContent === "certificates" && (
-          <>
-            <Typography variant="h5" sx={{ marginBottom: 2 }}>
-              Meine Zertifikate
-            </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: 2,
-                justifyContent: "center",
-              }}
-            >
-              {[
-                {
-                  title: "Zertifikat 1",
-                  image: "path/to/certificate1.png",
-                  description: "Beschreibung für Zertifikat 1",
-                },
-                {
-                  title: "Zertifikat 2",
-                  image: "path/to/certificate2.png",
-                  description: "Beschreibung für Zertifikat 2",
-                },
-                {
-                  title: "Zertifikat 3",
-                  image: "path/to/certificate3.png",
-                  description: "Beschreibung für Zertifikat 3",
-                },
-                {
-                  title: "Zertifikat 4",
-                  image: "path/to/certificate4.png",
-                  description: "Beschreibung für Zertifikat 4",
-                },
-              ].map((cert, index) => (
-                <Box
-                  key={index}
-                  sx={{
-                    width: "250px",
-                    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-                    borderRadius: "10px",
-                    overflow: "hidden",
-                    transition: "transform 0.3s",
-                    "&:hover": {
-                      transform: "scale(1.05)",
-                    },
-                  }}
-                >
-                  <img
-                    src={cert.image}
-                    alt={cert.title}
-                    style={{
-                      width: "100%",
-                      height: "150px",
-                      objectFit: "cover",
-                    }}
-                  />
-                  <Box sx={{ padding: 2, textAlign: "center" }}>
-                    <Typography variant="h6">{cert.title}</Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {cert.description}
-                    </Typography>
-                  </Box>
-                </Box>
-              ))}
-            </Box>
-          </>
-        )}
-
-        {activeContent === "Contact" && (
-          <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            gap={2}
-            style={{ marginTop: "20px" }}
-          >
-            <Tooltip title="Folge mir auf GitHub">
-              <a
-                href="https://github.com/ilonagoergens"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <GitHubIcon style={{ fontSize: "40px", color: "#000" }} />
-              </a>
-            </Tooltip>
-            <Tooltip title="Verbinde dich mit mir auf LinkedIn">
-              <a
-                href="https://www.linkedin.com/in/ilona-g%C3%B6rgens-81810830a/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <LinkedInIcon style={{ fontSize: "40px", color: "#A5B8A8" }} />
-              </a>
-            </Tooltip>
-            {/* E-Mail-Link */}
-            <Tooltip title="Schreibe mir eine E-Mail">
-              <a href="mailto:ilonafast@icloud.com">
-                <EmailIcon style={{ fontSize: "40px", color: "#A5B8A8" }} />
-              </a>
-            </Tooltip>
-          </Box>
-        )}
       </Box>
-    </Box>
+    </ThemeProvider>
   );
 }
 
