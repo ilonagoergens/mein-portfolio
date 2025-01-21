@@ -10,6 +10,7 @@ import AwsReStart from "./assets/aws-re-start-graduate.png";
 import AzureImage from "./assets/azure.png";
 import ScrumImage from "./assets/scrum.png";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import "./style.css"
 
 const theme = createTheme({
   typography: {
@@ -42,9 +43,11 @@ function NavButton({ label, onClick }) {
         margin: "0 5px",
         position: "relative",
         transition: "all 0.3s ease",
+        cursor: "default", // Standardcursor auf auto setzen
         "&:hover": {
           backgroundColor: "rgba(165, 184, 168, 0.4)",
           transform: "scale(1.1)",
+          cursor: "hidden", // Handzeiger bei Hover aktivieren
         },
         "&::after": {
           content: '""',
@@ -70,21 +73,126 @@ function App() {
     setActiveContent(content);
   };
 
-  useEffect(() => {
-    // Radialer Verlauf von der Mitte nach außen
-    document.body.style.background =
-      "radial-gradient(circle, #A5B8A8 0%, transparent 100%)";
-    document.body.style.margin = 0;
-    document.body.style.height = "100vh"; // Der Hintergrund füllt den gesamten Bildschirm
-    document.documentElement.style.height = "100%"; // Verhindert, dass der Viewport überläuft
-    document.documentElement.style.overflow = "hidden"; // Verhindert das Scrollen
-    document.body.style.overflow = "hidden"; // Verhindert das Scrollen
+useEffect(() => {
+  // Mauszeiger und Standard-Stile entfernen
+  document.body.style.cursor = "none";  
+  document.documentElement.style.cursor = "none";  
+  
+  // Zusätzliche Styles für interaktive Elemente und Container setzen
+  const allElements = document.querySelectorAll(
+    'input, textarea, button, a, select, .no-cursor'
+  );
+  allElements.forEach(element => {
+    element.style.cursor = "none"; // Alle interaktiven Elemente und Container ohne Mauszeiger
+  });
+  
+  // Überall Mauszeiger ausblenden
+  const interactiveElements = document.querySelectorAll('div, img, p, span');
+  interactiveElements.forEach(element => {
+    element.style.cursor = "none";
+  });
 
-    return () => {
-      document.documentElement.style.overflow = "auto"; // Erlaubt das Scrollen nach Verlassen
-      document.body.style.overflow = "auto"; // Erlaubt das Scrollen nach Verlassen
-    };
-  }, []);
+  const cursor = document.createElement("div");
+  cursor.style.position = "fixed";
+  cursor.style.width = "20px";
+  cursor.style.height = "20px";
+  cursor.style.backgroundColor = "#A5B8A8";
+  cursor.style.borderRadius = "50%";
+  cursor.style.pointerEvents = "none";
+  cursor.style.transition = "transform 0.1s ease-out, opacity 0.1s, box-shadow 0.1s ease-out";
+  cursor.style.zIndex = "9999";
+  document.body.appendChild(cursor);
+
+  const canvas = document.createElement("canvas");
+  canvas.style.position = "fixed";
+  canvas.style.top = "0";
+  canvas.style.left = "0";
+  canvas.style.pointerEvents = "none";
+  canvas.style.zIndex = "9998";
+  document.body.appendChild(canvas);
+
+  const ctx = canvas.getContext("2d");
+  const particles = [];
+  let mouseX = 0;
+  let mouseY = 0;
+
+  const onMouseMove = (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    cursor.style.top = `${e.clientY}px`;
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.transform = "translate(-50%, -50%) scale(1)";
+    cursor.style.opacity = "1";
+    cursor.style.boxShadow = `0px 0px 15px rgba(0, 0, 0, 0.3)`;
+
+    // Partikel erzeugen
+    particles.push({
+      x: mouseX,
+      y: mouseY,
+      size: Math.random() * 3 + 1,
+      speedX: (Math.random() - 0.5) * 2,
+      speedY: (Math.random() - 0.5) * 2,
+    });
+  };
+
+  const onMouseLeave = () => {
+    cursor.style.opacity = "0";
+    cursor.style.boxShadow = "none";
+  };
+
+  const animateCanvas = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Partikel bewegen
+    for (let i = 0; i < particles.length; i++) {
+      const particle = particles[i];
+      particle.x += particle.speedX;
+      particle.y += particle.speedY;
+      particle.size *= 0.98;
+
+      // Wenn Partikel klein genug ist, entferne es
+      if (particle.size < 0.5) {
+        particles.splice(i, 1);
+        i--;
+      }
+
+      // Partikel zeichnen
+      ctx.beginPath();
+      ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(165, 184, 168, 0.7)";
+      ctx.fill();
+    }
+
+    requestAnimationFrame(animateCanvas);
+  };
+
+  document.addEventListener("mousemove", onMouseMove);
+  document.addEventListener("mouseleave", onMouseLeave);
+
+  animateCanvas();
+
+  return () => {
+    // Event-Listener und Styles beim Verlassen aufräumen
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("mouseleave", onMouseLeave);
+    document.body.removeChild(cursor);
+    document.body.removeChild(canvas);
+    document.body.style.cursor = "auto";  
+    document.documentElement.style.cursor = "auto";  
+
+    // Interaktive Elemente aufräumen
+    allElements.forEach(element => {
+      element.style.cursor = "auto";  
+    });
+  };
+}, []);
+
+  
+  
 
   return (
     <ThemeProvider theme={theme}>
@@ -303,6 +411,7 @@ function App() {
               </Typography>
               <Box
                 sx={{
+                  cursor: "none",
                   display: "flex", // Flexbox Layout für die Boxen
                   flexWrap: "wrap", // Boxen umbrechen, wenn der Platz knapp wird
                   gap: "8px", // Abstand zwischen den Boxen (Zertifikaten)
