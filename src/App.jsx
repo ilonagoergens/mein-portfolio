@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Box, Typography, Tooltip } from "@mui/material";
-import Image from "./assets/image.png";
+import Image from "./assets/Bild2.jpg";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
@@ -10,7 +10,7 @@ import AwsReStart from "./assets/aws-re-start-graduate.png";
 import AzureImage from "./assets/azure.png";
 import ScrumImage from "./assets/scrum.png";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import "./style.css"
+import "./style.css";
 
 const theme = createTheme({
   typography: {
@@ -73,126 +73,125 @@ function App() {
     setActiveContent(content);
   };
 
-useEffect(() => {
-  // Mauszeiger und Standard-Stile entfernen
-  document.body.style.cursor = "none";  
-  document.documentElement.style.cursor = "none";  
-  
-  // Zusätzliche Styles für interaktive Elemente und Container setzen
-  const allElements = document.querySelectorAll(
-    'input, textarea, button, a, select, .no-cursor'
-  );
-  allElements.forEach(element => {
-    element.style.cursor = "none"; // Alle interaktiven Elemente und Container ohne Mauszeiger
-  });
-  
-  // Überall Mauszeiger ausblenden
-  const interactiveElements = document.querySelectorAll('div, img, p, span');
-  interactiveElements.forEach(element => {
-    element.style.cursor = "none";
-  });
+  useEffect(() => {
+    // Mauszeiger und Standard-Stile entfernen
+    setActiveContent("about");
+    document.body.style.cursor = "none";
+    document.documentElement.style.cursor = "none";
 
-  const cursor = document.createElement("div");
-  cursor.style.position = "fixed";
-  cursor.style.width = "20px";
-  cursor.style.height = "20px";
-  cursor.style.backgroundColor = "#A5B8A8";
-  cursor.style.borderRadius = "50%";
-  cursor.style.pointerEvents = "none";
-  cursor.style.transition = "transform 0.1s ease-out, opacity 0.1s, box-shadow 0.1s ease-out";
-  cursor.style.zIndex = "9999";
-  document.body.appendChild(cursor);
-
-  const canvas = document.createElement("canvas");
-  canvas.style.position = "fixed";
-  canvas.style.top = "0";
-  canvas.style.left = "0";
-  canvas.style.pointerEvents = "none";
-  canvas.style.zIndex = "9998";
-  document.body.appendChild(canvas);
-
-  const ctx = canvas.getContext("2d");
-  const particles = [];
-  let mouseX = 0;
-  let mouseY = 0;
-
-  const onMouseMove = (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-
-    cursor.style.top = `${e.clientY}px`;
-    cursor.style.left = `${e.clientX}px`;
-    cursor.style.transform = "translate(-50%, -50%) scale(1)";
-    cursor.style.opacity = "1";
-    cursor.style.boxShadow = `0px 0px 15px rgba(0, 0, 0, 0.3)`;
-
-    // Partikel erzeugen
-    particles.push({
-      x: mouseX,
-      y: mouseY,
-      size: Math.random() * 3 + 1,
-      speedX: (Math.random() - 0.5) * 2,
-      speedY: (Math.random() - 0.5) * 2,
+    // Zusätzliche Styles für interaktive Elemente und Container setzen
+    const allElements = document.querySelectorAll(
+      "input, textarea, button, a, select, .no-cursor"
+    );
+    allElements.forEach((element) => {
+      element.style.cursor = "none"; // Alle interaktiven Elemente und Container ohne Mauszeiger
     });
-  };
 
-  const onMouseLeave = () => {
-    cursor.style.opacity = "0";
-    cursor.style.boxShadow = "none";
-  };
+    // Überall Mauszeiger ausblenden
+    const interactiveElements = document.querySelectorAll("div, img, p, span");
+    interactiveElements.forEach((element) => {
+      element.style.cursor = "none";
+    });
 
-  const animateCanvas = () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const cursor = document.createElement("div");
+    cursor.style.position = "fixed";
+    cursor.style.width = "20px";
+    cursor.style.height = "20px";
+    cursor.style.backgroundColor = "#A5B8A8";
+    cursor.style.borderRadius = "50%";
+    cursor.style.pointerEvents = "none";
+    cursor.style.transition =
+      "transform 0.1s ease-out, opacity 0.1s, box-shadow 0.1s ease-out";
+    cursor.style.zIndex = "9999";
+    document.body.appendChild(cursor);
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const canvas = document.createElement("canvas");
+    canvas.style.position = "fixed";
+    canvas.style.top = "0";
+    canvas.style.left = "0";
+    canvas.style.pointerEvents = "none";
+    canvas.style.zIndex = "9998";
+    document.body.appendChild(canvas);
 
-    // Partikel bewegen
-    for (let i = 0; i < particles.length; i++) {
-      const particle = particles[i];
-      particle.x += particle.speedX;
-      particle.y += particle.speedY;
-      particle.size *= 0.98;
+    const ctx = canvas.getContext("2d");
+    const particles = [];
+    let mouseX = 0;
+    let mouseY = 0;
 
-      // Wenn Partikel klein genug ist, entferne es
-      if (particle.size < 0.5) {
-        particles.splice(i, 1);
-        i--;
+    const onMouseMove = (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      cursor.style.top = `${e.clientY}px`;
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.transform = "translate(-50%, -50%) scale(1)";
+      cursor.style.opacity = "1";
+      cursor.style.boxShadow = `0px 0px 15px rgba(0, 0, 0, 0.3)`;
+
+      // Partikel erzeugen
+      particles.push({
+        x: mouseX,
+        y: mouseY,
+        size: Math.random() * 3 + 1,
+        speedX: (Math.random() - 0.5) * 2,
+        speedY: (Math.random() - 0.5) * 2,
+      });
+    };
+
+    const onMouseLeave = () => {
+      cursor.style.opacity = "0";
+      cursor.style.boxShadow = "none";
+    };
+
+    const animateCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Partikel bewegen
+      for (let i = 0; i < particles.length; i++) {
+        const particle = particles[i];
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+        particle.size *= 0.98;
+
+        // Wenn Partikel klein genug ist, entferne es
+        if (particle.size < 0.5) {
+          particles.splice(i, 1);
+          i--;
+        }
+
+        // Partikel zeichnen
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(165, 184, 168, 0.7)";
+        ctx.fill();
       }
 
-      // Partikel zeichnen
-      ctx.beginPath();
-      ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(165, 184, 168, 0.7)";
-      ctx.fill();
-    }
+      requestAnimationFrame(animateCanvas);
+    };
 
-    requestAnimationFrame(animateCanvas);
-  };
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseleave", onMouseLeave);
 
-  document.addEventListener("mousemove", onMouseMove);
-  document.addEventListener("mouseleave", onMouseLeave);
+    animateCanvas();
 
-  animateCanvas();
+    return () => {
+      // Event-Listener und Styles beim Verlassen aufräumen
+      document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseleave", onMouseLeave);
+      document.body.removeChild(cursor);
+      document.body.removeChild(canvas);
+      document.body.style.cursor = "auto";
+      document.documentElement.style.cursor = "auto";
 
-  return () => {
-    // Event-Listener und Styles beim Verlassen aufräumen
-    document.removeEventListener("mousemove", onMouseMove);
-    document.removeEventListener("mouseleave", onMouseLeave);
-    document.body.removeChild(cursor);
-    document.body.removeChild(canvas);
-    document.body.style.cursor = "auto";  
-    document.documentElement.style.cursor = "auto";  
-
-    // Interaktive Elemente aufräumen
-    allElements.forEach(element => {
-      element.style.cursor = "auto";  
-    });
-  };
-}, []);
-
-  
-  
+      // Interaktive Elemente aufräumen
+      allElements.forEach((element) => {
+        element.style.cursor = "auto";
+      });
+    };
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -254,48 +253,52 @@ useEffect(() => {
                 <Box
                   sx={{ position: "relative", width: "25%", maxWidth: "400px" }}
                 >
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      top: "0%",
+<Box
+  sx={{
+    position: "relative",
+    marginTop:"20px",
+    width: "100%", 
+    maxWidth: "400px",
+    overflow: "hidden",    // Verhindert Überlauf des Bildes aus den abgerundeten Ecken
+    borderRadius: "25px",  // Gleiche Abrundung wie das Bild
+    border: "10px solid rgba(156, 175, 163, 0.4)", // Salbeigrüner Rand, immer sichtbar und verschwommen
+    boxShadow: "0 0 30px 10px rgba(156, 175, 163, 0.4)", // Verschwommener Rand zu Beginn
+    animation: "clipReveal 1.5s ease-out", // Animation für das Bild
+    "@keyframes clipReveal": {
+      "0%": {
+        clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)", // Zu Beginn: Bild ist unsichtbar
+      },
+      "100%": {
+        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", // Am Ende: Bild vollständig sichtbar
+      }
+    },
+  }}
+>
+  <img
+    src={Image}
+    alt="Mein Foto"
+    style={{
+      width: "100%",  // Bild nimmt die volle Breite des Containers ein
+      height: "100%", // Bild nimmt die volle Höhe des Containers ein
+      objectFit: "cover",  // Das Bild füllt den Container aus, ohne Verzerrung
+      objectPosition: "center",  // Zentriert das Bild, falls es zugeschnitten wird
+      display: "block",  // Entfernt jegliche zusätzliche Abstände um das Bild
+      opacity: 1, // Bild ist immer sichtbar
+      animation: "fadeIn 1.5s ease-out", // Verzögerte Einblend-Animation für das Bild
+      "@keyframes fadeIn": {
+        "0%": {
+          opacity: 0, // Anfangs unsichtbar
+        },
+        "100%": {
+          opacity: 1, // Am Ende vollständig sichtbar
+        }
+      }
+    }}
+  />
+</Box>
 
-                      left: "-10%",
-                      width: "120%",
-                      height: "130%",
-                      backgroundColor: "rgba(165, 184, 168, 0.4)",
-                      borderRadius: "25px",
-                      zIndex: 0,
-                      transform: "rotate(10deg)",
-                      display: { xs: "none", md: "block" },
-                    }}
-                  />
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      top: "0%",
 
-                      left: "-10%",
-                      width: "120%",
-                      height: "130%",
-                      border: "3px solid #A5B8A8",
-                      borderRadius: "25px",
-                      zIndex: 1,
-                      transform: "rotate(-10deg)",
-                      display: { xs: "none", md: "block" },
-                    }}
-                  />
-                  <img
-                    src={Image}
-                    alt="Mein Foto"
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                      borderRadius: "200px",
-                      position: "relative",
-                      zIndex: 2,
-                          top: "50px"
-                    }}
-                  />
+
                 </Box>
 
                 <Box
@@ -334,60 +337,8 @@ useEffect(() => {
                     style={{
                       marginRight: "20px", // Hier wird der Abstand hinzugefügt
                     }}
-                  
                   >
-                    <p>
-                      Mein Name ist Ilona, und ich bin ein echtes
-                      Organisationstalent, sowohl beruflich als auch privat. Als
-                      Mutter von zwei Kindern weiß ich, wie man alles unter
-                      einen Hut bekommt – und das klappt ziemlich gut! 😊
-                    </p>
-
-                    <p>
-                      Ich habe meine berufliche Reise in der IT-Welt durch eine
-                      Weiterbildung im Bereich Cloud- und Webentwicklung
-                      gestartet. In dieser spannenden Zeit konnte ich nicht nur
-                      mein technisches Wissen erweitern, sondern auch neue
-                      Fähigkeiten entwickeln, die mich in meiner Karriere
-                      weiterbringen.
-                    </p>
-
-                    <p>
-                      Besonders interessiert mich die Frontend-Entwicklung sowie
-                      der Bereich DevOps. Doch auch Projektmanagement finde ich
-                      super spannend! Ich liebe es, Prozesse zu strukturieren
-                      und Dinge effizient umzusetzen. So kann ich sowohl kreativ
-                      als auch organisiert arbeiten und mein Team bestmöglich
-                      unterstützen.
-                    </p>
-
-                    <p>
-                      Ich bin ein super fleißiger Mensch, sehr zuverlässig und
-                      kommunikationsstark – Eigenschaften, die mir in meiner
-                      Arbeit enorm helfen. Herausforderungen liebe ich und finde
-                      es spannend, die ständigen Entwicklungen in der IT-Welt zu
-                      verfolgen. Künstliche Intelligenz ist ein weiteres Thema,
-                      das mich fasziniert. Ich nutze sie oft, um noch kreativer
-                      und effizienter zu arbeiten. 🤖✨
-                    </p>
-
-                    <p>
-                      In den letzten 12 Monaten durfte ich an einem Projekt
-                      mitarbeiten, bei dem wir nach dem Scrum-Prinzip in einem
-                      Team von drei Personen innerhalb von 2 Wochen eine
-                      Chat-Webanwendung entwickelt haben. Diese Erfahrung hat
-                      meine Leidenschaft für Webentwicklung weiter gestärkt und
-                      mir wertvolle Einblicke in agile Arbeitsmethoden und
-                      Teamarbeit gegeben. 💻💬
-                    </p>
-
-                    <p>
-                      Bei TechStarter GmbH vertiefe ich aktuell meine
-                      Fähigkeiten in 👩🏽‍💻 AWS, Azure, Linux, Netzwerksicherheit,
-                      Python, JavaScript, React.js, Docker Container, Testing
-                      und Agile Softwareentwicklung. Ich bin ab April 2025
-                      bereit für neue Herausforderungen! 🚀
-                    </p>
+<p> Hallo, ich bin Ilona! 😊 Als Mutter von zwei Kindern weiß ich, wie wichtig es ist, organisiert zu bleiben und den Überblick zu behalten – sowohl im Job als auch im Alltag. Diese Fähigkeit setze ich gezielt in meiner Arbeit ein, um stets effizient und zielorientiert zu arbeiten. 💪 </p> <p> Meine Reise in die IT-Welt begann mit einer Weiterbildung in Cloud- und Webentwicklung. Dort habe ich nicht nur mein technisches Wissen ausgebaut, sondern auch gelernt, wie man innovative Lösungen entwickelt und Herausforderungen schnell meistert. 🚀 </p> <p> Besonders interessiere ich mich für Frontend-Entwicklung und DevOps. Die Kombination aus Kreativität und technischer Präzision ist für mich die perfekte Mischung. Zudem begeistert mich das Projektmanagement – es gibt kaum etwas, das ich mehr schätze, als Prozesse zu optimieren und Teams dabei zu unterstützen, ihre Ziele effizient zu erreichen. 🎯 </p> <p> In den letzten Monaten habe ich an einem Projekt gearbeitet, bei dem wir eine Chat-Webanwendung innerhalb von zwei Wochen nach dem Scrum-Prinzip entwickelt haben. Diese Erfahrung hat meine Fähigkeiten im agilen Arbeiten und in der Teamarbeit enorm gestärkt. 🤝💻 </p> <p> Derzeit vertiefe ich meine Kenntnisse in AWS, Azure, Linux und weiteren modernen Technologien bei TechStarter GmbH. Ich bin ab April 2025 bereit, neue berufliche Herausforderungen anzunehmen und meine Expertise in einem innovativen Umfeld einzubringen. 🚀✨ </p>
                   </Typography>
                 </Box>
               </Box>
@@ -422,27 +373,33 @@ useEffect(() => {
                   {
                     title: "AWS Certified Cloud Practitioner",
                     image: AwsCloudPractitionerImage,
-                    description: "Dieses Zertifikat bestätigt grundlegende Kenntnisse der AWS-Cloud, die für den Einstieg in die Cloud-Welt erforderlich sind. Es umfasst Themen wie Cloud-Architektur, Sicherheitsbestimmungen und AWS-Services.",
+                    link: "https://www.credly.com/badges/76380d0e-b595-491b-8b15-38e9310b84a6/public_url",
+                    description:
+                      "Dieses Zertifikat bestätigt grundlegende Kenntnisse der AWS-Cloud, die für den Einstieg in die Cloud-Welt erforderlich sind. Es umfasst Themen wie Cloud-Architektur, Sicherheitsbestimmungen und AWS-Services.",
                   },
                   {
                     title: "AWS Re/Start",
                     image: AwsReStart,
-                    description: "Das AWS Re/Start-Zertifikat bietet fundierte Kenntnisse zu den Grundlagen der Cloud-Technologie und hilft dabei, in der IT-Branche Fuß zu fassen, mit besonderem Fokus auf Cloud-Infrastrukturen und -Dienste.",
+                    description:
+                      "Das AWS Re/Start-Zertifikat bietet fundierte Kenntnisse zu den Grundlagen der Cloud-Technologie und hilft dabei, in der IT-Branche Fuß zu fassen, mit besonderem Fokus auf Cloud-Infrastrukturen und -Dienste.",
                   },
                   {
                     title: "Linux Professional Institute Certification",
                     image: LinuxImage,
-                    description: "Dieses Zertifikat belegt fundierte Kenntnisse in der Verwaltung und Konfiguration von Linux-Systemen. Es umfasst Themen wie Systemadministration, Sicherheit und Netzwerktechnologien unter Linux.",
+                    description:
+                      "Dieses Zertifikat belegt fundierte Kenntnisse in der Verwaltung und Konfiguration von Linux-Systemen. Es umfasst Themen wie Systemadministration, Sicherheit und Netzwerktechnologien unter Linux.",
                   },
                   {
                     title: "Microsoft Certified: Azure Fundamentals",
                     image: AzureImage,
-                    description: "Mit diesem Zertifikat werden grundlegende Kenntnisse der Microsoft Azure-Cloud-Plattform bestätigt. Es deckt Themen wie Azure-Dienste, Cloud-Konzepte und grundlegende Azure-Architektur ab.",
+                    description:
+                      "Mit diesem Zertifikat werden grundlegende Kenntnisse der Microsoft Azure-Cloud-Plattform bestätigt. Es deckt Themen wie Azure-Dienste, Cloud-Konzepte und grundlegende Azure-Architektur ab.",
                   },
                   {
                     title: "Scrum Master Certification",
                     image: ScrumImage,
-                    description: "Das Scrum Master-Zertifikat bescheinigt Kenntnisse und Fähigkeiten in der Anwendung der Scrum-Methodik zur effektiven Verwaltung von agilen Projekten. Es umfasst Rollen, Ereignisse und Artefakte innerhalb von Scrum.",
+                    description:
+                      "Das Scrum Master-Zertifikat bescheinigt Kenntnisse und Fähigkeiten in der Anwendung der Scrum-Methodik zur effektiven Verwaltung von agilen Projekten. Es umfasst Rollen, Ereignisse und Artefakte innerhalb von Scrum.",
                   },
                 ].map((cert, index) => (
                   <Box
@@ -474,6 +431,12 @@ useEffect(() => {
                     }}
                     onClick={() => alert(`Mehr über: ${cert.title}`)}
                   >
+                    <a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    ></a>
+
                     <Box sx={{ position: "relative", height: "200px" }}>
                       <img
                         src={cert.image}
