@@ -1,10 +1,94 @@
 body {
-    background: #A5B8A8;
-    background-image: radial-gradient(circle, rgba(165, 184, 168, 0.5), rgba(150, 160, 150, 0.3));
-    background-size: cover;  /* Sorgt dafür, dass der Gradient den gesamten Hintergrund abdeckt */
-    background-position: center;  /* Stellt sicher, dass der Gradient zentral bleibt */
-    height: 100vh;  /* Deckt die gesamte Höhe des Viewports ab */
-    margin: 0;
-    overflow: hidden;  /* Verhindert Scrollbars */
-  }
+  background: #a5b8a8;
+  background-image: radial-gradient(
+    circle,
+    rgba(165, 184, 168, 0.5),
+    rgba(150, 160, 150, 0.3)
+  );
+  background-size: cover; /* Sorgt dafür, dass der Gradient den gesamten Hintergrund abdeckt */
+  background-position: center; /* Stellt sicher, dass der Gradient zentral bleibt */
+  height: 100vh; /* Deckt die gesamte Höhe des Viewports ab */
+  margin: 0;
+  overflow: hidden; /* Verhindert Scrollbars */
+  cursor: none;
   
+}
+
+
+
+/* Container für das Bild */
+.image-container {
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden; /* Verhindert Überlauf des Bildes aus den abgerundeten Ecken */
+  border-radius: 25px; /* Gleiche Abrundung wie das Bild */
+  border: 10px solid rgba(156, 175, 163, 0.4); /* Salbeigrüner Rand */
+  box-shadow: 0 0 30px 10px rgba(156, 175, 163, 0.4); /* Verschwommener Rand zu Beginn */
+  animation: clipReveal 1.5s ease-out; /* Animation für das Bild */
+}
+
+@keyframes clipReveal {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%); /* Zu Beginn: Bild ist unsichtbar */
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Am Ende: Bild vollständig sichtbar */
+  }
+}
+
+/* Das Bild selbst */
+.image {
+  width: 100%; /* Bild nimmt die volle Breite des Containers ein */
+  max-width: 400px; /* Maximalbreite des Bildes */
+  height: auto; /* Höhe bleibt proportional */
+  object-fit: cover; /* Das Bild füllt den Container aus, ohne Verzerrung */
+  object-position: center; /* Zentriert das Bild, falls es zugeschnitten wird */
+  display: block; /* Entfernt jegliche zusätzliche Abstände um das Bild */
+  opacity: 1; /* Bild ist immer sichtbar */
+  animation: fadeIn 1.5s ease-out; /* Verzögerte Einblend-Animation für das Bild */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; /* Anfangs unsichtbar */
+  }
+  100% {
+    opacity: 1; /* Am Ende vollständig sichtbar */
+  }
+}
+
+/* Responsives Styling für kleinere Bildschirme */
+@media (max-width: 600px) {
+  .image-container {
+    margin-top: 0.0%;
+    margin-left: 25%;
+    border-radius: 0%;
+    border: none; /* Rand bei kleinen Bildschirmen entfernen */
+    box-shadow: none; /* Schatten bei kleinen Bildschirmen entfernen */
+  }
+  .image {
+    width: 80%;
+    max-width: 70px;
+  }
+}
+
+@media (max-width: 200px) {
+  .image-container {
+  }
+  .image {
+    width: 70%;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 320px) {
+  .image-container {
+    box-shadow: none; /* Schatten bei super kleinen Geräten entfernen */
+  }
+  .image {
+    width: 60%;
+    max-width: 200px;
+  }
+}
