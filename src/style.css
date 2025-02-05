@@ -19,76 +19,96 @@ body {
 /* Container für das Bild */
 .image-container {
   position: relative;
-  margin-top: 20px;
   width: 100%;
   max-width: 400px;
-  overflow: hidden; /* Verhindert Überlauf des Bildes aus den abgerundeten Ecken */
-  border-radius: 25px; /* Gleiche Abrundung wie das Bild */
-  border: 10px solid rgba(156, 175, 163, 0.4); /* Salbeigrüner Rand */
-  box-shadow: 0 0 30px 10px rgba(156, 175, 163, 0.4); /* Verschwommener Rand zu Beginn */
-  animation: clipReveal 1.5s ease-out; /* Animation für das Bild */
-}
-
-@keyframes clipReveal {
-  0% {
-    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%); /* Zu Beginn: Bild ist unsichtbar */
-  }
-  100% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Am Ende: Bild vollständig sichtbar */
-  }
+  height: auto;
+  overflow: hidden;
+  border-radius: 35px;
+  border: 10px solid rgba(156, 175, 163, 0.4);
+  box-shadow: 0 0 30px 10px rgba(156, 175, 163, 0.4);
+  animation: clipReveal 1.5s ease-out;
+  margin: 0 auto; /* Zentriert den Container */
+  display: flex;
+  justify-content: center; /* Horizontal zentrieren */
+  align-items: flex-start; /* Bild bleibt oben auf Handys */
 }
 
 /* Das Bild selbst */
 .image {
-  width: 100%; /* Bild nimmt die volle Breite des Containers ein */
-  max-width: 400px; /* Maximalbreite des Bildes */
-  height: auto; /* Höhe bleibt proportional */
-  object-fit: cover; /* Das Bild füllt den Container aus, ohne Verzerrung */
-  object-position: center; /* Zentriert das Bild, falls es zugeschnitten wird */
-  display: block; /* Entfernt jegliche zusätzliche Abstände um das Bild */
-  opacity: 1; /* Bild ist immer sichtbar */
-  animation: fadeIn 1.5s ease-out; /* Verzögerte Einblend-Animation für das Bild */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  opacity: 1;
+  animation: fadeIn 1.5s ease-out;
+  border-radius: 25px;
 }
 
+/* Animationskeyframes */
 @keyframes fadeIn {
   0% {
-    opacity: 0; /* Anfangs unsichtbar */
+    opacity: 0;
   }
   100% {
-    opacity: 1; /* Am Ende vollständig sichtbar */
+    opacity: 1;
   }
 }
 
 /* Responsives Styling für kleinere Bildschirme */
 @media (max-width: 600px) {
   .image-container {
-    margin-top: 0.0%;
-    margin-left: 25%;
-    border-radius: 0%;
-    border: none; /* Rand bei kleinen Bildschirmen entfernen */
-    box-shadow: none; /* Schatten bei kleinen Bildschirmen entfernen */
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+    justify-content: center; /* Horizontal zentrieren */
+    align-items: flex-start; /* Bild bleibt oben */
   }
   .image {
     width: 80%;
-    max-width: 70px;
+    max-width: 200px;
+    height: auto;
+    border-radius: 15px;
   }
 }
 
-@media (max-width: 200px) {
+@media (max-width: 480px) {
   .image-container {
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    box-shadow: none;
+    border-radius: 10px;
+    justify-content: center; /* Horizontal zentrieren */
+    align-items: flex-start; /* Bild bleibt oben */
   }
   .image {
     width: 70%;
-    max-width: 250px;
+    max-width: 150px;
+    height: auto;
+    border-radius: 10px;
   }
 }
 
 @media (max-width: 320px) {
   .image-container {
-    box-shadow: none; /* Schatten bei super kleinen Geräten entfernen */
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    box-shadow: none;
+    border-radius: 5px;
+    justify-content: center; /* Horizontal zentrieren */
+    align-items: flex-start; /* Bild bleibt oben */
   }
   .image {
     width: 60%;
-    max-width: 200px;
+    max-width: 120px;
+    height: auto;
+    border-radius: 5px;
   }
 }

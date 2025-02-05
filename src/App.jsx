@@ -11,9 +11,7 @@ import AzureImage from "./assets/azure.png";
 import ScrumImage from "./assets/scrum.png";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./style.css";
-import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import myVideo from "./assets/Kaiwa.mp4";
+import KaiwaVideo from '/public/Kaiwa.mp4';
 
 const theme = createTheme({
   typography: {
@@ -71,10 +69,21 @@ function NavButton({ label, onClick }) {
 
 function App() {
   const [activeContent, setActiveContent] = useState("home");
+  const [activeProject, setActiveProject] = useState(null); // Hier den activeProject-State hinzufügen
+  const [videoEnded, setVideoEnded] = useState(false);
+
+  const handleRestartVideo = () => {
+    setVideoEnded(false); // Zurücksetzen der videoEnded-Flag
+  };
 
   const handleClick = (content) => {
     setActiveContent(content);
   };
+
+    // Funktion zum Umschalten des aktiven Projekts
+    const handleProjectClick = (projectId) => {
+      setActiveProject(activeProject === projectId ? null : projectId); // Setzt das Projekt oder setzt es zurück
+    };
 
   useEffect(() => {
     if ("ontouchstart" in window) return; // Kein Custom-Cursor auf Touch-Geräten
@@ -195,6 +204,9 @@ function App() {
     };
   }, []);
 
+
+
+  
   return (
     <ThemeProvider theme={theme}>
       <Box
@@ -311,46 +323,32 @@ function App() {
                     }}
                   >
                     <p>
-                      {" "}
-                      Hallo, ich bin Ilona! 😊 Als Mutter von zwei Kindern weiß
-                      ich, wie wichtig es ist, organisiert zu bleiben und den
-                      Überblick zu behalten – sowohl im Job als auch im Alltag.
-                      Diese Fähigkeit setze ich gezielt in meiner Arbeit ein, um
-                      stets effizient und zielorientiert zu arbeiten. 💪{" "}
-                    </p>{" "}
+                      Hallo, ich bin Ilona! 😊 Nach einem Jahr intensiver
+                      Weiterbildung in Cloud- und Webentwicklung bin ich nun
+                      bereit für den Einstieg in die IT-Welt. Während dieser
+                      Zeit habe ich umfassende theoretische Grundlagen erworben
+                      und mich mit Technologien wie AWS, Azure, Linux, Docker,
+                      Kubernetes, DevOps und moderner Webentwicklung
+                      beschäftigt. Besonders spannend finde ich die Kombination
+                      aus Automatisierung, effizientem Deployment und kreativen
+                      Lösungen im Frontend. 🚀
+                    </p>
                     <p>
-                      {" "}
-                      Meine Reise in die IT-Welt begann mit einer Weiterbildung
-                      in Cloud- und Webentwicklung. Dort habe ich nicht nur mein
-                      technisches Wissen ausgebaut, sondern auch gelernt, wie
-                      man innovative Lösungen entwickelt und Herausforderungen
-                      schnell meistert. 🚀{" "}
-                    </p>{" "}
+                      Jetzt freue ich mich darauf, mein Wissen in der Praxis
+                      anzuwenden, weiter dazuzulernen und in einem innovativen
+                      Team durchzustarten. ✨
+                    </p>
                     <p>
-                      {" "}
-                      Besonders interessiere ich mich für Frontend-Entwicklung
-                      und DevOps. Die Kombination aus Kreativität und
-                      technischer Präzision ist für mich die perfekte Mischung.
-                      Zudem begeistert mich das Projektmanagement – es gibt kaum
-                      etwas, das ich mehr schätze, als Prozesse zu optimieren
-                      und Teams dabei zu unterstützen, ihre Ziele effizient zu
-                      erreichen. 🎯{" "}
-                    </p>{" "}
+                      Neben meiner Begeisterung für Technik bin ich auch ein
+                      kreativer Mensch. In meiner Freizeit male ich gerne, mache
+                      Yoga und genieße die kleinen Auszeiten, die das Leben
+                      bietet. Als Mutter von zwei Kindern weiß ich, wie wichtig
+                      es ist, organisiert zu bleiben – eine Fähigkeit, die mir
+                      sowohl privat als auch beruflich enorm hilft. 💪
+                    </p>
                     <p>
-                      {" "}
-                      In den letzten Monaten habe ich an einem Projekt
-                      gearbeitet, bei dem wir eine Chat-Webanwendung innerhalb
-                      von zwei Wochen nach dem Scrum-Prinzip entwickelt haben.
-                      Diese Erfahrung hat meine Fähigkeiten im agilen Arbeiten
-                      und in der Teamarbeit enorm gestärkt. 🤝💻{" "}
-                    </p>{" "}
-                    <p>
-                      {" "}
-                      Derzeit vertiefe ich meine Kenntnisse in AWS, Azure, Linux
-                      und weiteren modernen Technologien bei TechStarter GmbH.
-                      Ich bin ab April 2025 bereit, neue berufliche
-                      Herausforderungen anzunehmen und meine Expertise in einem
-                      innovativen Umfeld einzubringen. 🚀✨{" "}
+                      Ich bin ab April 2025 bereit für neue Herausforderungen!
+                      🌟
                     </p>
                   </Typography>
                 </Box>
@@ -368,85 +366,116 @@ function App() {
         fontWeight: "bold",
         marginBottom: 2,
         color: "#333",
-        fontSize: { xs: '1.5rem', sm: '2rem' }, // Flexibilität für kleinere Bildschirme
+        fontSize: { xs: "1.5rem", sm: "2rem" },
       }}
     >
+      {/* Hier könnte der Titel deines Projekts stehen */}
     </Typography>
 
-    <Typography
-      variant="body1"
-      sx={{
-        textAlign: "center",
-        marginBottom: 3,
-        color: "#555",
-        fontSize: { xs: '1rem', sm: '1.2rem' }, // Anpassung je nach Bildschirmgröße
-      }}
-    >
-    </Typography>
-
-    {/* Video in einer Box */}
+    {/* Projekt 1 */}
     <Box
       sx={{
-        marginLeft: "25%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        maxWidth: 560,
-        marginBottom: 3,
         boxShadow: 2,
         borderRadius: 2,
-        overflow: "hidden",
-        backgroundColor: "#f9f9f9",
-        padding: 2,
+        backgroundColor: "#f5f5f5",
+        padding: 3,
+        textAlign: "center",
+        cursor: "pointer",
+        transition: "transform 0.3s",
+        margin: "0 auto",
+        width: "100%",
+        maxWidth: 600,
+        "&:hover": {
+          transform: "scale(1.05)",
+        },
+        transform: activeProject === 1 ? 'scale(1.2)' : 'scale(1)',
       }}
+      onClick={() => handleProjectClick(1)}
     >
-      <video width="100%" height="auto" controls>
-        <source src={myVideo} type="video/mp4" />
-        Dein Browser unterstützt dieses Video-Format nicht.
-      </video>
-    </Box>
-
-    {/* GitHub-Link */}
-    <div style={{ textAlign: "center", marginBottom: 3 }}>
-      <Typography variant="body2" sx={{ color: "#0070f3" }}>
-        Schau dir das Projekt auf GitHub an:
+      <Typography variant="h6">Chat Web App</Typography>
+      <Typography variant="body2" sx={{ color: "#555" }}>
+        Mit einem dreiköpfigen Team haben wir diese Chat-Webanwendung entwickelt. Hier ist auch eine Präsentation des Projekts, die du dir ansehen kannst 👉🏼
         <a
-          href="https://github.com/deinBenutzername/deinProjekt"
+          href="https://docs.google.com/presentation/d/e/2PACX-1vQD-Rg4rOEsn1XyzAamP5bCGOn7uCDO1C6RhJwJLwB35IXDUTTqaP5ORa-jogCjMw/pub?start=false&loop=false&delayms=3000"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: "#0070f3", textDecoration: "underline" }}
+          style={{
+            color: "#0070f3",
+            textDecoration: "underline",
+          }}
         >
-          GitHub Repo
+          Projektpräsentation
+        </a>
+        {" "}
+        und hier ist der GitHub-Link zum Projekt 👉🏼
+        <a
+          href="https://github.com/ilonagoergens/Kaiwa"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            color: "#0070f3",
+            textDecoration: "underline",
+          }}
+        >
+          GitHub-Projekt
         </a>
       </Typography>
-    </div>
+    </Box>
 
-    {/* Aufklappbare Beschreibung */}
-    <Accordion sx={{ marginBottom: 3 }}>
-      <AccordionSummary expandIcon={<ExpandMoreIcon />} sx={{ backgroundColor: "#f5f5f5" }}>
-        <Typography variant="body2" sx={{ color: "#333" }}>
-          Projektbeschreibung
-        </Typography>
-      </AccordionSummary>
-      <AccordionDetails sx={{ backgroundColor: "#fafafa" }}>
-        <Typography variant="body2" sx={{ color: "#555" }}>
-          Mit einem dreiköpfigen Team haben wir diese Chat-Webanwendung entwickelt. Wir haben uns auf ein
-          einfaches Design konzentriert und die Benutzeroberfläche so benutzerfreundlich wie möglich gestaltet.
-          Hier ist auch eine Präsentation des Projekts, die du dir ansehen kannst:
-          <a
-            href="https://deinLinkzurPräsentation"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "#0070f3", textDecoration: "underline" }}
+    {/* Hinweistext und Video, die nur erscheinen, wenn dieses Projekt aktiv ist */}
+    {activeProject === 1 && !videoEnded ? (
+      <>
+        <Box
+          sx={{
+            marginLeft: "auto",
+            marginRight: "auto",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            maxWidth: 760,
+            position: "relative",  // Relative Positionierung für das Layout
+            top: "-150px",  // Verschiebe das Element leicht nach oben
+            boxShadow: 2,
+            borderRadius: 2,
+            overflow: "hidden",
+            backgroundColor: "#f9f9f9",
+            padding: 2,
+            transition: 'transform 0.3s',
+          }}
+        >
+          <video
+            width="100%"
+            height="auto"
+            controls
+            style={{
+              objectFit: "contain",  // Verhindert das Abschneiden des Videos
+              maxHeight: "80vh",  // Maximale Höhe des Videos anpassen
+            }}
+            onEnded={() => setVideoEnded(true)} // Video zu Ende -> State aktualisieren
           >
-            Projektpräsentation
-          </a>
-          .
-        </Typography>
-      </AccordionDetails>
-    </Accordion>
-
+            <source src={KaiwaVideo} type="video/mp4" />
+            Dein Browser unterstützt dieses Video-Format nicht.
+          </video>
+        </Box>
+      </>
+    ) : (
+      <Typography
+        variant="body1"
+        sx={{
+          textAlign: "center",
+          color: "#555",
+          marginTop: 2,
+          marginBottom: 2,
+        }}
+        onClick={handleRestartVideo} // Klick auf den Text zurücksetzt den Zustand
+      >
+        {videoEnded
+          ? "Das Video ist jetzt fertig! Klicke hier, um es erneut anzusehen."
+          : "Klicke hier, um das Video des Projekts anzusehen!"
+        }
+      </Typography>
+    )}
   </>
 )}
 
