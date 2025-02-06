@@ -250,113 +250,60 @@ function App() {
             <NavButton label="Kontakt" onClick={() => handleClick("Contact")} />
           </Box>
 
-          <Box sx={{ padding: 4 }}>
-            {activeContent === "about" && (
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: { xs: "row", md: "row" },
-                  alignItems: "flex-start",
-                  justifyContent: "flex-start",
-                  width: "100%",
-                  marginLeft: "3%",
-                  marginBottom: "5%",
-                  flexWrap: "wrap",
-                }}
-              >
-                <Box
-                  sx={{
-                    display: "flex", // Flexbox Layout
-                    flexDirection: { xs: "column", sm: "row" }, // Bild und Text nebeneinander auf größeren Bildschirmen, übereinander auf mobilen Geräten
-                    position: "relative",
-                    width: "100%",
-                    maxWidth: "400px",
-                    margin: "auto",
-                  }}
-                >
-                  <Box className="image-container">
-                    <img
-                      src={Image}
-                      alt="Mein Foto"
-                      className="image" // Anwendungsname für CSS-Klasse
-                    />
-                  </Box>
-                </Box>
+          {activeContent === "about" && (
+  <Box className="about-container">
+    <Box className="about-content">
+      <Box className="image-container">
+        <img src={Image} alt="Mein Foto" className="image" />
+      </Box>
+    </Box>
+    <Box className="text-container">
+      <Typography variant="body1" className="about-text" sx={{ fontSize: { xs: "0.4rem", sm: "0.5rem", md: "0.8rem", lg: "1.1rem" } }}>
+        <p>
+          Hallo, ich bin Ilona! 😊 Nach einem Jahr intensiver Weiterbildung in
+          Cloud- und Webentwicklung bin ich nun bereit für den Einstieg in
+          die IT-Welt. Während dieser Zeit habe ich umfassende theoretische
+          Grundlagen erworben und mich mit Technologien wie AWS, Azure,
+          Linux, Docker, Kubernetes, DevOps und moderner Webentwicklung
+          beschäftigt. Besonders spannend finde ich die Kombination aus
+          Automatisierung, effizientem Deployment und kreativen Lösungen im
+          Frontend. 🚀
+        </p>
+        <p>
+          Jetzt freue ich mich darauf, mein Wissen in der Praxis anzuwenden,
+          weiter dazuzulernen und in einem innovativen Team durchzustarten.
+          ✨
+        </p>
+        <p>
+          Neben meiner Begeisterung für Technik bin ich auch ein kreativer
+          Mensch. In meiner Freizeit male ich gerne, mache Yoga und genieße
+          die kleinen Auszeiten, die das Leben bietet. Als Mutter von zwei
+          Kindern weiß ich, wie wichtig es ist, organisiert zu bleiben – eine
+          Fähigkeit, die mir sowohl privat als auch beruflich enorm hilft. 💪
+        </p>
+        <p>
+          💡 <strong>Meine Skills im Überblick:</strong>
+          <br /> 🔹 <strong>Frontend-Entwicklung:</strong> HTML, CSS,
+          JavaScript, React.js, UX/UI-Design
+          <br /> 🔹 <strong>Backend & APIs:</strong> Node.js, Express.js,
+          RESTful APIs
+          <br /> 🔹 <strong>Cloud-Technologien:</strong> AWS, Azure
+          <br /> 🔹 <strong>Container & Orchestrierung:</strong> Docker,
+          Kubernetes
+          <br /> 🔹 <strong>DevOps & Automatisierung:</strong> CI/CD,
+          Infrastructure as Code (IaC mit Ansible)
+          <br /> 🔹 <strong>Sicherheit & Netzwerke:</strong> Linux,
+          Netzwerksicherheit
+          <br /> 🔹 <strong>Agile Softwareentwicklung:</strong> Scrum,
+          praxisorientierte Projekte
+        </p>
+        <p>Ich bin ab April 2025 bereit für neue Herausforderungen! 🌟</p>
+      </Typography>
+    </Box>
+  </Box>
+)}
 
-                <Box
-                  sx={{
-                    marginLeft: {
-                      xs: "10px",
-                      sm: "10px",
-                      md: "20px",
-                      lg: "100px",
-                    },
-
-                    textAlign: "left",
-                    flex: 1,
-                    overflow: "auto",
-                    marginTop: { xs: "10px", sm: "0" }, // Abstände für mobile Geräte, um den Text unten anzuzeigen
-                  }}
-                >
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      textAlign: "left",
-                      fontSize: {
-                        xs: "0.45rem",
-                        sm: "0.4rem",
-                        md: "0.8rem",
-                        lg: "1rem",
-                      },
-                      animation: "fadeIn 1s ease-out",
-                      "@keyframes fadeIn": {
-                        "0%": {
-                          opacity: 0,
-                        },
-                        "100%": {
-                          opacity: 1,
-                        },
-                      },
-                    }}
-                    style={{
-                      marginRight: "20px", // Hier wird der Abstand hinzugefügt
-                    }}
-                  >
-                    <p>
-                      Hallo, ich bin Ilona! 😊 Nach einem Jahr intensiver
-                      Weiterbildung in Cloud- und Webentwicklung bin ich nun
-                      bereit für den Einstieg in die IT-Welt. Während dieser
-                      Zeit habe ich umfassende theoretische Grundlagen erworben
-                      und mich mit Technologien wie AWS, Azure, Linux, Docker,
-                      Kubernetes, DevOps und moderner Webentwicklung
-                      beschäftigt. Besonders spannend finde ich die Kombination
-                      aus Automatisierung, effizientem Deployment und kreativen
-                      Lösungen im Frontend. 🚀
-                    </p>
-                    <p>
-                      Jetzt freue ich mich darauf, mein Wissen in der Praxis
-                      anzuwenden, weiter dazuzulernen und in einem innovativen
-                      Team durchzustarten. ✨
-                    </p>
-                    <p>
-                      Neben meiner Begeisterung für Technik bin ich auch ein
-                      kreativer Mensch. In meiner Freizeit male ich gerne, mache
-                      Yoga und genieße die kleinen Auszeiten, die das Leben
-                      bietet. Als Mutter von zwei Kindern weiß ich, wie wichtig
-                      es ist, organisiert zu bleiben – eine Fähigkeit, die mir
-                      sowohl privat als auch beruflich enorm hilft. 💪
-                    </p>
-                    <p>
-                      Ich bin ab April 2025 bereit für neue Herausforderungen!
-                      🌟
-                    </p>
-                  </Typography>
-                </Box>
-              </Box>
-            )}
-          </Box>
-
-          {activeContent === "projects" && (
+{activeContent === "projects" && (
   <>
     {/* Titel */}
     <Typography
@@ -369,116 +316,95 @@ function App() {
         fontSize: { xs: "1.5rem", sm: "2rem" },
       }}
     >
-      {/* Hier könnte der Titel deines Projekts stehen */}
     </Typography>
 
-    {/* Projekt 1 */}
-    <Box
-      sx={{
-        boxShadow: 2,
-        borderRadius: 2,
-        backgroundColor: "#f5f5f5",
-        padding: 3,
-        textAlign: "center",
-        cursor: "pointer",
-        transition: "transform 0.3s",
-        margin: "0 auto",
-        width: "100%",
-        maxWidth: 600,
-        "&:hover": {
-          transform: "scale(1.05)",
-        },
-        transform: activeProject === 1 ? 'scale(1.2)' : 'scale(1)',
-      }}
-      onClick={() => handleProjectClick(1)}
-    >
-      <Typography variant="h6">Chat Web App</Typography>
-      <Typography variant="body2" sx={{ color: "#555" }}>
-        Mit einem dreiköpfigen Team haben wir diese Chat-Webanwendung entwickelt. Hier ist auch eine Präsentation des Projekts, die du dir ansehen kannst 👉🏼
-        <a
-          href="https://docs.google.com/presentation/d/e/2PACX-1vQD-Rg4rOEsn1XyzAamP5bCGOn7uCDO1C6RhJwJLwB35IXDUTTqaP5ORa-jogCjMw/pub?start=false&loop=false&delayms=3000"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            color: "#0070f3",
-            textDecoration: "underline",
-          }}
-        >
-          Projektpräsentation
-        </a>
-        {" "}
-        und hier ist der GitHub-Link zum Projekt 👉🏼
-        <a
-          href="https://github.com/ilonagoergens/Kaiwa"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            color: "#0070f3",
-            textDecoration: "underline",
-          }}
-        >
-          GitHub-Projekt
-        </a>
-      </Typography>
-    </Box>
+    <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "60px" }}>
+      {/* Chat Web App */}
+      <Box
+        sx={{
+          boxShadow: 2,
+          borderRadius: 2,
+          backgroundColor: "#f5f5f5",
+          padding: 3,
+          textAlign: "center",
+          cursor: "pointer",
+          transition: "transform 0.3s",
+          width: "100%",
+          maxWidth: 600,
+          "&:hover": {
+            transform: "scale(1.05)",
+          },
+        }}
+        onClick={() => setActiveProject(activeProject === 1 ? null : 1)}
+      >
+        <Typography variant="h6">Chat Web App</Typography>
+      </Box>
 
-    {/* Hinweistext und Video, die nur erscheinen, wenn dieses Projekt aktiv ist */}
-    {activeProject === 1 && !videoEnded ? (
-      <>
+      {/* Video und Beschreibung (absolut positioniert, um Layout nicht zu verschieben) */}
+      {activeProject === 1 && (
         <Box
           sx={{
-            marginLeft: "auto",
-            marginRight: "auto",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-            maxWidth: 760,
-            position: "relative",  // Relative Positionierung für das Layout
-            top: "-150px",  // Verschiebe das Element leicht nach oben
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
             boxShadow: 2,
             borderRadius: 2,
-            overflow: "hidden",
             backgroundColor: "#f9f9f9",
-            padding: 2,
-            transition: 'transform 0.3s',
+            padding: 3,
+            width: "100%",
+            maxWidth: 760,
+            textAlign: "center",
+            zIndex: 10,
           }}
+          onClick={() => setActiveProject(null)}
         >
-          <video
-            width="100%"
-            height="auto"
-            controls
-            style={{
-              objectFit: "contain",  // Verhindert das Abschneiden des Videos
-              maxHeight: "80vh",  // Maximale Höhe des Videos anpassen
-            }}
-            onEnded={() => setVideoEnded(true)} // Video zu Ende -> State aktualisieren
-          >
+          <Typography variant="body2" sx={{ color: "#555", marginBottom: 2 }}>
+            Mit einem dreiköpfigen Team haben wir diese Chat-Webanwendung entwickelt.
+            Hier ist auch eine Präsentation des Projekts 👉🏼
+            <a href="https://docs.google.com/presentation/d/e/2PACX-1vQD-Rg4rOEsn1XyzAamP5bCGOn7uCDO1C6RhJwJLwB35IXDUTTqaP5ORa-jogCjMw/pub?start=false&loop=false&delayms=3000" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               style={{ color: "#0070f3", textDecoration: "underline" }}>
+              Projektpräsentation
+            </a>
+            {" "}und hier ist der GitHub-Link zum Projekt 👉🏼
+            <a href="https://github.com/ilonagoergens/Kaiwa" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               style={{ color: "#0070f3", textDecoration: "underline" }}>
+              GitHub-Projekt
+            </a>
+          </Typography>
+          <video width="100%" height="auto" controls style={{ objectFit: "contain", maxHeight: "80vh" }}>
             <source src={KaiwaVideo} type="video/mp4" />
             Dein Browser unterstützt dieses Video-Format nicht.
           </video>
         </Box>
-      </>
-    ) : (
-      <Typography
-        variant="body1"
-        sx={{
-          textAlign: "center",
-          color: "#555",
-          marginTop: 2,
-          marginBottom: 2,
-        }}
-        onClick={handleRestartVideo} // Klick auf den Text zurücksetzt den Zustand
-      >
-        {videoEnded
-          ? "Das Video ist jetzt fertig! Klicke hier, um es erneut anzusehen."
-          : "Klicke hier, um das Video des Projekts anzusehen!"
-        }
-      </Typography>
-    )}
-  </>
-)}
+      )}
 
+      {/* Coming Soon */}
+      <Box
+        sx={{
+          boxShadow: 2,
+          borderRadius: 2,
+          backgroundColor: "#ddd",
+          padding: 3,
+          textAlign: "center",
+          marginTop: "20px",
+          width: "100%",
+          maxWidth: 600,
+        }}
+      >
+        <Typography variant="h6">Coming Soon...</Typography>
+        <Typography variant="body2" sx={{ color: "#555" }}>
+          Ein spannendes neues Projekt ist in Arbeit! Stay tuned! 🚀
+        </Typography>
+      </Box>
+    </Box>
+  </>
+)
+}
 
           {activeContent === "certificates" && (
             <>
@@ -595,7 +521,7 @@ function App() {
               justifyContent="center"
               alignItems="center"
               gap={2}
-              style={{ marginTop: "20px" }}
+              style={{ marginTop: "50px", paddingTop: "20px" }}
             >
               <Tooltip title="Folge mir auf GitHub">
                 <a

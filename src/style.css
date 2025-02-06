@@ -5,47 +5,75 @@ body {
     rgba(165, 184, 168, 0.5),
     rgba(150, 160, 150, 0.3)
   );
-  background-size: cover; /* Sorgt dafür, dass der Gradient den gesamten Hintergrund abdeckt */
-  background-position: center; /* Stellt sicher, dass der Gradient zentral bleibt */
-  height: 100vh; /* Deckt die gesamte Höhe des Viewports ab */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
   margin: 0;
-  overflow: hidden; /* Verhindert Scrollbars */
+  overflow: hidden;
   cursor: none;
-  
 }
 
+.about-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  flex-wrap: wrap;
+}
 
-
-/* Container für das Bild */
-.image-container {
+.about-content {
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: 100%;
   max-width: 400px;
+  margin: auto;
+}
+
+.image-container {
+  position: relative;
+  top: -30px;
+  max-width: 400px;
   height: auto;
-  overflow: hidden;
   border-radius: 35px;
   border: 10px solid rgba(156, 175, 163, 0.4);
   box-shadow: 0 0 30px 10px rgba(156, 175, 163, 0.4);
   animation: clipReveal 1.5s ease-out;
-  margin: 0 auto; /* Zentriert den Container */
   display: flex;
-  justify-content: center; /* Horizontal zentrieren */
-  align-items: flex-start; /* Bild bleibt oben auf Handys */
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
-/* Das Bild selbst */
 .image {
+  
   width: 100%;
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
-  opacity: 1;
-  animation: fadeIn 1.5s ease-out;
   border-radius: 25px;
+  animation: fadeIn 1.5s ease-out;
 }
 
-/* Animationskeyframes */
+.text-container {
+  margin: 0 50px;
+  text-align: left;
+  flex: 1;
+  overflow: auto;
+  margin-top: 10px;
+}
+
+.about-text {
+  text-align: left;
+  font-size: 0.8rem;
+  animation: fadeIn 1s ease-out;
+}
+
+/* Fade-In Animation */
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -55,60 +83,43 @@ body {
   }
 }
 
-/* Responsives Styling für kleinere Bildschirme */
-@media (max-width: 600px) {
+/* RESPONSIVE ANPASSUNGEN */
+
+/* Tablets */
+@media (max-width: 1024px) {
   .image-container {
-    margin-top: 0;
-    margin-left: auto;
-    margin-right: auto;
-    border: none;
-    box-shadow: none;
-    border-radius: 15px;
-    justify-content: center; /* Horizontal zentrieren */
-    align-items: flex-start; /* Bild bleibt oben */
-  }
-  .image {
-    width: 80%;
-    max-width: 200px;
-    height: auto;
-    border-radius: 15px;
+    max-width: 300px;
+    border-radius: 30px;
+    border-width: 8px;
   }
 }
 
+/* Mobile */
+@media (max-width: 768px) {
+  .image-container {
+    max-width: 250px;
+    border-radius: 35px;
+    border-width: 6px;
+    box-shadow: 0 0 15px 5px rgba(156, 175, 163, 0.3);
+  }
+}
+
+/* Kleinere Smartphones */
 @media (max-width: 480px) {
   .image-container {
-    margin-top: 0;
-    margin-left: auto;
-    margin-right: auto;
-    border: none;
-    box-shadow: none;
-    border-radius: 10px;
-    justify-content: center; /* Horizontal zentrieren */
-    align-items: flex-start; /* Bild bleibt oben */
-  }
-  .image {
-    width: 70%;
-    max-width: 150px;
-    height: auto;
-    border-radius: 10px;
+    max-width: 200px;
+    border-radius: 35px;
+    border-width: 4px;
+    box-shadow: 0 0 10px 3px rgba(156, 175, 163, 0.2);
   }
 }
 
+/* Extra kleine Displays */
 @media (max-width: 320px) {
   .image-container {
-    margin-top: 0;
-    margin-left: auto;
-    margin-right: auto;
-    border: none;
-    box-shadow: none;
-    border-radius: 5px;
-    justify-content: center; /* Horizontal zentrieren */
-    align-items: flex-start; /* Bild bleibt oben */
-  }
-  .image {
-    width: 60%;
-    max-width: 120px;
-    height: auto;
-    border-radius: 5px;
+    max-width: 150px;
+    border-radius: 35px;
+    border-width: 3px;
+    box-shadow: 0 0 5px 2px rgba(156, 175, 163, 0.1);
   }
 }
