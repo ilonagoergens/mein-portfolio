@@ -11,7 +11,7 @@ import AzureImage from "./assets/azure.png";
 import ScrumImage from "./assets/scrum.png";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./style.css";
-import KaiwaVideo from '/public/Kaiwa.mp4';
+import KaiwaVideo from "/public/Kaiwa.mp4";
 
 const theme = createTheme({
   typography: {
@@ -80,10 +80,10 @@ function App() {
     setActiveContent(content);
   };
 
-    // Funktion zum Umschalten des aktiven Projekts
-    const handleProjectClick = (projectId) => {
-      setActiveProject(activeProject === projectId ? null : projectId); // Setzt das Projekt oder setzt es zurück
-    };
+  // Funktion zum Umschalten des aktiven Projekts
+  const handleProjectClick = (projectId) => {
+    setActiveProject(activeProject === projectId ? null : projectId); // Setzt das Projekt oder setzt es zurück
+  };
 
   useEffect(() => {
     if ("ontouchstart" in window) return; // Kein Custom-Cursor auf Touch-Geräten
@@ -204,9 +204,6 @@ function App() {
     };
   }, []);
 
-
-
-  
   return (
     <ThemeProvider theme={theme}>
       <Box
@@ -519,235 +516,205 @@ function App() {
 
 =======
 
-          <Box sx={{ padding: 4 }}>
-            {activeContent === "about" && (
+          {activeContent === "about" && (
+            <Box className="about-container">
+              <Box className="about-content">
+                <Box className="image-container">
+                  <img src={Image} alt="Mein Foto" className="image" />
+                </Box>
+              </Box>
+              <Box className="text-container">
+                <Typography
+                  variant="body1"
+                  className="about-text"
+                  sx={{
+                    fontSize: {
+                      xs: "0.4rem",
+                      sm: "0.5rem",
+                      md: "0.8rem",
+                      lg: "1.1rem",
+                    },
+                  }}
+                >
+                  <p>
+                    Hallo, ich bin Ilona! 😊 Nach einem Jahr intensiver
+                    Weiterbildung in Cloud- und Webentwicklung bin ich nun
+                    bereit für den Einstieg in die IT-Welt. Während dieser Zeit
+                    habe ich umfassende theoretische Grundlagen erworben und
+                    mich mit Technologien wie AWS, Azure, Linux, Docker,
+                    Kubernetes, DevOps und moderner Webentwicklung beschäftigt.
+                    Besonders spannend finde ich die Kombination aus
+                    Automatisierung, effizientem Deployment und kreativen
+                    Lösungen im Frontend. 🚀
+                  </p>
+                  <p>
+                    Jetzt freue ich mich darauf, mein Wissen in der Praxis
+                    anzuwenden, weiter dazuzulernen und in einem innovativen
+                    Team durchzustarten. ✨
+                  </p>
+                  <p>
+                    Neben meiner Begeisterung für Technik bin ich auch ein
+                    kreativer Mensch. In meiner Freizeit male ich gerne, mache
+                    Yoga und genieße die kleinen Auszeiten, die das Leben
+                    bietet. Als Mutter von zwei Kindern weiß ich, wie wichtig es
+                    ist, organisiert zu bleiben – eine Fähigkeit, die mir sowohl
+                    privat als auch beruflich enorm hilft. 💪
+                  </p>
+                  <p>
+                    💡 <strong>Meine Skills im Überblick:</strong>
+                    <br /> 🔹 <strong>Frontend-Entwicklung:</strong> HTML, CSS,
+                    JavaScript, React.js, UX/UI-Design
+                    <br /> 🔹 <strong>Backend & APIs:</strong> Node.js,
+                    Express.js, RESTful APIs
+                    <br /> 🔹 <strong>Cloud-Technologien:</strong> AWS, Azure
+                    <br /> 🔹 <strong>Container & Orchestrierung:</strong>{" "}
+                    Docker, Kubernetes
+                    <br /> 🔹 <strong>DevOps & Automatisierung:</strong> CI/CD,
+                    Infrastructure as Code (IaC mit Ansible)
+                    <br /> 🔹 <strong>Sicherheit & Netzwerke:</strong> Linux,
+                    Netzwerksicherheit
+                    <br /> 🔹 <strong>Agile Softwareentwicklung:</strong> Scrum,
+                    praxisorientierte Projekte
+                  </p>
+                  <p>
+                    Ich bin ab April 2025 bereit für neue Herausforderungen! 🌟
+                  </p>
+                </Typography>
+              </Box>
+            </Box>
+          )}
+
+          {activeContent === "projects" && (
+            <>
+              {/* Titel */}
+              <Typography
+                variant="h5"
+                sx={{
+                  textAlign: "center",
+                  fontWeight: "bold",
+                  marginBottom: 2,
+                  color: "#333",
+                  fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
+                }}
+              ></Typography>
+
               <Box
                 sx={{
                   display: "flex",
-                  flexDirection: { xs: "row", md: "row" },
-                  alignItems: "flex-start",
-                  justifyContent: "flex-start",
-                  width: "100%",
-                  marginLeft: "3%",
-                  marginBottom: "5%",
-                  flexWrap: "wrap",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  marginTop: "60px",
+                  paddingLeft: { xs: 2, sm: 3, md: 4 },
+                  paddingRight: { xs: 2, sm: 3, md: 4 },
                 }}
               >
+                {/* Chat Web App */}
                 <Box
                   sx={{
-                    display: "flex", // Flexbox Layout
-                    flexDirection: { xs: "column", sm: "row" }, // Bild und Text nebeneinander auf größeren Bildschirmen, übereinander auf mobilen Geräten
-                    position: "relative",
+                    boxShadow: 2,
+                    borderRadius: 2,
+                    backgroundColor: "#f5f5f5",
+                    padding: 3,
+                    textAlign: "center",
+                    cursor: "pointer",
+                    transition: "transform 0.3s",
                     width: "100%",
-                    maxWidth: "400px",
-                    margin: "auto",
+                    maxWidth: { xs: "90%", sm: 600, md: 700 },
+                    "&:hover": {
+                      transform: "scale(1.05)",
+                    },
                   }}
+                  onClick={() =>
+                    setActiveProject(activeProject === 1 ? null : 1)
+                  }
                 >
-                  <Box className="image-container">
-                    <img
-                      src={Image}
-                      alt="Mein Foto"
-                      className="image" // Anwendungsname für CSS-Klasse
-                    />
-                  </Box>
+                  <Typography variant="h6">Chat Web App</Typography>
                 </Box>
 
+                {/* Video und Beschreibung */}
+                {activeProject === 1 && (
+                  <Box
+                    sx={{
+                      position: "fixed",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      boxShadow: 2,
+                      borderRadius: 2,
+                      backgroundColor: "#f9f9f9",
+                      padding: 3,
+                      width: "100%",
+                      maxWidth: { xs: "90%", sm: 760 },
+                      textAlign: "center",
+                      zIndex: 10,
+                      overflowY: "auto", // Falls der Inhalt höher als der Bildschirm ist
+                      "& video": {
+                        maxWidth: "100%", // Maximale Breite auf 100% setzen
+                        maxHeight: "80vh", // Maximale Höhe auf 80% der Ansichtshöhe setzen
+                        objectFit: "contain", // Skalierung des Videos, ohne das Seitenverhältnis zu verzerren
+                      },
+                    }}
+                    onClick={() => setActiveProject(null)}
+                  >
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "#555", marginBottom: 2 }}
+                    >
+                      Mit einem dreiköpfigen Team haben wir diese
+                      Chat-Webanwendung entwickelt. Hier ist auch eine
+                      Präsentation des Projekts 👉🏼
+                      <a
+                        href="https://docs.google.com/presentation/d/e/2PACX-1vQD-Rg4rOEsn1XyzAamP5bCGOn7uCDO1C6RhJwJLwB35IXDUTTqaP5ORa-jogCjMw/pub?start=false&loop=false&delayms=3000"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          color: "#0070f3",
+                          textDecoration: "underline",
+                        }}
+                      >
+                        Projektpräsentation
+                      </a>{" "}
+                      und hier ist der GitHub-Link zum Projekt 👉🏼
+                      <a
+                        href="https://github.com/ilonagoergens/Kaiwa"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          color: "#0070f3",
+                          textDecoration: "underline",
+                        }}
+                      >
+                        GitHub-Projekt
+                      </a>
+                    </Typography>
+                    <video width="100%" height="auto" controls>
+                      <source src={KaiwaVideo} type="video/mp4" />
+                      Dein Browser unterstützt dieses Video-Format nicht.
+                    </video>
+                  </Box>
+                )}
+
+                {/* Coming Soon */}
                 <Box
                   sx={{
-                    marginLeft: {
-                      xs: "10px",
-                      sm: "10px",
-                      md: "20px",
-                      lg: "100px",
-                    },
-
-                    textAlign: "left",
-                    flex: 1,
-                    overflow: "auto",
-                    marginTop: { xs: "10px", sm: "0" }, // Abstände für mobile Geräte, um den Text unten anzuzeigen
+                    boxShadow: 2,
+                    borderRadius: 2,
+                    backgroundColor: "#ddd",
+                    padding: 3,
+                    textAlign: "center",
+                    marginTop: "20px",
+                    width: "100%",
+                    maxWidth: { xs: "90%", sm: 600, md: 700 },
                   }}
                 >
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      textAlign: "left",
-                      fontSize: {
-                        xs: "0.45rem",
-                        sm: "0.4rem",
-                        md: "0.8rem",
-                        lg: "1rem",
-                      },
-                      animation: "fadeIn 1s ease-out",
-                      "@keyframes fadeIn": {
-                        "0%": {
-                          opacity: 0,
-                        },
-                        "100%": {
-                          opacity: 1,
-                        },
-                      },
-                    }}
-                    style={{
-                      marginRight: "20px", // Hier wird der Abstand hinzugefügt
-                    }}
-                  >
-                    <p>
-                      Hallo, ich bin Ilona! 😊 Nach einem Jahr intensiver
-                      Weiterbildung in Cloud- und Webentwicklung bin ich nun
-                      bereit für den Einstieg in die IT-Welt. Während dieser
-                      Zeit habe ich umfassende theoretische Grundlagen erworben
-                      und mich mit Technologien wie AWS, Azure, Linux, Docker,
-                      Kubernetes, DevOps und moderner Webentwicklung
-                      beschäftigt. Besonders spannend finde ich die Kombination
-                      aus Automatisierung, effizientem Deployment und kreativen
-                      Lösungen im Frontend. 🚀
-                    </p>
-                    <p>
-                      Jetzt freue ich mich darauf, mein Wissen in der Praxis
-                      anzuwenden, weiter dazuzulernen und in einem innovativen
-                      Team durchzustarten. ✨
-                    </p>
-                    <p>
-                      Neben meiner Begeisterung für Technik bin ich auch ein
-                      kreativer Mensch. In meiner Freizeit male ich gerne, mache
-                      Yoga und genieße die kleinen Auszeiten, die das Leben
-                      bietet. Als Mutter von zwei Kindern weiß ich, wie wichtig
-                      es ist, organisiert zu bleiben – eine Fähigkeit, die mir
-                      sowohl privat als auch beruflich enorm hilft. 💪
-                    </p>
-                    <p>
-                      Ich bin ab April 2025 bereit für neue Herausforderungen!
-                      🌟
-                    </p>
+                  <Typography variant="h6">Coming Soon...</Typography>
+                  <Typography variant="body2" sx={{ color: "#555" }}>
+                    Ein spannendes neues Projekt ist in Arbeit! Stay tuned! 🚀
                   </Typography>
                 </Box>
               </Box>
-            )}
-          </Box>
-
-          {activeContent === "projects" && (
-  <>
-    {/* Titel */}
-    <Typography
-      variant="h5"
-      sx={{
-        textAlign: "center",
-        fontWeight: "bold",
-        marginBottom: 2,
-        color: "#333",
-        fontSize: { xs: "1.5rem", sm: "2rem" },
-      }}
-    >
-      {/* Hier könnte der Titel deines Projekts stehen */}
-    </Typography>
-
-    {/* Projekt 1 */}
-    <Box
-      sx={{
-        boxShadow: 2,
-        borderRadius: 2,
-        backgroundColor: "#f5f5f5",
-        padding: 3,
-        textAlign: "center",
-        cursor: "pointer",
-        transition: "transform 0.3s",
-        margin: "0 auto",
-        width: "100%",
-        maxWidth: 600,
-        "&:hover": {
-          transform: "scale(1.05)",
-        },
-        transform: activeProject === 1 ? 'scale(1.2)' : 'scale(1)',
-      }}
-      onClick={() => handleProjectClick(1)}
-    >
-      <Typography variant="h6">Chat Web App</Typography>
-      <Typography variant="body2" sx={{ color: "#555" }}>
-        Mit einem dreiköpfigen Team haben wir diese Chat-Webanwendung entwickelt. Hier ist auch eine Präsentation des Projekts, die du dir ansehen kannst 👉🏼
-        <a
-          href="https://docs.google.com/presentation/d/e/2PACX-1vQD-Rg4rOEsn1XyzAamP5bCGOn7uCDO1C6RhJwJLwB35IXDUTTqaP5ORa-jogCjMw/pub?start=false&loop=false&delayms=3000"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            color: "#0070f3",
-            textDecoration: "underline",
-          }}
-        >
-          Projektpräsentation
-        </a>
-        {" "}
-        und hier ist der GitHub-Link zum Projekt 👉🏼
-        <a
-          href="https://github.com/ilonagoergens/Kaiwa"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            color: "#0070f3",
-            textDecoration: "underline",
-          }}
-        >
-          GitHub-Projekt
-        </a>
-      </Typography>
-    </Box>
-
-    {/* Hinweistext und Video, die nur erscheinen, wenn dieses Projekt aktiv ist */}
-    {activeProject === 1 && !videoEnded ? (
-      <>
-        <Box
-          sx={{
-            marginLeft: "auto",
-            marginRight: "auto",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-            maxWidth: 760,
-            position: "relative",  // Relative Positionierung für das Layout
-            top: "-150px",  // Verschiebe das Element leicht nach oben
-            boxShadow: 2,
-            borderRadius: 2,
-            overflow: "hidden",
-            backgroundColor: "#f9f9f9",
-            padding: 2,
-            transition: 'transform 0.3s',
-          }}
-        >
-          <video
-            width="100%"
-            height="auto"
-            controls
-            style={{
-              objectFit: "contain",  // Verhindert das Abschneiden des Videos
-              maxHeight: "80vh",  // Maximale Höhe des Videos anpassen
-            }}
-            onEnded={() => setVideoEnded(true)} // Video zu Ende -> State aktualisieren
-          >
-            <source src={KaiwaVideo} type="video/mp4" />
-            Dein Browser unterstützt dieses Video-Format nicht.
-          </video>
-        </Box>
-      </>
-    ) : (
-      <Typography
-        variant="body1"
-        sx={{
-          textAlign: "center",
-          color: "#555",
-          marginTop: 2,
-          marginBottom: 2,
-        }}
-        onClick={handleRestartVideo} // Klick auf den Text zurücksetzt den Zustand
-      >
-        {videoEnded
-          ? "Das Video ist jetzt fertig! Klicke hier, um es erneut anzusehen."
-          : "Klicke hier, um das Video des Projekts anzusehen!"
-        }
-      </Typography>
-    )}
-  </>
-)}
-
+            </>
+          )}
 
           {activeContent === "certificates" && (
             <>
@@ -759,10 +726,9 @@ function App() {
               </Typography>
               <Box
                 sx={{
-                  cursor: "none",
                   display: "flex", // Flexbox Layout für die Boxen
                   flexWrap: "wrap", // Boxen umbrechen, wenn der Platz knapp wird
-                  gap: "8px", // Abstand zwischen den Boxen (Zertifikaten)
+                  gap: "15px", // Abstand zwischen den Boxen (Zertifikaten)
                   justifyContent: "center", // Zertifikate zentrieren
                 }}
               >
@@ -777,82 +743,79 @@ function App() {
                   {
                     title: "AWS Re/Start",
                     image: AwsReStart,
+                    link: "https://www.credly.com/badges/b945acf7-3c02-4b98-86dc-4ef5eba05919/linked_in?t=sj6xxk",
                     description:
                       "Das AWS Re/Start-Zertifikat bietet fundierte Kenntnisse zu den Grundlagen der Cloud-Technologie und hilft dabei, in der IT-Branche Fuß zu fassen, mit besonderem Fokus auf Cloud-Infrastrukturen und -Dienste.",
                   },
                   {
                     title: "Linux Professional Institute Certification",
                     image: LinuxImage,
+                    link: "https://www.lpi.org/v/LPI000614343/72ur5w54d6", // Dein LPI-Link
                     description:
                       "Dieses Zertifikat belegt fundierte Kenntnisse in der Verwaltung und Konfiguration von Linux-Systemen. Es umfasst Themen wie Systemadministration, Sicherheit und Netzwerktechnologien unter Linux.",
                   },
+
                   {
                     title: "Microsoft Certified: Azure Fundamentals",
                     image: AzureImage,
+                    link: "https://learn.microsoft.com/de-de/users/ilonagrgens-7391/credentials/4742f5bb6ddc27ff?ref=https%3A%2F%2Fwww.linkedin.com%2F",
                     description:
                       "Mit diesem Zertifikat werden grundlegende Kenntnisse der Microsoft Azure-Cloud-Plattform bestätigt. Es deckt Themen wie Azure-Dienste, Cloud-Konzepte und grundlegende Azure-Architektur ab.",
                   },
                   {
                     title: "Scrum Master Certification",
                     image: ScrumImage,
+                    link: "https://www.credly.com/badges/6698a9cf-e104-461f-97d7-368c7376cc85/linked_in?t=sp9iol",
                     description:
                       "Das Scrum Master-Zertifikat bescheinigt Kenntnisse und Fähigkeiten in der Anwendung der Scrum-Methodik zur effektiven Verwaltung von agilen Projekten. Es umfasst Rollen, Ereignisse und Artefakte innerhalb von Scrum.",
                   },
                 ].map((cert, index) => (
-                  <Box
+                  <a
                     key={index}
-                    sx={{
-                      width: "100%", // 100% Breite für volle Flexibilität
-                      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-                      borderRadius: "10px",
-                      overflow: "hidden",
-                      transition: "transform 0.3s ease-in-out, box-shadow 0.3s",
-                      "&:hover": {
-                        transform: "scale(1.05)",
-                        boxShadow: "0 6px 16px rgba(0, 0, 0, 0.3)",
-                      },
-                      cursor: "pointer",
-
-                      maxWidth: {
-                        xs: "150px", // Auf kleinen Bildschirmen maximal 150px
-                        sm: "150px", // Auf mittleren Bildschirmen maximal 150px
-                        md: "250px", // Auf großen Bildschirmen maximal 250px
-                      },
-                      maxHeight: {
-                        xs: "150px", // Auf kleinen Bildschirmen maximal 150px
-                        sm: "200px", // Auf mittleren Bildschirmen maximal 200px
-                        md: "250px", // Auf großen Bildschirmen maximal 250px
-                      },
-                      margin: "auto", // Zertifikate zentrieren
-                      marginTop: "5%",
-                    }}
-                    onClick={() => alert(`Mehr über: ${cert.title}`)}
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: "none" }} // Verhindert die Unterstreichung des Links
                   >
-                    <a
-                      href={cert.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    ></a>
-
-                    <Box sx={{ position: "relative", height: "200px" }}>
-                      <img
-                        src={cert.image}
-                        alt={cert.title}
-                        style={{
-                          width: "100%", // Bild nimmt immer 100% der Breite des Containers ein
-                          height: "100%", // Höhe auf 100% setzen, um den gesamten Container auszufüllen
-                          objectFit: "contain", // Bild bleibt in den Container-Grenzen, ohne das Seitenverhältnis zu verlieren
-                          borderRadius: "10px", // Abgerundete Ecken
-                        }}
-                      />
+                    <Box
+                      sx={{
+                        width: "100%", // 100% Breite für volle Flexibilität
+                        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                        borderRadius: "10px",
+                        overflow: "hidden",
+                        transition:
+                          "transform 0.3s ease-in-out, box-shadow 0.3s",
+                        "&:hover": {
+                          transform: "scale(1.05)",
+                          boxShadow: "0 6px 16px rgba(0, 0, 0, 0.3)",
+                        },
+                        cursor: "pointer",
+                        maxWidth: { xs: "150px", sm: "150px", md: "250px" },
+                        maxHeight: { xs: "150px", sm: "200px", md: "250px" },
+                        margin: "auto", // Zertifikate zentrieren
+                        marginTop: "5%",
+                      }}
+                    >
+                      <Box sx={{ position: "relative", height: "200px" }}>
+                        <img
+                          src={cert.image}
+                          alt={cert.title}
+                          style={{
+                            width: "100%", // Bild nimmt immer 100% der Breite des Containers ein
+                            height: "100%", // Höhe auf 100% setzen, um den gesamten Container auszufüllen
+                            objectFit: "contain", // Bild bleibt in den Container-Grenzen, ohne das Seitenverhältnis zu verlieren
+                            borderRadius: "10px", // Abgerundete Ecken
+                          }}
+                        />
+                      </Box>
+                      <Box sx={{ padding: 2, textAlign: "center" }}>
+                        <Typography variant="h6">{cert.title}</Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {cert.description}
+                        </Typography>
+                      </Box>
                     </Box>
-                    <Box sx={{ padding: 2, textAlign: "center" }}>
-                      <Typography variant="h6">{cert.title}</Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {cert.description}
-                      </Typography>
-                    </Box>
-                  </Box>
+                  </a>
                 ))}
               </Box>
             </>
@@ -865,11 +828,7 @@ function App() {
               justifyContent="center"
               alignItems="center"
               gap={2}
-<<<<<<< HEAD
-              style={{ marginTop: "50px", paddingTop: "20px" }}
-=======
               style={{ marginTop: "20px" }}
->>>>>>> 0aa15a61 (...)
             >
               <Tooltip title="Folge mir auf GitHub">
                 <a
