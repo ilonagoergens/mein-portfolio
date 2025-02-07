@@ -313,12 +313,15 @@ function App() {
         fontWeight: "bold",
         marginBottom: 2,
         color: "#333",
-        fontSize: { xs: "1.5rem", sm: "2rem" },
+        fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
       }}
     >
     </Typography>
 
-    <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "60px" }}>
+    <Box sx={{
+      display: "flex", flexDirection: "column", alignItems: "center", marginTop: "60px", 
+      paddingLeft: { xs: 2, sm: 3, md: 4 }, paddingRight: { xs: 2, sm: 3, md: 4 }
+    }}>
       {/* Chat Web App */}
       <Box
         sx={{
@@ -330,7 +333,7 @@ function App() {
           cursor: "pointer",
           transition: "transform 0.3s",
           width: "100%",
-          maxWidth: 600,
+          maxWidth: { xs: "90%", sm: 600, md: 700 },
           "&:hover": {
             transform: "scale(1.05)",
           },
@@ -340,7 +343,7 @@ function App() {
         <Typography variant="h6">Chat Web App</Typography>
       </Box>
 
-      {/* Video und Beschreibung (absolut positioniert, um Layout nicht zu verschieben) */}
+      {/* Video und Beschreibung */}
       {activeProject === 1 && (
         <Box
           sx={{
@@ -353,30 +356,36 @@ function App() {
             backgroundColor: "#f9f9f9",
             padding: 3,
             width: "100%",
-            maxWidth: 760,
+            maxWidth: { xs: "90%", sm: 760 },
             textAlign: "center",
             zIndex: 10,
+            overflowY: "auto", // Falls der Inhalt höher als der Bildschirm ist
+            "& video": {
+              maxWidth: "100%",  // Maximale Breite auf 100% setzen
+              maxHeight: "80vh", // Maximale Höhe auf 80% der Ansichtshöhe setzen
+              objectFit: "contain",  // Skalierung des Videos, ohne das Seitenverhältnis zu verzerren
+            },
           }}
           onClick={() => setActiveProject(null)}
         >
           <Typography variant="body2" sx={{ color: "#555", marginBottom: 2 }}>
             Mit einem dreiköpfigen Team haben wir diese Chat-Webanwendung entwickelt.
             Hier ist auch eine Präsentation des Projekts 👉🏼
-            <a href="https://docs.google.com/presentation/d/e/2PACX-1vQD-Rg4rOEsn1XyzAamP5bCGOn7uCDO1C6RhJwJLwB35IXDUTTqaP5ORa-jogCjMw/pub?start=false&loop=false&delayms=3000" 
-               target="_blank" 
-               rel="noopener noreferrer" 
+            <a href="https://docs.google.com/presentation/d/e/2PACX-1vQD-Rg4rOEsn1XyzAamP5bCGOn7uCDO1C6RhJwJLwB35IXDUTTqaP5ORa-jogCjMw/pub?start=false&loop=false&delayms=3000"
+               target="_blank"
+               rel="noopener noreferrer"
                style={{ color: "#0070f3", textDecoration: "underline" }}>
               Projektpräsentation
             </a>
             {" "}und hier ist der GitHub-Link zum Projekt 👉🏼
-            <a href="https://github.com/ilonagoergens/Kaiwa" 
-               target="_blank" 
-               rel="noopener noreferrer" 
+            <a href="https://github.com/ilonagoergens/Kaiwa"
+               target="_blank"
+               rel="noopener noreferrer"
                style={{ color: "#0070f3", textDecoration: "underline" }}>
               GitHub-Projekt
             </a>
           </Typography>
-          <video width="100%" height="auto" controls style={{ objectFit: "contain", maxHeight: "80vh" }}>
+          <video width="100%" height="auto" controls>
             <source src={KaiwaVideo} type="video/mp4" />
             Dein Browser unterstützt dieses Video-Format nicht.
           </video>
@@ -393,7 +402,7 @@ function App() {
           textAlign: "center",
           marginTop: "20px",
           width: "100%",
-          maxWidth: 600,
+          maxWidth: { xs: "90%", sm: 600, md: 700 },
         }}
       >
         <Typography variant="h6">Coming Soon...</Typography>
@@ -403,117 +412,110 @@ function App() {
       </Box>
     </Box>
   </>
-)
-}
+)}
 
-          {activeContent === "certificates" && (
-            <>
-              <Typography
-                variant="h5"
-                sx={{ marginBottom: 2, fontWeight: "bold" }}
-              >
-                Zertifikate
-              </Typography>
-              <Box
-                sx={{
-                  cursor: "none",
-                  display: "flex", // Flexbox Layout für die Boxen
-                  flexWrap: "wrap", // Boxen umbrechen, wenn der Platz knapp wird
-                  gap: "8px", // Abstand zwischen den Boxen (Zertifikaten)
-                  justifyContent: "center", // Zertifikate zentrieren
+
+{activeContent === "certificates" && (
+  <>
+    <Typography variant="h5" sx={{ marginBottom: 2, fontWeight: "bold" }}>
+      Zertifikate
+    </Typography>
+    <Box
+      sx={{
+        display: "flex", // Flexbox Layout für die Boxen
+        flexWrap: "wrap", // Boxen umbrechen, wenn der Platz knapp wird
+        gap: "15px", // Abstand zwischen den Boxen (Zertifikaten)
+        justifyContent: "center", // Zertifikate zentrieren
+      }}
+    >
+      {[
+        {
+          title: "AWS Certified Cloud Practitioner",
+          image: AwsCloudPractitionerImage,
+          link: "https://www.credly.com/badges/76380d0e-b595-491b-8b15-38e9310b84a6/public_url",
+          description:
+            "Dieses Zertifikat bestätigt grundlegende Kenntnisse der AWS-Cloud, die für den Einstieg in die Cloud-Welt erforderlich sind. Es umfasst Themen wie Cloud-Architektur, Sicherheitsbestimmungen und AWS-Services.",
+        },
+        {
+          title: "AWS Re/Start",
+          image: AwsReStart,
+          link: "https://www.credly.com/badges/b945acf7-3c02-4b98-86dc-4ef5eba05919/linked_in?t=sj6xxk",
+          description:
+            "Das AWS Re/Start-Zertifikat bietet fundierte Kenntnisse zu den Grundlagen der Cloud-Technologie und hilft dabei, in der IT-Branche Fuß zu fassen, mit besonderem Fokus auf Cloud-Infrastrukturen und -Dienste.",
+        },
+        {
+          title: "Linux Professional Institute Certification",
+          image: LinuxImage,
+          link: "https://www.lpi.org/v/LPI000614343/72ur5w54d6", // Dein LPI-Link
+          description:
+            "Dieses Zertifikat belegt fundierte Kenntnisse in der Verwaltung und Konfiguration von Linux-Systemen. Es umfasst Themen wie Systemadministration, Sicherheit und Netzwerktechnologien unter Linux.",
+        },
+        
+        {
+          title: "Microsoft Certified: Azure Fundamentals",
+          image: AzureImage,
+          link: "https://learn.microsoft.com/de-de/users/ilonagrgens-7391/credentials/4742f5bb6ddc27ff?ref=https%3A%2F%2Fwww.linkedin.com%2F",
+          description:
+            "Mit diesem Zertifikat werden grundlegende Kenntnisse der Microsoft Azure-Cloud-Plattform bestätigt. Es deckt Themen wie Azure-Dienste, Cloud-Konzepte und grundlegende Azure-Architektur ab.",
+        },
+        {
+          title: "Scrum Master Certification",
+          image: ScrumImage,
+          link: "https://www.credly.com/badges/6698a9cf-e104-461f-97d7-368c7376cc85/linked_in?t=sp9iol",
+          description:
+            "Das Scrum Master-Zertifikat bescheinigt Kenntnisse und Fähigkeiten in der Anwendung der Scrum-Methodik zur effektiven Verwaltung von agilen Projekten. Es umfasst Rollen, Ereignisse und Artefakte innerhalb von Scrum.",
+        },
+      ].map((cert, index) => (
+        <a
+          key={index}
+          href={cert.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: "none" }} // Verhindert die Unterstreichung des Links
+        >
+          <Box
+            sx={{
+              width: "100%", // 100% Breite für volle Flexibilität
+              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+              borderRadius: "10px",
+              overflow: "hidden",
+              transition: "transform 0.3s ease-in-out, box-shadow 0.3s",
+              "&:hover": {
+                transform: "scale(1.05)",
+                boxShadow: "0 6px 16px rgba(0, 0, 0, 0.3)",
+              },
+              cursor: "pointer",
+              maxWidth: { xs: "150px", sm: "150px", md: "250px" },
+              maxHeight: { xs: "150px", sm: "200px", md: "250px" },
+              margin: "auto", // Zertifikate zentrieren
+              marginTop: "5%",
+            }}
+          >
+            <Box sx={{ position: "relative", height: "200px" }}>
+              <img
+                src={cert.image}
+                alt={cert.title}
+                style={{
+                  width: "100%", // Bild nimmt immer 100% der Breite des Containers ein
+                  height: "100%", // Höhe auf 100% setzen, um den gesamten Container auszufüllen
+                  objectFit: "contain", // Bild bleibt in den Container-Grenzen, ohne das Seitenverhältnis zu verlieren
+                  borderRadius: "10px", // Abgerundete Ecken
                 }}
-              >
-                {[
-                  {
-                    title: "AWS Certified Cloud Practitioner",
-                    image: AwsCloudPractitionerImage,
-                    link: "https://www.credly.com/badges/76380d0e-b595-491b-8b15-38e9310b84a6/public_url",
-                    description:
-                      "Dieses Zertifikat bestätigt grundlegende Kenntnisse der AWS-Cloud, die für den Einstieg in die Cloud-Welt erforderlich sind. Es umfasst Themen wie Cloud-Architektur, Sicherheitsbestimmungen und AWS-Services.",
-                  },
-                  {
-                    title: "AWS Re/Start",
-                    image: AwsReStart,
-                    description:
-                      "Das AWS Re/Start-Zertifikat bietet fundierte Kenntnisse zu den Grundlagen der Cloud-Technologie und hilft dabei, in der IT-Branche Fuß zu fassen, mit besonderem Fokus auf Cloud-Infrastrukturen und -Dienste.",
-                  },
-                  {
-                    title: "Linux Professional Institute Certification",
-                    image: LinuxImage,
-                    description:
-                      "Dieses Zertifikat belegt fundierte Kenntnisse in der Verwaltung und Konfiguration von Linux-Systemen. Es umfasst Themen wie Systemadministration, Sicherheit und Netzwerktechnologien unter Linux.",
-                  },
-                  {
-                    title: "Microsoft Certified: Azure Fundamentals",
-                    image: AzureImage,
-                    description:
-                      "Mit diesem Zertifikat werden grundlegende Kenntnisse der Microsoft Azure-Cloud-Plattform bestätigt. Es deckt Themen wie Azure-Dienste, Cloud-Konzepte und grundlegende Azure-Architektur ab.",
-                  },
-                  {
-                    title: "Scrum Master Certification",
-                    image: ScrumImage,
-                    description:
-                      "Das Scrum Master-Zertifikat bescheinigt Kenntnisse und Fähigkeiten in der Anwendung der Scrum-Methodik zur effektiven Verwaltung von agilen Projekten. Es umfasst Rollen, Ereignisse und Artefakte innerhalb von Scrum.",
-                  },
-                ].map((cert, index) => (
-                  <Box
-                    key={index}
-                    sx={{
-                      width: "100%", // 100% Breite für volle Flexibilität
-                      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-                      borderRadius: "10px",
-                      overflow: "hidden",
-                      transition: "transform 0.3s ease-in-out, box-shadow 0.3s",
-                      "&:hover": {
-                        transform: "scale(1.05)",
-                        boxShadow: "0 6px 16px rgba(0, 0, 0, 0.3)",
-                      },
-                      cursor: "pointer",
+              />
+            </Box>
+            <Box sx={{ padding: 2, textAlign: "center" }}>
+              <Typography variant="h6">{cert.title}</Typography>
+              <Typography variant="body2" color="text.secondary">
+                {cert.description}
+              </Typography>
+            </Box>
+          </Box>
+        </a>
+      ))}
+    </Box>
+  </>
+)}
 
-                      maxWidth: {
-                        xs: "150px", // Auf kleinen Bildschirmen maximal 150px
-                        sm: "150px", // Auf mittleren Bildschirmen maximal 150px
-                        md: "250px", // Auf großen Bildschirmen maximal 250px
-                      },
-                      maxHeight: {
-                        xs: "150px", // Auf kleinen Bildschirmen maximal 150px
-                        sm: "200px", // Auf mittleren Bildschirmen maximal 200px
-                        md: "250px", // Auf großen Bildschirmen maximal 250px
-                      },
-                      margin: "auto", // Zertifikate zentrieren
-                      marginTop: "5%",
-                    }}
-                    onClick={() => alert(`Mehr über: ${cert.title}`)}
-                  >
-                    <a
-                      href={cert.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    ></a>
-
-                    <Box sx={{ position: "relative", height: "200px" }}>
-                      <img
-                        src={cert.image}
-                        alt={cert.title}
-                        style={{
-                          width: "100%", // Bild nimmt immer 100% der Breite des Containers ein
-                          height: "100%", // Höhe auf 100% setzen, um den gesamten Container auszufüllen
-                          objectFit: "contain", // Bild bleibt in den Container-Grenzen, ohne das Seitenverhältnis zu verlieren
-                          borderRadius: "10px", // Abgerundete Ecken
-                        }}
-                      />
-                    </Box>
-                    <Box sx={{ padding: 2, textAlign: "center" }}>
-                      <Typography variant="h6">{cert.title}</Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {cert.description}
-                      </Typography>
-                    </Box>
-                  </Box>
-                ))}
-              </Box>
-            </>
-          )}
 
           {activeContent === "Contact" && (
             <Box

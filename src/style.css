@@ -17,7 +17,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   margin: 0 auto;
   padding: 20px;
@@ -35,8 +35,8 @@ body {
 
 .image-container {
   position: relative;
-  top: -30px;
   max-width: 400px;
+  min-width: 250px;
   height: auto;
   border-radius: 35px;
   border: 10px solid rgba(156, 175, 163, 0.4);
@@ -45,11 +45,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  /* Hier den Abstand nach unten verringern */
+  margin: 0 auto 20px auto; /* Statt 150px jetzt 20px */
 }
 
 .image {
-  
   width: 100%;
   height: auto;
   object-fit: contain;
@@ -64,7 +64,8 @@ body {
   text-align: left;
   flex: 1;
   overflow: auto;
-  margin-top: 10px;
+  /* Hier extra Abstand zum unteren Rand einfügen */
+  padding-bottom: 40px;
 }
 
 .about-text {
@@ -73,53 +74,143 @@ body {
   animation: fadeIn 1s ease-out;
 }
 
-/* Fade-In Animation */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 /* RESPONSIVE ANPASSUNGEN */
 
 /* Tablets */
 @media (max-width: 1024px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
   .image-container {
     max-width: 300px;
     border-radius: 30px;
     border-width: 8px;
+    margin: 0 auto 20px auto; /* Auch hier: kleinerer Abstand */
+  }
+  .text-container {
+    margin: 20px;
+    text-align: center;
+    padding-bottom: 40px;
   }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
   .image-container {
+    transform: translateX(-7%);
     max-width: 250px;
     border-radius: 35px;
     border-width: 6px;
     box-shadow: 0 0 15px 5px rgba(156, 175, 163, 0.3);
+    margin: 0 auto 20px auto; /* Abstand zwischen Bild und Text verkleinert */
+  }
+  .text-container {
+    transform: translateX(-4%);
+    margin: 10px;
+    text-align: center;
+    padding-bottom: 30px; /* Leicht reduziert auf kleineren Geräten */
+  }
+  .about-text {
+    font-size: 0.75rem;
   }
 }
 
 /* Kleinere Smartphones */
 @media (max-width: 480px) {
   .image-container {
+    transform: translateX(-7%);
     max-width: 200px;
     border-radius: 35px;
     border-width: 4px;
     box-shadow: 0 0 10px 3px rgba(156, 175, 163, 0.2);
+    margin: 0 auto 15px auto; /* Noch weniger Abstand */
+  }
+  .text-container {
+    margin: 5px;
+    padding: 5px;
+    padding-bottom: 20px; /* Extra Abstand unten */
+  }
+  .about-text {
+    font-size: 0.7rem;
   }
 }
 
 /* Extra kleine Displays */
 @media (max-width: 320px) {
   .image-container {
+    transform: translateX(-7%);
     max-width: 150px;
     border-radius: 35px;
     border-width: 3px;
     box-shadow: 0 0 5px 2px rgba(156, 175, 163, 0.1);
+    margin: 0 auto 10px auto; /* Minimaler Abstand */
+  }
+  .text-container {
+    margin: 3px;
+    padding: 3px;
+    padding-bottom: 15px; /* Etwas weniger, wenn der Platz sehr begrenzt ist */
+  }
+  .about-text {
+    font-size: 0.65rem;
   }
 }
+
+/* Standard-Stile für große Bildschirme */
+.text-container {
+  font-size: 20px;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  padding-bottom: 40px; /* Extra Abstand nach unten */
+}
+
+/* Tablets (z. B. iPad, Surface Pro) */
+@media (max-width: 1024px) {
+  .text-container {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 90%;
+    padding-bottom: 40px;
+  }
+}
+
+/* Mobile Geräte (z. B. iPhone, Galaxy S) */
+@media (max-width: 768px) {
+  .text-container {
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 95%;
+    padding: 10px;
+    padding-bottom: 30px;
+  }
+}
+
+/* Kleinere Smartphones (z. B. iPhone SE, Pixel 7) */
+@media (max-width: 480px) {
+  .text-container {
+    font-size: 14px;
+    line-height: 1.4;
+    max-width: 100%;
+    padding: 8px;
+    padding-bottom: 20px;
+  }
+}
+
+/* Laptop-spezifische Anpassungen (normalerweise ab 1025px) */
+@media (min-width: 1025px) {
+  /* Bild nach oben verschieben */
+  .image-container {
+    margin-top: -130px;  /* Verschiebt das Bild nach oben */
+    margin-bottom: 0px;  /* Der Abstand zwischen Bild und Text bleibt gleich */
+  }
+
+  /* Textbereich nach unten verschieben */
+  .text-container {
+    padding-top: -0px;  /* Verschiebt den Textbereich nach unten */
+    padding-bottom: 40px; /* Der Abstand nach unten bleibt unverändert */
+    font-size: 16px;      /* Verkleinert die Textgröße */
+  }
+}
+
