@@ -318,141 +318,143 @@ function App() {
             </Box>
           )}
 
-{activeContent === "projects" && (
-        <>
-          {/* Titel */}
-          <Typography
-            variant="h5"
-            sx={{
-              textAlign: "center",
-              fontWeight: "bold",
-              marginBottom: 2,
-              color: "#333",
-              fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
-            }}
-          ></Typography>
+          {activeContent === "projects" && (
+            <>
+              {/* Titel */}
+              <Typography
+                variant="h5"
+                sx={{
+                  textAlign: "center",
+                  fontWeight: "bold",
+                  marginBottom: 2,
+                  color: "#333",
+                  fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
+                }}
+              ></Typography>
 
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              marginTop: "60px",
-              paddingLeft: { xs: 2, sm: 3, md: 4 },
-              paddingRight: { xs: 2, sm: 3, md: 4 },
-            }}
-          >
-            {/* Chat Web App */}
-            <Box
-              sx={{
-                boxShadow: 2,
-                borderRadius: 2,
-                backgroundColor: "#f5f5f5",
-                padding: 3,
-                textAlign: "center",
-                cursor: "pointer",
-                transition: "transform 0.3s",
-                width: "100%",
-                maxWidth: { xs: "90%", sm: 600, md: 700 },
-                "&:hover": {
-                  transform: "scale(1.05)",
-                },
-              }}
-              onClick={() => setActiveProject(activeProject === 1 ? null : 1)}
-            >
-              <Typography variant="h6">Chat Web App</Typography>
-            </Box>
-
-            {/* Video und Beschreibung */}
-            {activeProject === 1 && (
               <Box
                 sx={{
-                  position: "fixed",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  boxShadow: 2,
-                  borderRadius: 2,
-                  backgroundColor: "#f9f9f9",
-                  padding: 3,
-                  width: "100%",
-                  maxWidth: { xs: "90%", sm: 760 },
-                  textAlign: "center",
-                  zIndex: 10,
-                  overflowY: "auto",
-                  "& video": {
-                    maxWidth: "100%",
-                    maxHeight: "80vh",
-                    objectFit: "contain",
-                  },
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  marginTop: "60px",
+                  paddingLeft: { xs: 2, sm: 3, md: 4 },
+                  paddingRight: { xs: 2, sm: 3, md: 4 },
                 }}
-                onClick={() => setActiveProject(null)}
               >
-                <Typography
-                  variant="body2"
-                  sx={{ color: "#555", marginBottom: 2 }}
+                {/* Chat Web App */}
+                <Box
+                  sx={{
+                    boxShadow: 2,
+                    borderRadius: 2,
+                    backgroundColor: "#f5f5f5",
+                    padding: 3,
+                    textAlign: "center",
+                    cursor: "pointer",
+                    transition: "transform 0.3s",
+                    width: "100%",
+                    maxWidth: { xs: "90%", sm: 600, md: 700 },
+                    "&:hover": {
+                      transform: "scale(1.05)",
+                    },
+                  }}
+                  onClick={() =>
+                    setActiveProject(activeProject === 1 ? null : 1)
+                  }
                 >
-                  Mit einem dreiköpfigen Team haben wir diese
-                  Chat-Webanwendung entwickelt. Hier ist auch eine
-                  Präsentation des Projekts 👉🏼
-                  <a
-                    href="https://docs.google.com/presentation/d/e/2PACX-1vQD-Rg4rOEsn1XyzAamP5bCGOn7uCDO1C6RhJwJLwB35IXDUTTqaP5ORa-jogCjMw/pub?start=false&loop=false&delayms=3000"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      color: "#0070f3",
-                      textDecoration: "underline",
-                    }}
-                  >
-                    Projektpräsentation
-                  </a>{" "}
-                  und hier ist der GitHub-Link zum Projekt 👉🏼
-                  <a
-                    href="https://github.com/ilonagoergens/Kaiwa"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      color: "#0070f3",
-                      textDecoration: "underline",
-                    }}
-                  >
-                    GitHub-Projekt
-                  </a>
-                </Typography>
-                <video
-                  ref={videoRef}
-                  className="my-video-class"
-                  width="100%"
-                  height="auto"
-                  controls
-                >
-                  <source src={KaiwaVideo} type="video/mp4" />
-                  Dein Browser unterstützt dieses Video-Format nicht.
-                </video>
-              </Box>
-            )}
+                  <Typography variant="h6">Chat Web App</Typography>
+                </Box>
 
-            {/* Coming Soon */}
-            <Box
-              sx={{
-                boxShadow: 2,
-                borderRadius: 2,
-                backgroundColor: "#ddd",
-                padding: 3,
-                textAlign: "center",
-                marginTop: "20px",
-                width: "100%",
-                maxWidth: { xs: "90%", sm: 600, md: 700 },
-              }}
-            >
-              <Typography variant="h6">Coming Soon...</Typography>
-              <Typography variant="body2" sx={{ color: "#555" }}>
-                Ein spannendes neues Projekt ist in Arbeit! Stay tuned! 🚀
-              </Typography>
-            </Box>
-          </Box>
-        </>
-      )}
+                {/* Video und Beschreibung */}
+                {activeProject === 1 && (
+                  <Box
+                    sx={{
+                      position: "fixed",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      boxShadow: 2,
+                      borderRadius: 2,
+                      backgroundColor: "#f9f9f9",
+                      padding: 3,
+                      width: "100%",
+                      maxWidth: { xs: "90%", sm: 760 },
+                      textAlign: "center",
+                      zIndex: 10,
+                      overflowY: "auto",
+                      "& video": {
+                        maxWidth: "100%",
+                        maxHeight: "80vh",
+                        objectFit: "contain",
+                      },
+                    }}
+                    onClick={() => setActiveProject(null)}
+                  >
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "#555", marginBottom: 2 }}
+                    >
+                      Mit einem dreiköpfigen Team haben wir diese
+                      Chat-Webanwendung entwickelt. Hier ist auch eine
+                      Präsentation des Projekts 👉🏼
+                      <a
+                        href="/mein-portfolio/pdf/Kaiwa_RealTimeChatApp.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          color: "#0070f3",
+                          textDecoration: "underline",
+                        }}
+                      >
+                        Projektpräsentation
+                      </a>{" "}
+                      und hier ist der GitHub-Link zum Projekt 👉🏼
+                      <a
+                        href="https://github.com/ilonagoergens/Kaiwa"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          color: "#0070f3",
+                          textDecoration: "underline",
+                        }}
+                      >
+                        GitHub-Projekt
+                      </a>
+                    </Typography>
+                    <video
+                      ref={videoRef}
+                      className="my-video-class"
+                      width="100%"
+                      height="auto"
+                      controls
+                    >
+                      <source src={KaiwaVideo} type="video/mp4" />
+                      Dein Browser unterstützt dieses Video-Format nicht.
+                    </video>
+                  </Box>
+                )}
+
+                {/* Coming Soon */}
+                <Box
+                  sx={{
+                    boxShadow: 2,
+                    borderRadius: 2,
+                    backgroundColor: "#ddd",
+                    padding: 3,
+                    textAlign: "center",
+                    marginTop: "20px",
+                    width: "100%",
+                    maxWidth: { xs: "90%", sm: 600, md: 700 },
+                  }}
+                >
+                  <Typography variant="h6">Coming Soon...</Typography>
+                  <Typography variant="body2" sx={{ color: "#555" }}>
+                    Ein spannendes neues Projekt ist in Arbeit! Stay tuned! 🚀
+                  </Typography>
+                </Box>
+              </Box>
+            </>
+          )}
 
           {activeContent === "certificates" && (
             <>
