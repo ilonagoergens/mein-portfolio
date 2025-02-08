@@ -151,3 +151,16 @@ body {
     font-size: 16px;
   }
 }
+
+.my-video-class {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .my-video-class {
+    max-width: 100%;
+    height: auto;
+  }
+}
