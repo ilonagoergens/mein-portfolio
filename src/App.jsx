@@ -421,6 +421,7 @@ function App() {
                 </Typography>
                 <video
                   ref={videoRef}
+                  className="my-video-class"
                   width="100%"
                   height="auto"
                   controls
