@@ -67,7 +67,7 @@ function NavButton({ label, onClick }) {
   );
 }
 
-function App() {
+function App() { 
   const [activeContent, setActiveContent] = useState("home");
   const [activeProject, setActiveProject] = useState(null); // Hier den activeProject-State hinzufügen
   const [videoEnded, setVideoEnded] = useState(false);
@@ -204,6 +204,7 @@ function App() {
     };
   }, []);
 
+
   return (
     <ThemeProvider theme={theme}>
       <Box
@@ -246,7 +247,6 @@ function App() {
             />
             <NavButton label="Kontakt" onClick={() => handleClick("Contact")} />
           </Box>
-<<<<<<< HEAD
 
           {activeContent === "about" && (
   <Box className="about-container">
@@ -416,7 +416,6 @@ function App() {
 {activeContent === "certificates" && (
   <>
     <Typography variant="h5" sx={{ marginBottom: 2, fontWeight: "bold" }}>
-      Zertifikate
     </Typography>
     <Box
       sx={{
@@ -424,6 +423,7 @@ function App() {
         flexWrap: "wrap", // Boxen umbrechen, wenn der Platz knapp wird
         gap: "15px", // Abstand zwischen den Boxen (Zertifikaten)
         justifyContent: "center", // Zertifikate zentrieren
+        marginTop: "90px",
       }}
     >
       {[
@@ -513,322 +513,14 @@ function App() {
     </Box>
   </>
 )}
-
-=======
-
-          {activeContent === "about" && (
-            <Box className="about-container">
-              <Box className="about-content">
-                <Box className="image-container">
-                  <img src={Image} alt="Mein Foto" className="image" />
-                </Box>
-              </Box>
-              <Box className="text-container">
-                <Typography
-                  variant="body1"
-                  className="about-text"
-                  sx={{
-                    fontSize: {
-                      xs: "0.4rem",
-                      sm: "0.5rem",
-                      md: "0.8rem",
-                      lg: "1.1rem",
-                    },
-                  }}
-                >
-                  <p>
-                    Hallo, ich bin Ilona! 😊 Nach einem Jahr intensiver
-                    Weiterbildung in Cloud- und Webentwicklung bin ich nun
-                    bereit für den Einstieg in die IT-Welt. Während dieser Zeit
-                    habe ich umfassende theoretische Grundlagen erworben und
-                    mich mit Technologien wie AWS, Azure, Linux, Docker,
-                    Kubernetes, DevOps und moderner Webentwicklung beschäftigt.
-                    Besonders spannend finde ich die Kombination aus
-                    Automatisierung, effizientem Deployment und kreativen
-                    Lösungen im Frontend. 🚀
-                  </p>
-                  <p>
-                    Jetzt freue ich mich darauf, mein Wissen in der Praxis
-                    anzuwenden, weiter dazuzulernen und in einem innovativen
-                    Team durchzustarten. ✨
-                  </p>
-                  <p>
-                    Neben meiner Begeisterung für Technik bin ich auch ein
-                    kreativer Mensch. In meiner Freizeit male ich gerne, mache
-                    Yoga und genieße die kleinen Auszeiten, die das Leben
-                    bietet. Als Mutter von zwei Kindern weiß ich, wie wichtig es
-                    ist, organisiert zu bleiben – eine Fähigkeit, die mir sowohl
-                    privat als auch beruflich enorm hilft. 💪
-                  </p>
-                  <p>
-                    💡 <strong>Meine Skills im Überblick:</strong>
-                    <br /> 🔹 <strong>Frontend-Entwicklung:</strong> HTML, CSS,
-                    JavaScript, React.js, UX/UI-Design
-                    <br /> 🔹 <strong>Backend & APIs:</strong> Node.js,
-                    Express.js, RESTful APIs
-                    <br /> 🔹 <strong>Cloud-Technologien:</strong> AWS, Azure
-                    <br /> 🔹 <strong>Container & Orchestrierung:</strong>{" "}
-                    Docker, Kubernetes
-                    <br /> 🔹 <strong>DevOps & Automatisierung:</strong> CI/CD,
-                    Infrastructure as Code (IaC mit Ansible)
-                    <br /> 🔹 <strong>Sicherheit & Netzwerke:</strong> Linux,
-                    Netzwerksicherheit
-                    <br /> 🔹 <strong>Agile Softwareentwicklung:</strong> Scrum,
-                    praxisorientierte Projekte
-                  </p>
-                  <p>
-                    Ich bin ab April 2025 bereit für neue Herausforderungen! 🌟
-                  </p>
-                </Typography>
-              </Box>
-            </Box>
-          )}
-
-          {activeContent === "projects" && (
-            <>
-              {/* Titel */}
-              <Typography
-                variant="h5"
-                sx={{
-                  textAlign: "center",
-                  fontWeight: "bold",
-                  marginBottom: 2,
-                  color: "#333",
-                  fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
-                }}
-              ></Typography>
-
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  marginTop: "60px",
-                  paddingLeft: { xs: 2, sm: 3, md: 4 },
-                  paddingRight: { xs: 2, sm: 3, md: 4 },
-                }}
-              >
-                {/* Chat Web App */}
-                <Box
-                  sx={{
-                    boxShadow: 2,
-                    borderRadius: 2,
-                    backgroundColor: "#f5f5f5",
-                    padding: 3,
-                    textAlign: "center",
-                    cursor: "pointer",
-                    transition: "transform 0.3s",
-                    width: "100%",
-                    maxWidth: { xs: "90%", sm: 600, md: 700 },
-                    "&:hover": {
-                      transform: "scale(1.05)",
-                    },
-                  }}
-                  onClick={() =>
-                    setActiveProject(activeProject === 1 ? null : 1)
-                  }
-                >
-                  <Typography variant="h6">Chat Web App</Typography>
-                </Box>
-
-                {/* Video und Beschreibung */}
-                {activeProject === 1 && (
-                  <Box
-                    sx={{
-                      position: "fixed",
-                      top: "50%",
-                      left: "50%",
-                      transform: "translate(-50%, -50%)",
-                      boxShadow: 2,
-                      borderRadius: 2,
-                      backgroundColor: "#f9f9f9",
-                      padding: 3,
-                      width: "100%",
-                      maxWidth: { xs: "90%", sm: 760 },
-                      textAlign: "center",
-                      zIndex: 10,
-                      overflowY: "auto", // Falls der Inhalt höher als der Bildschirm ist
-                      "& video": {
-                        maxWidth: "100%", // Maximale Breite auf 100% setzen
-                        maxHeight: "80vh", // Maximale Höhe auf 80% der Ansichtshöhe setzen
-                        objectFit: "contain", // Skalierung des Videos, ohne das Seitenverhältnis zu verzerren
-                      },
-                    }}
-                    onClick={() => setActiveProject(null)}
-                  >
-                    <Typography
-                      variant="body2"
-                      sx={{ color: "#555", marginBottom: 2 }}
-                    >
-                      Mit einem dreiköpfigen Team haben wir diese
-                      Chat-Webanwendung entwickelt. Hier ist auch eine
-                      Präsentation des Projekts 👉🏼
-                      <a
-                        href="https://docs.google.com/presentation/d/e/2PACX-1vQD-Rg4rOEsn1XyzAamP5bCGOn7uCDO1C6RhJwJLwB35IXDUTTqaP5ORa-jogCjMw/pub?start=false&loop=false&delayms=3000"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          color: "#0070f3",
-                          textDecoration: "underline",
-                        }}
-                      >
-                        Projektpräsentation
-                      </a>{" "}
-                      und hier ist der GitHub-Link zum Projekt 👉🏼
-                      <a
-                        href="https://github.com/ilonagoergens/Kaiwa"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          color: "#0070f3",
-                          textDecoration: "underline",
-                        }}
-                      >
-                        GitHub-Projekt
-                      </a>
-                    </Typography>
-                    <video width="100%" height="auto" controls>
-                      <source src={KaiwaVideo} type="video/mp4" />
-                      Dein Browser unterstützt dieses Video-Format nicht.
-                    </video>
-                  </Box>
-                )}
-
-                {/* Coming Soon */}
-                <Box
-                  sx={{
-                    boxShadow: 2,
-                    borderRadius: 2,
-                    backgroundColor: "#ddd",
-                    padding: 3,
-                    textAlign: "center",
-                    marginTop: "20px",
-                    width: "100%",
-                    maxWidth: { xs: "90%", sm: 600, md: 700 },
-                  }}
-                >
-                  <Typography variant="h6">Coming Soon...</Typography>
-                  <Typography variant="body2" sx={{ color: "#555" }}>
-                    Ein spannendes neues Projekt ist in Arbeit! Stay tuned! 🚀
-                  </Typography>
-                </Box>
-              </Box>
-            </>
-          )}
-
-          {activeContent === "certificates" && (
-            <>
-              <Typography
-                variant="h5"
-                sx={{ marginBottom: 2, fontWeight: "bold" }}
-              >
-                Zertifikate
-              </Typography>
-              <Box
-                sx={{
-                  display: "flex", // Flexbox Layout für die Boxen
-                  flexWrap: "wrap", // Boxen umbrechen, wenn der Platz knapp wird
-                  gap: "15px", // Abstand zwischen den Boxen (Zertifikaten)
-                  justifyContent: "center", // Zertifikate zentrieren
-                }}
-              >
-                {[
-                  {
-                    title: "AWS Certified Cloud Practitioner",
-                    image: AwsCloudPractitionerImage,
-                    link: "https://www.credly.com/badges/76380d0e-b595-491b-8b15-38e9310b84a6/public_url",
-                    description:
-                      "Dieses Zertifikat bestätigt grundlegende Kenntnisse der AWS-Cloud, die für den Einstieg in die Cloud-Welt erforderlich sind. Es umfasst Themen wie Cloud-Architektur, Sicherheitsbestimmungen und AWS-Services.",
-                  },
-                  {
-                    title: "AWS Re/Start",
-                    image: AwsReStart,
-                    link: "https://www.credly.com/badges/b945acf7-3c02-4b98-86dc-4ef5eba05919/linked_in?t=sj6xxk",
-                    description:
-                      "Das AWS Re/Start-Zertifikat bietet fundierte Kenntnisse zu den Grundlagen der Cloud-Technologie und hilft dabei, in der IT-Branche Fuß zu fassen, mit besonderem Fokus auf Cloud-Infrastrukturen und -Dienste.",
-                  },
-                  {
-                    title: "Linux Professional Institute Certification",
-                    image: LinuxImage,
-                    link: "https://www.lpi.org/v/LPI000614343/72ur5w54d6", // Dein LPI-Link
-                    description:
-                      "Dieses Zertifikat belegt fundierte Kenntnisse in der Verwaltung und Konfiguration von Linux-Systemen. Es umfasst Themen wie Systemadministration, Sicherheit und Netzwerktechnologien unter Linux.",
-                  },
-
-                  {
-                    title: "Microsoft Certified: Azure Fundamentals",
-                    image: AzureImage,
-                    link: "https://learn.microsoft.com/de-de/users/ilonagrgens-7391/credentials/4742f5bb6ddc27ff?ref=https%3A%2F%2Fwww.linkedin.com%2F",
-                    description:
-                      "Mit diesem Zertifikat werden grundlegende Kenntnisse der Microsoft Azure-Cloud-Plattform bestätigt. Es deckt Themen wie Azure-Dienste, Cloud-Konzepte und grundlegende Azure-Architektur ab.",
-                  },
-                  {
-                    title: "Scrum Master Certification",
-                    image: ScrumImage,
-                    link: "https://www.credly.com/badges/6698a9cf-e104-461f-97d7-368c7376cc85/linked_in?t=sp9iol",
-                    description:
-                      "Das Scrum Master-Zertifikat bescheinigt Kenntnisse und Fähigkeiten in der Anwendung der Scrum-Methodik zur effektiven Verwaltung von agilen Projekten. Es umfasst Rollen, Ereignisse und Artefakte innerhalb von Scrum.",
-                  },
-                ].map((cert, index) => (
-                  <a
-                    key={index}
-                    href={cert.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ textDecoration: "none" }} // Verhindert die Unterstreichung des Links
-                  >
-                    <Box
-                      sx={{
-                        width: "100%", // 100% Breite für volle Flexibilität
-                        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-                        borderRadius: "10px",
-                        overflow: "hidden",
-                        transition:
-                          "transform 0.3s ease-in-out, box-shadow 0.3s",
-                        "&:hover": {
-                          transform: "scale(1.05)",
-                          boxShadow: "0 6px 16px rgba(0, 0, 0, 0.3)",
-                        },
-                        cursor: "pointer",
-                        maxWidth: { xs: "150px", sm: "150px", md: "250px" },
-                        maxHeight: { xs: "150px", sm: "200px", md: "250px" },
-                        margin: "auto", // Zertifikate zentrieren
-                        marginTop: "5%",
-                      }}
-                    >
-                      <Box sx={{ position: "relative", height: "200px" }}>
-                        <img
-                          src={cert.image}
-                          alt={cert.title}
-                          style={{
-                            width: "100%", // Bild nimmt immer 100% der Breite des Containers ein
-                            height: "100%", // Höhe auf 100% setzen, um den gesamten Container auszufüllen
-                            objectFit: "contain", // Bild bleibt in den Container-Grenzen, ohne das Seitenverhältnis zu verlieren
-                            borderRadius: "10px", // Abgerundete Ecken
-                          }}
-                        />
-                      </Box>
-                      <Box sx={{ padding: 2, textAlign: "center" }}>
-                        <Typography variant="h6">{cert.title}</Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {cert.description}
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </a>
-                ))}
-              </Box>
-            </>
-          )}
->>>>>>> 0aa15a61 (...)
-
           {activeContent === "Contact" && (
             <Box
               display="flex"
               justifyContent="center"
               alignItems="center"
               gap={2}
-              style={{ marginTop: "20px" }}
+              style={{ marginTop: "90px" }}
+              
             >
               <Tooltip title="Folge mir auf GitHub">
                 <a
