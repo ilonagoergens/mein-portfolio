@@ -92,6 +92,7 @@ body {
 }
 
 .image-container {
+  margin-left: 2rem;
   transform: translateY(+20%);
   position: relative;
   max-width: 400px;
