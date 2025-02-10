@@ -70,19 +70,9 @@ function NavButton({ label, onClick }) {
 function App() {
   const [activeContent, setActiveContent] = useState("home");
   const [activeProject, setActiveProject] = useState(null); // Hier den activeProject-State hinzufügen
-  const [videoEnded, setVideoEnded] = useState(false);
-
-  const handleRestartVideo = () => {
-    setVideoEnded(false); // Zurücksetzen der videoEnded-Flag
-  };
 
   const handleClick = (content) => {
     setActiveContent(content);
-  };
-
-  // Funktion zum Umschalten des aktiven Projekts
-  const handleProjectClick = (projectId) => {
-    setActiveProject(activeProject === projectId ? null : projectId); // Setzt das Projekt oder setzt es zurück
   };
 
   const videoRef = useRef(null);
@@ -239,6 +229,7 @@ function App() {
             }}
           >
             <NavButton label="Über mich" onClick={() => handleClick("about")} />
+            <NavButton label="Skills" onClick={() => handleClick("skills")} />
             <NavButton
               label="Projekte"
               onClick={() => handleClick("projects")}
@@ -270,16 +261,22 @@ function App() {
                     },
                   }}
                 >
+                  <p class="zentrierter-text">
+                    Hallo, ich bin{" "}
+                    <span class="überschrifthighlight">Ilona</span>! 😊 <br />
+                    <span class="überschrifthighlight">
+                      Cloud & DevOps Enthusiast
+                    </span>
+                  </p>
                   <p>
-                    Hallo, ich bin Ilona! 😊 Nach einem Jahr intensiver
-                    Weiterbildung in Cloud- und Webentwicklung bin ich nun
-                    bereit für den Einstieg in die IT-Welt. Während dieser Zeit
-                    habe ich umfassende theoretische Grundlagen erworben und
-                    mich mit Technologien wie AWS, Azure, Linux, Docker,
-                    Kubernetes, DevOps und moderner Webentwicklung beschäftigt.
-                    Besonders spannend finde ich die Kombination aus
-                    Automatisierung, effizientem Deployment und kreativen
-                    Lösungen im Frontend. 🚀
+                    Nach einem Jahr intensiver Weiterbildung in Cloud- und
+                    Webentwicklung bin ich nun bereit für den Einstieg in die
+                    IT-Welt. Während dieser Zeit habe ich umfassende
+                    theoretische Grundlagen erworben und mich mit Technologien
+                    wie AWS, Azure, Linux, Docker, Kubernetes, DevOps und
+                    moderner Webentwicklung beschäftigt. Besonders spannend
+                    finde ich die Kombination aus Automatisierung, effizientem
+                    Deployment und kreativen Lösungen im Frontend. 🚀
                   </p>
                   <p>
                     Jetzt freue ich mich darauf, mein Wissen in der Praxis
@@ -294,29 +291,66 @@ function App() {
                     ist, organisiert zu bleiben – eine Fähigkeit, die mir sowohl
                     privat als auch beruflich enorm hilft. 💪
                   </p>
+
                   <p>
-                    💡 <strong>Meine Skills im Überblick:</strong>
-                    <br /> 🔹 <strong>Frontend-Entwicklung:</strong> HTML, CSS,
-                    JavaScript, React.js, UX/UI-Design
-                    <br /> 🔹 <strong>Backend & APIs:</strong> Node.js,
-                    Express.js, RESTful APIs
-                    <br /> 🔹 <strong>Cloud-Technologien:</strong> AWS, Azure
-                    <br /> 🔹 <strong>Container & Orchestrierung:</strong>{" "}
-                    Docker, Kubernetes
-                    <br /> 🔹 <strong>DevOps & Automatisierung:</strong> CI/CD,
-                    Infrastructure as Code (IaC mit Ansible)
-                    <br /> 🔹 <strong>Sicherheit & Netzwerke:</strong> Linux,
-                    Netzwerksicherheit
-                    <br /> 🔹 <strong>Agile Softwareentwicklung:</strong> Scrum,
-                    praxisorientierte Projekte
-                  </p>
-                  <p>
-                    Ich bin ab April 2025 bereit für neue Herausforderungen! 🌟
+                    <strong>
+                      Ich bin ab April 2025 bereit für neue Herausforderungen!
+                      🌟
+                    </strong>
                   </p>
                 </Typography>
               </Box>
             </Box>
           )}
+
+{activeContent === "skills" && (
+  <Box className="skills-container">
+    <Box className="skills-content">
+      <Typography
+        variant="body1"
+        className="skills-text"
+        sx={{
+          fontSize: {
+            xs: "0.4rem",
+            sm: "0.5rem",
+            md: "0.8rem",
+            lg: "1.1rem",
+          },
+          textAlign: "center",
+        }}
+      >
+        <p>
+          <span className="überschrifthighlight">Meine Skills 💡</span>
+        </p>
+      </Typography>
+
+      <Box className="skills-columns" style={{fontSize: "1.25rem"}}>
+        <Box className="skills-column">
+        <ul>
+            <li><strong>Frontend-Entwicklung:</strong> HTML, CSS, JavaScript, React.js(basics)</li>
+            <li><strong>Backend & APIs:</strong> Node.js, Express.js, RESTful APIs(basics)</li>
+            <li><strong>Cloud-Technologien:</strong> AWS (S3, Lambda, Deployment), Azure(basics)</li>
+            <li><strong>Container & Orchestrierung:</strong> Docker, Kubernetes(basics)</li>
+            <li><strong>Lernbereitschaft & Anpassungsfähigkeit:</strong> Ständiges Lernen, Offenheit für moderne Technologien</li>
+          </ul>
+        </Box>
+
+        <Box className="skills-column">
+          <ul>
+            <li><strong>DevOps & Automatisierung:</strong> CI/CD, Ansible, Terraform(basics)</li>
+            <li><strong>Sicherheit & Netzwerke:</strong> Linux, Netzwerksicherheit(basics)</li>
+            <li><strong>Agile Methoden:</strong> Scrum, praxisorientierte Projekte</li>
+            <li><strong>Soft Skills:</strong> Teamarbeit, Organisation, Lernbereitschaft</li>
+            <li><strong>Persönliche Stärken:</strong> Kreativität, Zuverlässigkeit und die Fähigkeit, klar und effektiv zu kommunizieren – sowohl im Team als auch eigenständig</li>
+
+          </ul>
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+)}
+
+
 
           {activeContent === "projects" && (
             <>

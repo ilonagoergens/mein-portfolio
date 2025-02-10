@@ -11,6 +11,64 @@ body {
   margin: 0;
   overflow: auto;
   cursor: none;
+  font-family: "Microsoft JhengHei UI", "Segoe UI", "Arial", sans-serif !important;
+}
+
+.überschrifthighlight {
+  color: #9CAD90; /* Salbeigrün */
+  font-size: 1.5em; /* Größer */
+  font-weight: bold; /* Fett */
+}
+.zentrierter-text {
+  text-align: left;
+}
+
+.skills-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+}
+
+.skills-content {
+  max-width: 1300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skills-text {
+  margin-bottom: 20px;
+}
+
+.skills-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.skills-column {
+  text-align: left;
+  flex: 1; 
+}
+
+.skills-column li {
+  margin-bottom: 20px; /* Abstand zwischen den Listenpunkten */
+}
+
+@media (max-width: 768px) {
+  .skills-column {
+    font-size: 1.1rem; /* Kleinere Schrift für kleinere Bildschirme */
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-column {
+    font-size: 0.9rem; /* Noch kleinere Schrift für sehr kleine Bildschirme */
+  }
 }
 
 .about-container {
@@ -34,6 +92,7 @@ body {
 }
 
 .image-container {
+  transform: translateY(+20%);
   position: relative;
   max-width: 400px;
   min-width: 250px;
@@ -45,7 +104,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto 20px auto;
 }
 
 .image {
@@ -59,11 +117,11 @@ body {
 }
 
 .text-container {
-  margin: 0 50px;
+  margin-left: 7rem;
+  margin-right: 4rem;
   text-align: left;
   flex: 1;
   overflow: auto;
-  padding-bottom: 40px;
 }
 
 .about-text {
@@ -71,6 +129,7 @@ body {
   font-size: 0.8rem;
   animation: fadeIn 1s ease-out;
 }
+
 
 /* RESPONSIVE ANPASSUNGEN */
 
@@ -83,6 +142,7 @@ body {
     max-width: 300px;
     border-radius: 30px;
     border-width: 8px;
+    margin: 0 auto; 
   }
   .text-container {
     margin: 20px;
@@ -96,10 +156,11 @@ body {
     max-width: 250px;
     border-width: 6px;
     box-shadow: 0 0 15px 5px rgba(156, 175, 163, 0.3);
+    margin: 0 auto; 
   }
   .text-container {
     transform: translateX(-4%);
-    margin: 10px;
+    margin: 0 auto; 
     text-align: center;
     padding-bottom: 30px;
   }
@@ -121,7 +182,7 @@ body {
     padding-bottom: 20px;
   }
   .about-text {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -138,7 +199,7 @@ body {
     padding-bottom: 15px;
   }
   .about-text {
-    font-size: 0.65rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -148,7 +209,7 @@ body {
   }
   .text-container {
     padding-bottom: 40px;
-    font-size: 16px;
+    font-size: 1.2rem;
   }
 }
 
