@@ -59,18 +59,25 @@ body {
   margin-bottom: 20px; /* Abstand zwischen den Listenpunkten */
 }
 
+/* Kleinere Bildschirme bis 768px (z. B. größere Handys) */
 @media (max-width: 768px) {
   .skills-column {
-    font-size: 1.1rem; /* Kleinere Schrift für kleinere Bildschirme */
+    font-size: 0.5rem; /* Kleinere Schrift für Handys */
   }
 }
 
-@media (max-width: 480px) {
+/* Für größere Bildschirme (Tablets und höher) */
+@media (min-width: 768px) {
   .skills-column {
-    font-size: 0.9rem; /* Noch kleinere Schrift für sehr kleine Bildschirme */
+    font-size: 1.2rem; /* Größere Schrift für Tablets */
   }
 }
 
+@media (min-width: 1024px) {
+  .skills-column {
+    font-size: 1.3rem; /* Noch größere Schrift für Desktops */
+  }
+}
 .about-container {
   display: flex;
   flex-direction: row;
