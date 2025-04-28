@@ -9,6 +9,7 @@ import LinuxImage from "./assets/Linux.png";
 import AwsReStart from "./assets/aws-re-start-graduate.png";
 import AzureImage from "./assets/azure.png";
 import ScrumImage from "./assets/scrum.png";
+import Techstarter from "./assets/techstarter.png";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./style.css";
 import KaiwaVideo from "/public/Kaiwa.mp4";
@@ -541,6 +542,13 @@ function App() {
                     link: "https://www.credly.com/badges/6698a9cf-e104-461f-97d7-368c7376cc85/linked_in?t=sp9iol",
                     description:
                       "Das Scrum Master-Zertifikat bescheinigt Kenntnisse und Fähigkeiten in der Anwendung der Scrum-Methodik zur effektiven Verwaltung von agilen Projekten. Es umfasst Rollen, Ereignisse und Artefakte innerhalb von Scrum.",
+                  },
+                  {
+                    title: "Techstarter Certification",
+                    image: Techstarter,
+                    link: "",
+                    description:
+                      "Das Zertifikat bestätigt umfassende Kenntnisse und Fähigkeiten in der Cloud- und Webentwicklung, einschließlich Grundlagen der IT, Programmierung, agiler Softwareentwicklung mit Scrum sowie moderner Technologien wie AWS, Microsoft Azure, Docker, Kubernetes und CI/CD.",
                   },
                 ].map((cert, index) => (
                   <a
