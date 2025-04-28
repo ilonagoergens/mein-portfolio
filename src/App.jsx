@@ -294,7 +294,7 @@ function App() {
 
                   <p>
                     <strong>
-                      Ich bin ab April 2025 bereit für neue Herausforderungen!
+                      Ich bin ab September 2025 bereit für neue Herausforderungen!
                       🌟
                     </strong>
                   </p>
