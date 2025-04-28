@@ -10,6 +10,7 @@ import AwsReStart from "./assets/aws-re-start-graduate.png";
 import AzureImage from "./assets/azure.png";
 import ScrumImage from "./assets/scrum.png";
 import Techstarter from "./assets/techstarter.png";
+import TechstarterCertificate from "./assets/techstarter.pdf";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./style.css";
 import KaiwaVideo from "/public/Kaiwa.mp4";
@@ -546,7 +547,7 @@ function App() {
                   {
                     title: "Techstarter Certification",
                     image: Techstarter,
-                    link: "",
+                    link: TechstarterCertificate,
                     description:
                       "Das Zertifikat bestätigt umfassende Kenntnisse und Fähigkeiten in der Cloud- und Webentwicklung, einschließlich Grundlagen der IT, Programmierung, agiler Softwareentwicklung mit Scrum sowie moderner Technologien wie AWS, Microsoft Azure, Docker, Kubernetes und CI/CD.",
                   },
