@@ -14,6 +14,7 @@ import TechstarterCertificate from "./assets/techstarter.pdf";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./style.css";
 import KaiwaVideo from "/public/Kaiwa.mp4";
+import dreamsync from '/public/dreamsync.mp4';
 
 const theme = createTheme({
   typography: {
@@ -296,8 +297,8 @@ function App() {
 
                   <p>
                     <strong>
-                      Ich bin ab September 2025 bereit für neue Herausforderungen!
-                      🌟
+                      Ich bin ab September 2025 bereit für neue
+                      Herausforderungen! 🌟
                     </strong>
                   </p>
                 </Typography>
@@ -305,54 +306,84 @@ function App() {
             </Box>
           )}
 
-{activeContent === "skills" && (
-  <Box className="skills-container">
-    <Box className="skills-content">
-      <Typography
-        variant="body1"
-        className="skills-text"
-        sx={{
-          fontSize: {
-            xs: "0.4rem",
-            sm: "0.5rem",
-            md: "0.8rem",
-            lg: "1.1rem",
-          },
-          textAlign: "center",
-        }}
-      >
-        <p>
-          <span className="überschrifthighlight">Meine Skills 💡</span>
-        </p>
-      </Typography>
+          {activeContent === "skills" && (
+            <Box className="skills-container">
+              <Box className="skills-content">
+                <Typography
+                  variant="body1"
+                  className="skills-text"
+                  sx={{
+                    fontSize: {
+                      xs: "0.4rem",
+                      sm: "0.5rem",
+                      md: "0.8rem",
+                      lg: "1.1rem",
+                    },
+                    textAlign: "center",
+                  }}
+                >
+                  <p>
+                    <span className="überschrifthighlight">
+                      Meine Skills 💡
+                    </span>
+                  </p>
+                </Typography>
 
-      <Box className="skills-columns" style={{fontSize: "1.25rem"}}>
-        <Box className="skills-column">
-        <ul>
-            <li><strong>Frontend-Entwicklung:</strong> HTML, CSS, JavaScript, React.js(basics)</li>
-            <li><strong>Backend & APIs:</strong> Node.js, Express.js, RESTful APIs(basics)</li>
-            <li><strong>Cloud-Technologien:</strong> AWS (S3, Lambda, Deployment), Azure(basics)</li>
-            <li><strong>Container & Orchestrierung:</strong> Docker, Kubernetes(basics)</li>
-            <li><strong>Lernbereitschaft & Anpassungsfähigkeit:</strong> Ständiges Lernen, Offenheit für moderne Technologien</li>
-          </ul>
-        </Box>
+                <Box className="skills-columns" style={{ fontSize: "1.25rem" }}>
+                  <Box className="skills-column">
+                    <ul>
+                      <li>
+                        <strong>Frontend-Entwicklung:</strong> HTML, CSS,
+                        JavaScript, React.js(basics)
+                      </li>
+                      <li>
+                        <strong>Backend & APIs:</strong> Node.js, Express.js,
+                        RESTful APIs(basics)
+                      </li>
+                      <li>
+                        <strong>Cloud-Technologien:</strong> AWS (S3, Lambda,
+                        Deployment), Azure(basics)
+                      </li>
+                      <li>
+                        <strong>Container & Orchestrierung:</strong> Docker,
+                        Kubernetes(basics)
+                      </li>
+                      <li>
+                        <strong>Lernbereitschaft & Anpassungsfähigkeit:</strong>{" "}
+                        Ständiges Lernen, Offenheit für moderne Technologien
+                      </li>
+                    </ul>
+                  </Box>
 
-        <Box className="skills-column">
-          <ul>
-            <li><strong>DevOps & Automatisierung:</strong> CI/CD, Ansible, Terraform(basics)</li>
-            <li><strong>Sicherheit & Netzwerke:</strong> Linux, Netzwerksicherheit(basics)</li>
-            <li><strong>Agile Methoden:</strong> Scrum, praxisorientierte Projekte</li>
-            <li><strong>Soft Skills:</strong> Teamarbeit, Organisation, Lernbereitschaft</li>
-            <li><strong>Persönliche Stärken:</strong> Kreativität, Zuverlässigkeit und die Fähigkeit, klar und effektiv zu kommunizieren – sowohl im Team als auch eigenständig</li>
-
-          </ul>
-        </Box>
-      </Box>
-    </Box>
-  </Box>
-)}
-
-
+                  <Box className="skills-column">
+                    <ul>
+                      <li>
+                        <strong>DevOps & Automatisierung:</strong> CI/CD,
+                        Ansible, Terraform(basics)
+                      </li>
+                      <li>
+                        <strong>Sicherheit & Netzwerke:</strong> Linux,
+                        Netzwerksicherheit(basics)
+                      </li>
+                      <li>
+                        <strong>Agile Methoden:</strong> Scrum,
+                        praxisorientierte Projekte
+                      </li>
+                      <li>
+                        <strong>Soft Skills:</strong> Teamarbeit, Organisation,
+                        Lernbereitschaft
+                      </li>
+                      <li>
+                        <strong>Persönliche Stärken:</strong> Kreativität,
+                        Zuverlässigkeit und die Fähigkeit, klar und effektiv zu
+                        kommunizieren – sowohl im Team als auch eigenständig
+                      </li>
+                    </ul>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          )}
 
           {activeContent === "projects" && (
             <>
@@ -401,7 +432,7 @@ function App() {
                   <Typography variant="h6">Chat Web App</Typography>
                 </Box>
 
-                {/* Video und Beschreibung */}
+                {/* Video und Beschreibung für Chat Web App */}
                 {activeProject === 1 && (
                   <Box
                     sx={{
@@ -470,24 +501,97 @@ function App() {
                   </Box>
                 )}
 
-                {/* Coming Soon */}
+                {/* *** HIER FÜGE DEINEN NEUEN PROJEKT-KASTEN EIN *** */}
                 <Box
                   sx={{
                     boxShadow: 2,
                     borderRadius: 2,
-                    backgroundColor: "#ddd",
+                    backgroundColor: "#f5f5f5",
                     padding: 3,
                     textAlign: "center",
-                    marginTop: "20px",
+                    cursor: "pointer",
+                    transition: "transform 0.3s",
+                    marginTop: "20px", // Abstand zum vorherigen Projekt
                     width: "100%",
                     maxWidth: { xs: "90%", sm: 600, md: 700 },
+                    "&:hover": {
+                      transform: "scale(1.05)",
+                    },
                   }}
+                  onClick={() =>
+                    setActiveProject(activeProject === 2 ? null : 2)
+                  } // Verwende eine neue ID (2)
                 >
-                  <Typography variant="h6">Coming Soon...</Typography>
-                  <Typography variant="body2" sx={{ color: "#555" }}>
-                    Ein spannendes neues Projekt ist in Arbeit! Stay tuned! 🚀
-                  </Typography>
+                  <Typography variant="h6">
+                    DreamSync💫
+                  </Typography>{" "}
+                  {/* Ersetze das */}
                 </Box>
+
+                {/* *** HIER FÜGE DEN VIDEO- UND BESCHREIBUNGSBEREICH FÜR DAS NEUE PROJEKT EIN *** */}
+                {activeProject === 2 && (
+                  <Box
+                    sx={{
+                      position: "fixed",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      boxShadow: 2,
+                      borderRadius: 2,
+                      backgroundColor: "#f9f9f9",
+                      padding: 3,
+                      width: "100%",
+                      maxWidth: { xs: "90%", sm: 760 },
+                      textAlign: "center",
+                      zIndex: 10,
+                      overflowY: "auto",
+                      "& video": {
+                        maxWidth: "100%",
+                        maxHeight: "80vh",
+                        objectFit: "contain",
+                      },
+                    }}
+                    onClick={() => setActiveProject(null)}
+                  >
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "#555", marginBottom: 2 }}
+                    >
+                      Dreamsync💫 Visualisiere deine Ziele und steigere deine Energie! Diese App hilft dir, deinen Energiefluss zu verfolgen und bietet personalisierte Empfehlungen, um dich optimal zu unterstützen. Entdecke mehr im 👉🏼<a href="https://github.com/ilonagoergens/DreamSync-Next" target="_blank" rel="noopener noreferrer" style={{ color: "#0070f3", textDecoration: "underline" }}>GitHub Repository</a>.
+                    </Typography>
+                    <video
+                      className="my-new-project-video-class" // Gib dem Video eine eindeutige Klasse
+                      width="100%"
+                      height="auto"
+                      controls
+                    >
+                      <source src={dreamsync} type="video/mp4" />{" "}
+                      {/* ERSETZE DAS */}
+                      Dein Browser unterstützt dieses Video-Format nicht.
+                    </video>
+                  </Box>
+                )}
+
+                {/* Coming Soon */}
+                {/*
+        <Box
+          sx={{
+            boxShadow: 2,
+            borderRadius: 2,
+            backgroundColor: "#ddd",
+            padding: 3,
+            textAlign: "center",
+            marginTop: "20px",
+            width: "100%",
+            maxWidth: { xs: "90%", sm: 600, md: 700 },
+          }}
+        >
+          <Typography variant="h6">Coming Soon...</Typography>
+          <Typography variant="body2" sx={{ color: "#555" }}>
+            Ein spannendes neues Projekt ist in Arbeit! Stay tuned! 🚀
+          </Typography>
+        </Box>
+      */}
               </Box>
             </>
           )}
