@@ -14,7 +14,7 @@ import TechstarterCertificate from "./assets/techstarter.pdf";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./style.css";
 import KaiwaVideo from "/public/Kaiwa.mp4";
-import dreamsync from '/public/dreamsync.mp4';
+import dreamsync from '/public/dreamsync1.mp4';
 
 const theme = createTheme({
   typography: {
@@ -560,7 +560,7 @@ function App() {
                       Dreamsync💫 Visualisiere deine Ziele und steigere deine Energie! Diese App hilft dir, deinen Energiefluss zu verfolgen und bietet personalisierte Empfehlungen, um dich optimal zu unterstützen. Entdecke mehr im 👉🏼<a href="https://github.com/ilonagoergens/DreamSync-Next" target="_blank" rel="noopener noreferrer" style={{ color: "#0070f3", textDecoration: "underline" }}>GitHub Repository</a>.
                     </Typography>
                     <video
-                      className="my-new-project-video-class" // Gib dem Video eine eindeutige Klasse
+                      className="my-new-project-video-class" 
                       width="100%"
                       height="auto"
                       controls
