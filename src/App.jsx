@@ -13,7 +13,8 @@ import Techstarter from "./assets/techstarter.png";
 import TechstarterCertificate from "./assets/techstarter.pdf";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./style.css";
-
+import KaiwaVideo from "/public/Kaiwa.mp4";
+import dreamsync from '/public/dreamsync1.mp4';
 
 const theme = createTheme({
   typography: {
@@ -494,7 +495,7 @@ function App() {
                       height="auto"
                       controls
                     >
-                      <source src="/public/Kaiwa.mp4" type="video/mp4" />
+                      <source src="./assets/Kaiwa.mp4" type="video/mp4" />
                       Dein Browser unterstützt dieses Video-Format nicht.
                     </video>
                   </Box>
@@ -564,7 +565,7 @@ function App() {
                       height="auto"
                       controls
                     >
-                      <source src="/public/dreamsync1.mp4" type="video/mp4" />{" "}
+                      <source src="./assets/dreamsync1.mp4" type="video/mp4" />
                       {/* ERSETZE DAS */}
                       Dein Browser unterstützt dieses Video-Format nicht.
                     </video>
