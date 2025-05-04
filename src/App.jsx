@@ -494,7 +494,7 @@ function App() {
                       controls
                     >
                       {" "}
-                      <source src="Kaiwa.mp4" type="video/mp4" />
+                      <source src="/artifact/Kaiwa.mp4" type="video/mp4" />
                       Dein Browser unterstützt dieses Video-Format nicht.{" "}
                     </video>{" "}
                   </Box>
@@ -569,7 +569,7 @@ function App() {
                       </a>
                     </Typography>
                     <video width="100%" height="auto" controls>
-                      <source src="dreamsync1.mp4" type="video/mp4" />
+                      <source src="/artifact/dreamsync1.mp4" type="video/mp4" />
                       Dein Browser unterstützt dieses Video-Format nicht.
                     </video>
                   </Box>
