@@ -4,6 +4,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 
 export default defineConfig({
+  base: '/mein-portfolio/',
   plugins: [
     react(),
     viteStaticCopy({
@@ -15,5 +16,4 @@ export default defineConfig({
       ]
     })
   ],
-  base: '/mein-portfolio/',
 })
