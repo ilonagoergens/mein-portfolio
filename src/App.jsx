@@ -13,8 +13,9 @@ import Techstarter from "./assets/techstarter.png";
 import TechstarterCertificate from "./assets/techstarter.pdf";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./style.css";
-import KaiwaVideo from './assets/videos/Kaiwa.mp4?url';
-import DreamsyncVideo from './assets/videos/dreamsync1.mp4?url';
+import KaiwaVideo from './assets/videos/Kaiwa_fixed.mp4?url';
+import DreamsyncVideo from './assets/videos/dreamsync1_fixed.mp4?url';
+
 
 
 
