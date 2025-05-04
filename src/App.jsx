@@ -13,8 +13,6 @@ import Techstarter from "./assets/techstarter.png";
 import TechstarterCertificate from "./assets/techstarter.pdf";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./style.css";
-import KaiwaVideo from './assets/videos/Kaiwa_fixed.mp4?url';
-import DreamsyncVideo from './assets/videos/dreamsync1_fixed.mp4?url';
 
 
 
@@ -499,7 +497,8 @@ function App() {
                       controls
                     >
                       {" "}
-                      <source src={KaiwaVideo} type="video/mp4" />
+                      <source src="https://ilonaspeicher123.blob.core.windows.net/videos/Kaiwa%20-%205%20November%202024%20(1).mp4" type="video/mp4" />
+
                       Dein Browser unterstützt dieses Video-Format nicht.{" "}
                     </video>{" "}
                   </Box>
@@ -562,7 +561,7 @@ function App() {
                       personalisierte Empfehlungen, um dich optimal zu
                       unterstützen. Entdecke mehr im{" "}
                       <a
-                        href="[LINK ZU DEINEM DREAMSYNC GITHUB REPOSITORY]" // HIER DEN LINK EINSETZEN!
+                        href="https://github.com/ilonagoergens/DreamSync-Next"
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
@@ -574,7 +573,8 @@ function App() {
                       </a>
                     </Typography>
                     <video width="100%" height="auto" controls>
-                    <source src={DreamsyncVideo} type="video/mp4" />
+                    <source src="https://ilonaspeicher123.blob.core.windows.net/videos/Unbenanntes%20Video%20%E2%80%93%20Mit%20Clipchamp%20erstellt%20(8).mp4" type="video/mp4" />
+
                       Dein Browser unterstützt dieses Video-Format nicht.
                     </video>
                   </Box>
