@@ -13,7 +13,7 @@ import Techstarter from "./assets/techstarter.png";
 import TechstarterCertificate from "./assets/techstarter.pdf";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./style.css";
-import KaiwaVideo from "./assets/Kaiwa.mp4?url"; // Importiere das Video
+
 
 const theme = createTheme({
   typography: {
@@ -468,7 +468,6 @@ function App() {
                         rel="noopener noreferrer"
                         style={{
                           color: "#0070f3",
-
                           textDecoration: "underline",
                         }}
                       >
@@ -481,7 +480,6 @@ function App() {
                         rel="noopener noreferrer"
                         style={{
                           color: "#0070f3",
-
                           textDecoration: "underline",
                         }}
                       >
@@ -496,33 +494,101 @@ function App() {
                       controls
                     >
                       {" "}
-                      <source src={KaiwaVideo} type="video/mp4" />
+                      <source src="Kaiwa.mp4" type="video/mp4" />
                       Dein Browser unterstützt dieses Video-Format nicht.{" "}
                     </video>{" "}
                   </Box>
                 )}
-                {/* Coming Soon */}{" "}
+
+                {/* Dreamsync App */}
                 <Box
                   sx={{
                     boxShadow: 2,
-
                     borderRadius: 2,
-
-                    backgroundColor: "#ddd",
-
+                    backgroundColor: "#f5f5f5",
                     padding: 3,
-
                     textAlign: "center",
-
-                    marginTop: "20px",
-
+                    cursor: "pointer",
+                    transition: "transform 0.3s",
                     width: "100%",
+                    maxWidth: { xs: "90%", sm: 600, md: 700 },
+                    marginTop: "20px",
+                    "&:hover": {
+                      transform: "scale(1.05)",
+                    },
+                  }}
+                  onClick={() =>
+                    setActiveProject(activeProject === 2 ? null : 2)
+                  }
+                >
+                  <Typography variant="h6">Dreamsync App</Typography>
+                </Box>
+                {/* Video und Beschreibung für Dreamsync App */}
+                {activeProject === 2 && (
+                  <Box
+                    sx={{
+                      position: "fixed",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      boxShadow: 2,
+                      borderRadius: 2,
+                      backgroundColor: "#f9f9f9",
+                      padding: 3,
+                      width: "100%",
+                      maxWidth: { xs: "90%", sm: 760 },
+                      textAlign: "center",
+                      zIndex: 10,
+                      overflowY: "auto",
+                      "& video": {
+                        maxWidth: "100%",
+                        maxHeight: "80vh",
+                        objectFit: "contain",
+                      },
+                    }}
+                    onClick={() => setActiveProject(null)}
+                  >
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "#555", marginBottom: 2 }}
+                    >
+                      Visualisiere deine Ziele und steigere deine Energie! Diese
+                      App hilft dir, deinen Energiefluss zu verfolgen und bietet
+                      personalisierte Empfehlungen, um dich optimal zu
+                      unterstützen. Entdecke mehr im{" "}
+                      <a
+                        href="[LINK ZU DEINEM DREAMSYNC GITHUB REPOSITORY]" // HIER DEN LINK EINSETZEN!
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          color: "#0070f3",
+                          textDecoration: "underline",
+                        }}
+                      >
+                        Repository
+                      </a>
+                    </Typography>
+                    <video width="100%" height="auto" controls>
+                      <source src="dreamsync1.mp4" type="video/mp4" />
+                      Dein Browser unterstützt dieses Video-Format nicht.
+                    </video>
+                  </Box>
+                )}
 
+                {/* Coming Soon */}
+                <Box
+                  sx={{
+                    boxShadow: 2,
+                    borderRadius: 2,
+                    backgroundColor: "#ddd",
+                    padding: 3,
+                    textAlign: "center",
+                    marginTop: "20px",
+                    width: "100%",
                     maxWidth: { xs: "90%", sm: 600, md: 700 },
                   }}
                 >
                   <Typography variant="h6">Coming Soon...</Typography>
-
                   <Typography variant="body2" sx={{ color: "#555" }}>
                     Ein spannendes neues Projekt ist in Arbeit! Stay tuned! 🚀
                   </Typography>
@@ -530,7 +596,6 @@ function App() {
               </Box>
             </>
           )}
-
           {activeContent === "certificates" && (
             <>
               <Typography
