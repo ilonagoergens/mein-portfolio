@@ -9,7 +9,11 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          src: path.resolve(__dirname, 'src', 'assets'), // Kopiere den gesamten Ordner
+          src: 'src/assets/Kaiwa.mp4',
+          dest: 'assets',
+        },
+        {
+          src: 'src/assets/dreamsync1.mp4',
           dest: 'assets',
         },
       ],
