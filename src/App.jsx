@@ -15,6 +15,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./style.css";
 
 
+
 const theme = createTheme({
   typography: {
     fontFamily: '"Microsoft JhengHei UI", "Segoe UI", "Arial", sans-serif',
@@ -494,7 +495,7 @@ function App() {
                       controls
                     >
                       {" "}
-                      <source src="/artifact/Kaiwa.mp4" type="video/mp4" />
+                      <source src={`${import.meta.env.BASE_URL}artifact/Kaiwa.mp4`} type="video/mp4" />
                       Dein Browser unterstützt dieses Video-Format nicht.{" "}
                     </video>{" "}
                   </Box>
@@ -569,7 +570,7 @@ function App() {
                       </a>
                     </Typography>
                     <video width="100%" height="auto" controls>
-                      <source src="/artifact/dreamsync1.mp4" type="video/mp4" />
+                    <source src={`${import.meta.env.BASE_URL}artifact/dreamsync1.mp4`} type="video/mp4" />
                       Dein Browser unterstützt dieses Video-Format nicht.
                     </video>
                   </Box>
