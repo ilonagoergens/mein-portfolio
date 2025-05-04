@@ -13,7 +13,7 @@ import Techstarter from "./assets/techstarter.png";
 import TechstarterCertificate from "./assets/techstarter.pdf";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./style.css";
-
+import KaiwaVideo from "./assets/Kaiwa.mp4?url"; // Importiere das Video
 
 const theme = createTheme({
   typography: {
@@ -430,7 +430,6 @@ function App() {
                 >
                   <Typography variant="h6">Chat Web App</Typography>
                 </Box>
-
                 {/* Video und Beschreibung für Chat Web App */}
                 {activeProject === 1 && (
                   <Box
@@ -462,31 +461,33 @@ function App() {
                     >
                       Mit einem dreiköpfigen Team haben wir diese
                       Chat-Webanwendung entwickelt. Hier ist auch eine
-                      Präsentation des Projekts 👉🏼
+                      Präsentation des Projekts 👉🏼{" "}
                       <a
                         href="/mein-portfolio/pdf/Kaiwa_RealTimeChatApp.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
                           color: "#0070f3",
+
                           textDecoration: "underline",
                         }}
                       >
-                        Projektpräsentation
+                        Projektpräsentation{" "}
                       </a>{" "}
-                      und hier ist der GitHub-Link zum Projekt 👉🏼
+                      und hier ist der GitHub-Link zum Projekt 👉🏼{" "}
                       <a
                         href="https://github.com/ilonagoergens/Kaiwa"
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
                           color: "#0070f3",
+
                           textDecoration: "underline",
                         }}
                       >
-                        GitHub-Projekt
-                      </a>
-                    </Typography>
+                        GitHub-Projekt{" "}
+                      </a>{" "}
+                    </Typography>{" "}
                     <video
                       ref={videoRef}
                       className="my-video-class"
@@ -494,103 +495,38 @@ function App() {
                       height="auto"
                       controls
                     >
-                      <source src="/mein-portfolio/assets/Kaiwa.mp4" type="video/mp4" />
-                      Dein Browser unterstützt dieses Video-Format nicht.
-                    </video>
+                      {" "}
+                      <source src={KaiwaVideo} type="video/mp4" />
+                      Dein Browser unterstützt dieses Video-Format nicht.{" "}
+                    </video>{" "}
                   </Box>
                 )}
-
-                {/* *** HIER FÜGE DEINEN NEUEN PROJEKT-KASTEN EIN *** */}
+                {/* Coming Soon */}{" "}
                 <Box
                   sx={{
                     boxShadow: 2,
+
                     borderRadius: 2,
-                    backgroundColor: "#f5f5f5",
+
+                    backgroundColor: "#ddd",
+
                     padding: 3,
+
                     textAlign: "center",
-                    cursor: "pointer",
-                    transition: "transform 0.3s",
-                    marginTop: "20px", // Abstand zum vorherigen Projekt
+
+                    marginTop: "20px",
+
                     width: "100%",
+
                     maxWidth: { xs: "90%", sm: 600, md: 700 },
-                    "&:hover": {
-                      transform: "scale(1.05)",
-                    },
                   }}
-                  onClick={() =>
-                    setActiveProject(activeProject === 2 ? null : 2)
-                  } // Verwende eine neue ID (2)
                 >
-                  <Typography variant="h6">
-                    DreamSync💫
-                  </Typography>{" "}
-                  {/* Ersetze das */}
+                  <Typography variant="h6">Coming Soon...</Typography>
+
+                  <Typography variant="body2" sx={{ color: "#555" }}>
+                    Ein spannendes neues Projekt ist in Arbeit! Stay tuned! 🚀
+                  </Typography>
                 </Box>
-
-                {/* *** HIER FÜGE DEN VIDEO- UND BESCHREIBUNGSBEREICH FÜR DAS NEUE PROJEKT EIN *** */}
-                {activeProject === 2 && (
-                  <Box
-                    sx={{
-                      position: "fixed",
-                      top: "50%",
-                      left: "50%",
-                      transform: "translate(-50%, -50%)",
-                      boxShadow: 2,
-                      borderRadius: 2,
-                      backgroundColor: "#f9f9f9",
-                      padding: 3,
-                      width: "100%",
-                      maxWidth: { xs: "90%", sm: 760 },
-                      textAlign: "center",
-                      zIndex: 10,
-                      overflowY: "auto",
-                      "& video": {
-                        maxWidth: "100%",
-                        maxHeight: "80vh",
-                        objectFit: "contain",
-                      },
-                    }}
-                    onClick={() => setActiveProject(null)}
-                  >
-                    <Typography
-                      variant="body2"
-                      sx={{ color: "#555", marginBottom: 2 }}
-                    >
-                      Dreamsync💫 Visualisiere deine Ziele und steigere deine Energie! Diese App hilft dir, deinen Energiefluss zu verfolgen und bietet personalisierte Empfehlungen, um dich optimal zu unterstützen. Entdecke mehr im 👉🏼<a href="https://github.com/ilonagoergens/DreamSync-Next" target="_blank" rel="noopener noreferrer" style={{ color: "#0070f3", textDecoration: "underline" }}>GitHub Repository</a>.
-                    </Typography>
-                    <video
-                      className="my-new-project-video-class" 
-                      width="100%"
-                      height="auto"
-                      controls
-                    >
-                      <source src="/mein-portfolio/assets/dreamsync1.mp4" type="video/mp4" />
-                      {/* ERSETZE DAS */}
-                      Dein Browser unterstützt dieses Video-Format nicht.
-                    </video>
-                  </Box>
-                )}
-
-                {/* Coming Soon */}
-                {/*
-        <Box
-          sx={{
-            boxShadow: 2,
-            borderRadius: 2,
-            backgroundColor: "#ddd",
-            padding: 3,
-            textAlign: "center",
-            marginTop: "20px",
-            width: "100%",
-            maxWidth: { xs: "90%", sm: 600, md: 700 },
-          }}
-        >
-          <Typography variant="h6">Coming Soon...</Typography>
-          <Typography variant="body2" sx={{ color: "#555" }}>
-            Ein spannendes neues Projekt ist in Arbeit! Stay tuned! 🚀
-          </Typography>
-        </Box>
-      */}
               </Box>
             </>
           )}
