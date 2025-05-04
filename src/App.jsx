@@ -494,7 +494,7 @@ function App() {
                       height="auto"
                       controls
                     >
-                      <source src="/assets/Kaiwa.mp4" type="video/mp4" />
+                      <source src="/mein-portfolio/assets/Kaiwa.mp4" type="video/mp4" />
                       Dein Browser unterstützt dieses Video-Format nicht.
                     </video>
                   </Box>
@@ -564,7 +564,7 @@ function App() {
                       height="auto"
                       controls
                     >
-                      <source src="/assets/dreamsync1.mp4" type="video/mp4" />
+                      <source src="/mein-portfolio/assets/dreamsync1.mp4" type="video/mp4" />
                       {/* ERSETZE DAS */}
                       Dein Browser unterstützt dieses Video-Format nicht.
                     </video>
