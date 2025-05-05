@@ -14,10 +14,6 @@ import TechstarterCertificate from "./assets/techstarter.pdf";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./style.css";
 
-
-
-
-
 const theme = createTheme({
   typography: {
     fontFamily: '"Microsoft JhengHei UI", "Segoe UI", "Arial", sans-serif',
@@ -497,8 +493,10 @@ function App() {
                       controls
                     >
                       {" "}
-                      <source src="https://ilonaspeicher123.blob.core.windows.net/videos/Kaiwa%20-%205%20November%202024%20(1).mp4" type="video/mp4" />
-
+                      <source
+                        src="https://ilonaspeicher123.blob.core.windows.net/videos/Kaiwa%20-%205%20November%202024%20(1).mp4"
+                        type="video/mp4"
+                      />
                       Dein Browser unterstützt dieses Video-Format nicht.{" "}
                     </video>{" "}
                   </Box>
@@ -570,11 +568,26 @@ function App() {
                         }}
                       >
                         Repository
+                      </a>{" "}
+                      oder besuche direkt die{" "}
+                      <a
+                        href="https://frontend-app.thankfulgrass-a2fd0f75.westeurope.azurecontainerapps.io/login"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          color: "#0070f3",
+                          textDecoration: "underline",
+                        }}
+                      >
+                        Website
                       </a>
+                      .
                     </Typography>
                     <video width="100%" height="auto" controls>
-                    <source src="https://ilonaspeicher123.blob.core.windows.net/videos/Unbenanntes%20Video%20%E2%80%93%20Mit%20Clipchamp%20erstellt%20(8).mp4" type="video/mp4" />
-
+                      <source
+                        src="https://ilonaspeicher123.blob.core.windows.net/videos/Unbenanntes%20Video%20%E2%80%93%20Mit%20Clipchamp%20erstellt%20(8).mp4"
+                        type="video/mp4"
+                      />
                       Dein Browser unterstützt dieses Video-Format nicht.
                     </video>
                   </Box>
