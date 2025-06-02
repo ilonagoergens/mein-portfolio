@@ -569,19 +569,6 @@ function App() {
                       >
                         Repository
                       </a>{" "}
-                      oder besuche direkt die{" "}
-                      <a
-                        href="https://frontend-app.thankfulgrass-a2fd0f75.westeurope.azurecontainerapps.io/login"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          color: "#0070f3",
-                          textDecoration: "underline",
-                        }}
-                      >
-                        Website
-                      </a>
-                      .
                     </Typography>
                     <video width="100%" height="auto" controls>
                       <source
