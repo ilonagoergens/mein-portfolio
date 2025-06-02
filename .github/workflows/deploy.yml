@@ -39,9 +39,9 @@ jobs:
         run: npm ci
       - name: Build
         run: |
-          npm run build
-          cp -r public/* dist/
-          cp -r public/videos dist/
+         npm run build
+         mkdir -p dist/videos
+         cp -r public/videos/* dist/videos/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
