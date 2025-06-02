@@ -493,10 +493,9 @@ function App() {
                       controls
                     >
                       {" "}
-                      <source
-                        src="https://ilonaspeicher123.blob.core.windows.net/videos/Kaiwa%20-%205%20November%202024%20(1).mp4"
-                        type="video/mp4"
-                      />
+                      <source src="/mein-portfolio/videos/kaiwa-demo.mp4" type="video/mp4" />
+
+
                       Dein Browser unterstützt dieses Video-Format nicht.{" "}
                     </video>{" "}
                   </Box>
@@ -571,10 +570,9 @@ function App() {
                       </a>{" "}
                     </Typography>
                     <video width="100%" height="auto" controls>
-                      <source
-                        src="https://ilonaspeicher123.blob.core.windows.net/videos/Unbenanntes%20Video%20%E2%80%93%20Mit%20Clipchamp%20erstellt%20(8).mp4"
-                        type="video/mp4"
-                      />
+                    <source src="/mein-portfolio/videos/dreamsync-demo.mp4" type="video/mp4" />
+
+
                       Dein Browser unterstützt dieses Video-Format nicht.
                     </video>
                   </Box>
